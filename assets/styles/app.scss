@@ -1,2 +1,43 @@
-//start coding by removing this file and adding yours ;)
-@import "wcs";
+.root{
+  --background: #EBEAE5;
+  --color:#7B652D;
+  --font-family-nav: "Montserrat-Alt1", Verdana, Geneva, Tahoma, sans-serif;
+  --font-family-body: "Montserrat-Alt1 Thin", Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+body {
+  //background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4NItusB-JRCIeFIn_3emyPBxeNSpno4EDyeObBfi_og&s");//
+
+}
+//////////////////////cartes pour les tableaux////////////////////////////////
+.card {
+  display: inline-block;
+  vertical-align:top;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 1rem;
+  background: #fff;
+  background-color: rgba(198, 37, 37, 0.6);
+  backdrop-filter: blur(5px);
+}
+
+.card-shadowed {
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-clickable {
+  cursor: pointer;
+}
+
+.card-clickable:hover.card-shadowed,.card-clickable:hover .card-shadowed {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+
+//glassmorphinsm///////////////
+
+//background-color: rgba(198, 37, 37, 0.6);//
+//backdrop-filter: blur(5px);//
