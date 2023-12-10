@@ -3,7 +3,7 @@
 {% block title %}Hello HomepageController!{% endblock %}
 
 {% block body %}
-<div class="card card-video card-shadowed card-clickable"data-tilt></div>
+<div class="card card-video card-shadowed card-clickable"></div>
 <div class="card card-video card-shadowed card-clickable"></div>
 <div class="card card-video card-shadowed card-clickable"></div>
 <div class="card card-video card-shadowed card-clickable"></div>
@@ -16,15 +16,6 @@
 <div class="card card-video card-shadowed card-clickable"></div>
 <div class="card card-video card-shadowed card-clickable"></div>
 
-<div class="card"data-tilt></div>
-<script type="text/javascript" src="vanilla-tilt.js"></script>
-<script type="text/javascript">
-    VanillaTilt.init(document.querySelectorAll(".card"), {
-        max: 25,
-        speed: 400
-    });
-    //It also supports NodeList
-    VanillaTilt.init(document.querySelectorAll(".card"));
-</script>
+
 
 {% endblock %}
