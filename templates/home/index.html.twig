@@ -1,15 +1,86 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Hello !{% endblock %}
 
 {% block body %}
-    <div class="pink-stripe">
-        <h1>
-            Let's start coding&nbsp;&#129304;
-        </h1>
+
+<div id="carouselHomeControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="{{ asset('build/images/caravage.png') }}" alt="First slide">
     </div>
-    <div class="white-stripe">
-        <img src="{{ asset('build/images/logo-wild-code-school.svg') }}"
-            alt="">
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{ asset('build/images/caravage.png') }}" alt="Second slide">
     </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="{{ asset('build/images/caravage.png') }}" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+
+{#
+<div class="cards-container">
+  <div class="card card-video card-shadowed card-clickable">
+    <img class="image" src="{{ asset('build/images/caravage.png') }}"alt="image caravage">
+      <div class="content"><h2>Peintures</h2></div>
+  </div>
+<div class="card card-video card-shadowed card-clickable"><img class="image" src="{{ asset('build/images/luffy.jpg') }}"alt="image luffy"></div>
+<div class="card card-video card-shadowed card-clickable"><img class="image" src="{{ asset('build/images/colorBou.jpg') }}"alt="image ia"></div>
+<div class="card card-video card-shadowed card-clickable"><img class="image" src="{{ asset('build/images/squirrel.png') }}"alt="image caravage"></div>
+<div class="card card-video card-shadowed card-clickable"><img class="image" src="{{ asset('build/images/Janez.jpg') }}"alt="image caravage"></div>
+
+</div>#}
+
+
+<div id="card-area">
+		<div class="wrapper">
+			<div class="box-area">
+				<div class="box">
+					<img class="image" alt="" src="{{ asset('build/images/janez.jpg') }}">
+					<div class="overlay">
+						<h3>photos</h3>
+            <a href="#">Go to</a>
+					</div>
+				</div>
+				<div class="box">
+					<img class="image" alt="" src="{{ asset('build/images/caravage.png') }}">
+					<div class="overlay">
+						<h3>peinture</h3>
+						<a href="#">Go to</a>
+					</div>
+				</div>
+				<div class="box">
+					<img class="image" alt="image de sculture pour les scultures" src="{{ asset('build/images/squirrel.png') }}">
+					<div class="overlay">
+						<h3>scultures</h3>
+						<a href="#">Go to</a>
+					</div>
+				</div>
+        <div class="box">
+					<img class="image" alt="image de luffy pour le Fan art" src="{{ asset('build/images/luffy.jpg') }}">
+					<div class="overlay">
+						<h3>Fan Art</h3>
+						<a href="#">Go to</a>
+					</div>
+				</div>
+        <div class="box">
+					<img class="image" alt="lien" src="{{ asset('build/images/colorBou.jpg') }}">
+					<div class="overlay">
+						<h3>Numérique</h3>
+						<a href="#">Go to</a>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
