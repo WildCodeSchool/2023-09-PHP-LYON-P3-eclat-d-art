@@ -24,7 +24,7 @@
 
 // NAVBAR 
 
-nav {
+.nav-item, .auth {
   font-family: var(--font-family-nav);
   font-size: larger;
 }
@@ -34,16 +34,11 @@ nav {
   height: 4rem;
 }
 
-.auth_nav {
-  width: 35%;
-  padding-left: 4rem;
-}
-
 .link {
   padding-left: 4rem;  
 }
 
-a {
+a, .auth {
   text-decoration: none;
   color: var(--color);
 }
