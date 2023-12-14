@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<div id="carouselHomeControls" class="carousel slide " data-ride="carousel">
+{#<div id="carouselHomeControls" class="carousel slide " data-ride="carousel">
   <div class="carousel-inner ">
     <div class="carousel-item active">
       <img class="d-block w-100 image" src="{{ asset('build/images/caravage.png') }}" alt="First slide">
@@ -16,16 +16,20 @@
       <img class="d-block w-100 image" src="{{ asset('build/images/nicolas.webp') }}" alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
+#}
 
+<div class="slides">
+        <div class="slide slide-1">
+            <img src="{{ asset('build/images/caravage.webp') }}" alt="Third slide">
+          </div>
+        <div class="slide slide-2">
+            <img src="{{ asset('build/images/greek.webp') }}" alt="Third slide">
+          </div>
+        <div class="slide slide-3">
+            <img src="{{ asset('build/images/photo.webp') }}" alt="Third slide">
+          </div>
+          </div>
 <hr>
 <hr>
 <div>
@@ -36,7 +40,7 @@
 		<div class="wrapper">
 			<div class="box-area">
 				<div class="box">
-					<img class=" image" alt="" src="{{ asset('build/images/janez.jpg') }}">
+					<img class=" image" alt="" src="{{ asset('build/images/janez.webp') }}">
 					<div class="overlay">
 						<h3>Photos</h3>
             <a href="#">Go to</a>
@@ -44,7 +48,7 @@
 					</div>
 				</div>
 				<div class="box">
-					<img class=" image" alt="" src="{{ asset('build/images/caravage.png') }}">
+					<img class=" image" alt="" src="{{ asset('build/images/caravage.webp') }}">
 					<div class="overlay">
 						<h3>Peintures</h3>
 						<a href="#">Go to</a>
@@ -60,7 +64,7 @@
 					</div>
 				</div>
         <div class="box">
-					<img class=" image" alt="image de luffy pour le Fan art" src="{{ asset('build/images/luffy.jpg') }}">
+					<img class=" image" alt="image de luffy pour le Fan art" src="{{ asset('build/images/luffy.webp') }}">
 					<div class="overlay">
 						<h3>Fan Arts</h3>
 						<a href="#">Go to</a>
@@ -68,7 +72,7 @@
 					</div>
 				</div>
         <div class="box">
-					<img class=" image" alt="lien" src="{{ asset('build/images/colorBou.jpg') }}">
+					<img class=" image" alt="lien" src="{{ asset('build/images/colorBou.webp') }}">
 					<div class="overlay">
 						<h3>Numériques</h3>
 						<a href="#">Go to</a>
