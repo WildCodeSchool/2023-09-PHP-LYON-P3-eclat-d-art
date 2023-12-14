@@ -1,16 +1,52 @@
 @import "~bootstrap/scss/bootstrap";
 
-:root{
+:root {
   --background: #EBEAE5;
-  --color:#7B652D;
+  --color: #7B652D;
   --font-family-nav: "Montserrat-Alt1", Verdana, Geneva, Tahoma, sans-serif;
   --font-family-body: "Montserrat-Alt1 Thin", Verdana, Geneva, Tahoma, sans-serif;
 
 }
 
-/*body {
-  background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4NItusB-JRCIeFIn_3emyPBxeNSpno4EDyeObBfi_og&s");
-}*/
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  scroll-behavior: smooth;
+  background-color: var(--background);
+}
+body{
+  background-color: var(--background);
+}
+// NAVBAR 
+
+.nav-item, .auth {
+  font-family: var(--font-family-nav);
+  font-size: larger;
+}
+
+.logo_nav {
+  width: 4rem;
+  height: 4rem;
+}
+
+.link {
+  padding-left: 4rem;  
+}
+
+a, .auth {
+  text-decoration: none;
+  color: var(--color);
+}
+
+//////////////////////cartes pour les tableaux////////////////////////////////
+
+.navigation {
+  background-color: #EBEAE5;
+}
+
 //////////////////////cartes pour les tableaux////////////////////////////////
 
 .image{
@@ -19,51 +55,6 @@
   object-fit: cover;
   object-position: center;
 }
-/*.cards-container{
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-.card {
-  
-  position: relative;
-  width: 15rem;
-  height: 18rem;
-  margin: 1rem;
-}
-
-/*.card-shadowed {
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
-*/
-/*.card-clickable {
-  cursor: pointer;
-}
-
-.card-clickable:hover.card-shadowed,.card-clickable:hover .card-shadowed {
-  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-}*/
-/*
-.content{
-
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: (0,0,0,0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  opacity: 0;
-  transition: 0.6s;
-}
-
-.content:hover{
-  opacity: 1;
-}*/
-
 
 //glassmorphinsm///////////////
 
@@ -74,10 +65,7 @@
   background-color: #EBEAE5;
 }
 
-
 ////////////////////////testt//////////////////
-
-
 
 #card-area{
     padding: 50px 0;
@@ -95,7 +83,6 @@
 	overflow: hidden;
 	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
 }
-
 
 .box img{
     width: 100%;
@@ -164,5 +151,8 @@ hr{
   height: 1px;
   background-color: var(--color);
   border: none;
+}
+h3{
+  background-color: transparent;
 }
 
