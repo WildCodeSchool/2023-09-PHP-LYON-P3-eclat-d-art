@@ -1,7 +1,138 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block title %}Hello !{% endblock %}
 
 {% block body %}
-    
+
+{#<div id="carouselHomeControls" class="carousel slide " data-ride="carousel">
+  <div class="carousel-inner ">
+    <div class="carousel-item active">
+      <img class="d-block w-100 image" src="{{ asset('build/images/caravage.png') }}" alt="First slide">
+    </div>
+    <div class="carousel-item ">
+      <img class="d-block w-100 image" src="{{ asset('build/images/squirrel.png') }}" alt="Second slide">
+    </div>
+    <div class="carousel-item" >
+      <img class="d-block w-100 image" src="{{ asset('build/images/nicolas.webp') }}" alt="Third slide">
+    </div>
+  </div>
+</div>
+#}
+
+<div class="slides">
+        <div class="slide slide-1">
+            <img src="{{ asset('build/images/caravage.webp') }}" alt="First slide">
+          </div>
+        <div class="slide slide-2">
+            <img src="{{ asset('build/images/greek.webp') }}" alt="Second slide">
+          </div>
+        <div class="slide slide-3">
+            <img src="{{ asset('build/images/photo.webp') }}" alt="Third slide">
+          </div>
+          </div>
+<hr>
+<hr>
+<div>
+<h2>Listes des catégories</h2>
+</div>
+
+<div id="card-area">
+		<div class="wrapper">
+			<div class="box-area">
+				<div class="box">
+					<img class=" image" alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}"  >
+					<div class="overlay">
+						<h3>Photos</h3>
+            <a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+				<div class="box">
+					<img class= " image" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
+					<div class="overlay">
+						<h3>Peintures</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+				<div class="box">
+					<img class=" image" alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
+					<div class="overlay">
+						<h3>Sculptures</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+        <div class="box">
+					<img class=" image" alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
+					<div class="overlay">
+						<h3>Fan Arts</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+        <div class="box">
+					<img class=" image" alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
+					<div class="overlay">
+						<h3>Numériques</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+
+<hr>
+<hr>
+
+<h2>Listes des Artistes</h2>
+
+<div id="card-area">
+		<div class="wrapper">
+			<div class="box-area">
+				<div class="box">
+					<img class="img-thumbnail image" alt="photo d' l'artiste Jeancolor" src="{{ asset('build/images/jean.webp') }}">
+					<div class="overlay">
+						<h3>Jeancolor</h3>
+            <a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+				<div class="box">
+					<img class="img-thumbnail image" alt="photo d' l'artiste Emilie" src="{{ asset('build/images/emilie.webp') }}">
+					<div class="overlay">
+						<h3>Emilie</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+				<div class="box">
+					<img class="img-thumbnail image" alt="photo d' l'artiste El Artiste" src="{{ asset('build/images/josé.webp') }}">
+					<div class="overlay">
+						<h3>El Artiste</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+        <div class="box">
+					<img class="img-thumbnail image" alt="photo d' l'artiste Bertelli" src="{{ asset('build/images/bertelli.webp') }}">
+					<div class="overlay">
+						<h3>Bertelli</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+        <div class="box">
+					<img class="img-thumbnail image" alt="photo d' l'artiste Khoa" src="{{ asset('build/images/khoa.webp') }}">
+					<div class="overlay">
+						<h3>Khoa</h3>
+						<a href="#">Go to</a>
+            <p></p>
+					</div>
+				</div>
+		</div>
+	</div>
+</div>
+
 {% endblock %}
