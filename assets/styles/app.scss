@@ -16,12 +16,11 @@
   text-decoration: none;
   scroll-behavior: smooth;
   background-color: var(--background);
+  color: var(--color);
 }
-
-// body {
-//   background-image:url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4NItusB-JRCIeFIn_3emyPBxeNSpno4EDyeObBfi_og&s");
-// }
-
+body{
+  background-color: var(--background);
+}
 // NAVBAR 
 
 .nav-item, .auth {
@@ -43,43 +42,156 @@ a, .auth {
   color: var(--color);
 }
 
-
-
-
-
-//////////////////////cartes pour les tableaux////////////////////////////////
-.card {
-  display: inline-block;
-  vertical-align: top;
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 1rem;
-  background: #fff;
-  background-color: rgba(198, 37, 37, 0.6);
-  backdrop-filter: blur(5px);
-}
-
-.card-shadowed {
-  transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-.card-clickable {
-  cursor: pointer;
-}
-
-.card-clickable:hover.card-shadowed,
-.card-clickable:hover .card-shadowed {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-
-//glassmorphinsm//
-
-//background-color: rgba(198, 37, 37, 0.6);//
-//backdrop-filter: blur(5px);//
-
 .navigation {
   background-color: #EBEAE5;
 }
+
+//////////////////////cards////////////////////////////////
+
+.image{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#card-area-categories, #card-area-artistes, .présentation{
+    padding: 2rem 0;
+    margin: 0 1rem;
+}
+
+.box-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  
+}
+
+.box {
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    margin: 1rem;  
+    height: 25rem;
+    flex: 0 0 calc(33.3333% - 2rem);  
+    max-width: calc(33.3333% - 2rem);  
+    box-sizing: border-box;  
+}
+
+.box img{
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 0.5s;
+}
+.overlay {
+	width: 100%;
+	height: 0;
+	background-color: rgba(123, 101, 45, 0.6);
+  backdrop-filter: blur(1px);
+	border-radius: 10px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	transition: height 0.6s;
+}
+.overlay h3 {
+	font-weight: 500;
+	background-color: transparent;
+  color: var(--background);
+	font-family: var(--font-family-body);
+	font-size: 30px;
+	letter-spacing: 2px;
+}
+.overlay a {
+	margin-top: 10rem;
+	color: var(--background);
+	text-decoration: none;
+	font-size: 14px;
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 1px solid var(--background);
+  border-radius: 10rem;
+	text-align: center;
+	padding: 5px 15px;
+  font-family: var(--font-family-body);
+  
+}
+.box:hover img{
+    transform: scale(1.1);
+}
+.box:hover .overlay{
+    height: 100%;
+}
+
+h2{
+  font-family: var(--font-family-body);
+  color: var(--color);
+  font-size: 30px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+hr{
+  width: 100%;
+  height: 1px;
+  background-color: var(--color);
+  border: none;
+}
+
+////////slider page d'accueil////////
+
+.slides{
+  display: flex;
+  justify-content: center;
+        height: 70vh;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        box-shadow: rgba(0, 0, 0, 0.35) 0rem 1rem 1rem, rgba(0, 0, 0, 0.35) 0rem -1rem 1rem;
+    }
+    .slide{
+        position: absolute;
+        height: 100%;
+        opacity: 0;
+        inset: 0;
+        animation: slide-show 12s infinite;
+    }
+
+    .slide-2{
+        animation-delay: 4s;
+    }
+
+    .slide-3{
+        animation-delay: 8s;
+    }
+
+    .slide img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    @keyframes slide-show{
+        0%{
+            opacity: 0;
+        }
+        10%{
+            opacity: 1;
+        }
+        20%,
+        30%{
+            opacity: 1;
+            scale: 1.03;
+        }
+        50%{
+            opacity: 0;
+        }
+    }

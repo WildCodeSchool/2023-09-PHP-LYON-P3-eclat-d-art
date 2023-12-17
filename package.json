@@ -25,5 +25,8 @@
         "watch": "encore dev --watch",
         "build": "encore production --progress"
     },
-    "dependencies": {}
+    "dependencies": {
+        "@popperjs/core": "^2.11.8",
+        "vanilla-tilt": "^1.8.1"
+    }
 }
