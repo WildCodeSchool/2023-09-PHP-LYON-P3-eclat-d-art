@@ -16,6 +16,7 @@
   text-decoration: none;
   scroll-behavior: smooth;
   background-color: var(--background);
+  color: var(--color);
 }
 body{
   background-color: var(--background);
@@ -41,13 +42,11 @@ a, .auth {
   color: var(--color);
 }
 
-//////////////////////cartes pour les tableaux////////////////////////////////
-
 .navigation {
   background-color: #EBEAE5;
 }
 
-//////////////////////cartes pour les tableaux////////////////////////////////
+//////////////////////cards////////////////////////////////
 
 .image{
   width: 100%;
@@ -56,27 +55,27 @@ a, .auth {
   object-position: center;
 }
 
-.navigation{
-  background-color: #EBEAE5;
+#card-area-categories, #card-area-artistes, .présentation{
+    padding: 2rem 0;
+    margin: 0 1rem;
 }
 
-////////////////////////testt//////////////////
+.box-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;  // Centre les cartes horizontalement
+}
 
-#card-area{
-    padding: 50px 0;
-}
-.box-area{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 3rem 10rem ;
-    margin-top: 2rem;
-    
-}
 .box {
-	border-radius: 1rem;
-	position: relative;
-	overflow: hidden;
-	box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    border-radius: 1rem;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+    margin: 1rem;  /* Ajustez cette marge selon vos besoins */
+    height: 25rem;
+    flex: 0 0 calc(33.3333% - 2rem);  // Calcule la largeur de chaque carte
+    max-width: calc(33.3333% - 2rem);  // Définit la largeur maximale
+    box-sizing: border-box;  // Garantit que les marges sont incluses dans la largeur
 }
 
 .box img{
@@ -89,7 +88,7 @@ a, .auth {
 	width: 100%;
 	height: 0;
 	background-color: rgba(123, 101, 45, 0.6);
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(1px);
 	border-radius: 10px;
 	position: absolute;
 	left: 0;
@@ -99,29 +98,29 @@ a, .auth {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	
 	text-align: center;
-	font-size: 14px;
-	transition: height 0.5s;
+	transition: height 0.6s;
 }
 .overlay h3 {
 	font-weight: 500;
-	margin-bottom: 5px;
-	margin-top: 80%;
+	background-color: transparent;
+  color: var(--background);
 	font-family: var(--font-family-body);
 	font-size: 30px;
 	letter-spacing: 2px;
 }
 .overlay a {
-	margin-top: 10px;
-	color: #262626;
+	margin-top: 10rem;
+	color: var(--background);
 	text-decoration: none;
 	font-size: 14px;
-	background: #fff;
-	border-radius: 50px;
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 1px solid var(--background);
+  border-radius: 10rem;
 	text-align: center;
 	padding: 5px 15px;
   font-family: var(--font-family-body);
+  
 }
 .box:hover img{
     transform: scale(1.1);
@@ -129,9 +128,7 @@ a, .auth {
 .box:hover .overlay{
     height: 100%;
 }
-.overlay a {
-  background-color: transparent;
-}
+
 h2{
   font-family: var(--font-family-body);
   color: var(--color);
@@ -147,12 +144,8 @@ hr{
   background-color: var(--color);
   border: none;
 }
-h3{
-  background-color: transparent;
-}
 
-
-////////test////////
+////////slider page d'accueil////////
 
 .slides{
   display: flex;
@@ -161,7 +154,7 @@ h3{
         width: 100%;
         overflow: hidden;
         position: relative;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0rem 1rem 1rem, rgba(0, 0, 0, 0.35) 0rem -1rem 1rem;
     }
     .slide{
         position: absolute;
