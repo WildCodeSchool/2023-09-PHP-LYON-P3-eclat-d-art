@@ -16,11 +16,11 @@ class ArtworkType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('create_at')
+            ->add('createdAt')
             ->add('height')
             ->add('weight')
             ->add('technique')
-            ->add('image_cover')
+            ->add('imageCover')
             ->add('description')
             ->add('user', EntityType::class, [
                 'class' => User::class,
