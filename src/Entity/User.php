@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -38,6 +40,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $photo = null;
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class, orphanRemoval: true)]
+    private Collection $artwork;
+    public function __construct()
+    {
+        $this->artwork = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -153,6 +161,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPhoto(?string $photo): static
     {
         $this->photo = $photo;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Artwork>
+     */
+    public function getArtwork(): Collection
+    {
+        return $this->artwork;
+    }
+
+    public function addArtwork(Artwork $artwork): static
+    {
+        if (!$this->artwork->contains($artwork)) {
+            $this->artwork->add($artwork);
+            $artwork->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArtwork(Artwork $artwork): static
+    {
+        if ($this->artwork->removeElement($artwork)) {
+// set the owning side to null (unless already changed)
+            if ($artwork->getUser() === $this) {
+                $artwork->setUser(null);
+            }
+        }
 
         return $this;
     }
