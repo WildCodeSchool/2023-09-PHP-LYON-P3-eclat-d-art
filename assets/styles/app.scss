@@ -222,3 +222,40 @@ hr {
 .form-button, .form-link, .form-button:hover {
   background: none;
 }
+
+// Cards page categories //
+/*
+#card-artwork {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.box-artwork {
+  margin-right: 10px; 
+} */
+
+#card-artwork {
+  display: inline-block;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  width: 33.33% ;
+}
+
+.card-artwork {
+  margin-bottom: 20px; 
+  box-sizing: border-box;
+}
+
+.image-artwork {
+  width: 80%;
+}
+
+@media only screen and (max-width: 768px) {
+  .card-artwork {
+      width: calc(50% - 10px); 
+  }
+}
+
+

@@ -6,13 +6,13 @@
     {% for artwork in artworks %}
 
         <div id="card-artwork"> 
-            <div class="box-artwork">
-                <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"  > 
-            </div>        
-                <p>{{ artwork.title }}</br>
-                {{ artwork.description }}</p>
-                <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">show</a></button>
+                    <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"> 
+                       
+                    <p>{{ artwork.title }}</br>
+                    {{ artwork.description }}</p>
+                    <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">Découvrir</a></button>
             <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}">edit</a></button>
+        </div>
     {% else %}
         <tr>
             <td colspan="9">no records found</td>

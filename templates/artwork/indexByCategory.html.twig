@@ -1,27 +1,22 @@
 {% extends 'base.html.twig' %}
 
+    {% block body %}
+        <h1>{{ category.name }}</h1>
 
+        {% for artwork in artworks %}   
 
-{% block body %}
-   <h1>Catégorie : {{ category.name }}</h1>
-    {% for artwork in artworks %}
-
-        <div id="card-artwork"> 
-            <div class="box-artwork">
-                <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"  > 
-            </div>        
-                <p>{{ artwork.title }}</br>
-                {{ artwork.description }}</p>
-                <button><a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">show</a></button>
-        </div>                
-
-        {#<a href="{{ path('app_artwork_edit', {'id': artwork.id}) }}">edit</a>#}
-    
-    {% else %}
-        <tr>
-            <td colspan="9">no records found</td>
-        </tr>
-    {% endfor %}
-       
-    <a href="{{ path('app_artwork_new') }}">Create new</a>
-{% endblock %}
+            <div id="card-artwork"> 
+                    <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"> 
+                       
+                    <p>{{ artwork.title }}</br>
+                    {{ artwork.description }}</p>
+                    <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">Découvrir</a></button>
+            </div>  
+                          
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        <a href="{{ path('app_artwork_new') }}">Create new</a>
+    {% endblock %}
