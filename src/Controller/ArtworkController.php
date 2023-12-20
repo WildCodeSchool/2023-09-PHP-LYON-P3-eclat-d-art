@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Artwork;
 use App\Form\ArtworkType;
 use App\Repository\ArtworkRepository;
+use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,6 +22,7 @@ class ArtworkController extends AbstractController
             'artworks' => $artworkRepository->findAll(),
         ]);
     }
+
 
     #[Route('/new', name: 'app_artwork_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
@@ -77,5 +79,18 @@ class ArtworkController extends AbstractController
         }
 
         return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
+    }
+
+    #[Route('/category/{categoryName}', name: 'app_artworks_by_category', methods: ['GET'])]
+    public function indexByCategory(ArtworkRepository $artworkRepository, string $categoryName, CategoryRepository $categoryRepository): Response
+    {
+        $category = $categoryRepository->findOneBy(['name' => $categoryName]);
+
+        $artworks = $artworkRepository->findBy(['category' => $category]);
+
+        return $this->render('artwork/indexByCategory.html.twig', [
+            'artworks' => $artworks,
+            'category' => $category,
+        ]);
     }
 }
