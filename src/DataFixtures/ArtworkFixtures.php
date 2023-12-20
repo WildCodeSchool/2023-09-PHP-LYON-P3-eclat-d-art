@@ -23,7 +23,7 @@ class ArtworkFixtures extends Fixture implements DependentFixtureInterface
                 $artwork->setWeight($faker->randomDigit());
                 $artwork->setTechnique($faker->name());
                 $artwork->setImageCover($faker->imageUrl());
-                $artwork->setDescription($faker->sentence());
+                $artwork->setDescription($faker->sentence(20));
                 $artwork->setUser($this->getReference('user_0'));
                 $artwork->setCreatedAt(date_create('now'));
                 $artwork->setCategory($this->getReference('category_' . $category));
