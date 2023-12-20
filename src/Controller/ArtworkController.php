@@ -82,8 +82,11 @@ class ArtworkController extends AbstractController
     }
 
     #[Route('/category/{categoryName}', name: 'app_artworks_by_category', methods: ['GET'])]
-    public function indexByCategory(ArtworkRepository $artworkRepository, string $categoryName, CategoryRepository $categoryRepository): Response
-    {
+    public function indexByCategory(
+        ArtworkRepository $artworkRepository,
+        string $categoryName,
+        CategoryRepository $categoryRepository
+    ): Response {
         $category = $categoryRepository->findOneBy(['name' => $categoryName]);
 
         $artworks = $artworkRepository->findBy(['category' => $category]);

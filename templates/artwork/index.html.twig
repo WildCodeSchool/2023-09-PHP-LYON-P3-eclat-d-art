@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-
+{% block title %}Liste des oeuvres{% endblock %}
 
 {% block body %}
     {% for artwork in artworks %}
@@ -11,11 +11,8 @@
             </div>        
                 <p>{{ artwork.title }}</br>
                 {{ artwork.description }}</p>
-                <button><a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">show</a></button>
-        </div>                
-
-        {#<a href="{{ path('app_artwork_edit', {'id': artwork.id}) }}">edit</a>#}
-    
+                <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">show</a></button>
+            <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}">edit</a></button>
     {% else %}
         <tr>
             <td colspan="9">no records found</td>
