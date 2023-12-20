@@ -3,9 +3,10 @@
 {% block title %}New Artwork{% endblock %}
 
 {% block body %}
-    <h1>Create new Artwork</h1>
+<section class="form">
+    <h1>Ajouter une nouvelle Oeuvre</h1>
 
     {{ include('artwork/_form.html.twig') }}
-
-    <a href="{{ path('app_artwork_index') }}">back to list</a>
+    
+</section>
 {% endblock %}
