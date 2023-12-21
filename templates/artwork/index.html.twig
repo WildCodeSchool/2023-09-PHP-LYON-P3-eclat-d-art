@@ -10,16 +10,15 @@
     {% for artwork in artworks %}
         <div class="gallery">
             <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"> 
-            <p>{{ artwork.title }}</br>
-            {{ artwork.description }}</p>
-            <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">Découvrir</a></button>
-            {#<button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}">edit</a></button>#}
-        </div>
+                <p>{{ artwork.title }}</p>
+                    <p>{{ artwork.description }}</p>
+                        <button class="btn btn-secondary form-button">
+                            <a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">Découvrir</a>
+                        </button>
+        </div>               
     {% else %}
-        <tr>
-            <td colspan="9">no records found</td>
-        </tr>
+       <p>no records found</p>
     {% endfor %}
-       
+    </div>
     <a href="{{ path('app_artwork_new') }}">Create new</a>
 {% endblock %}
