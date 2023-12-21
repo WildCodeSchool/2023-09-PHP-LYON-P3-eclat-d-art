@@ -12,9 +12,7 @@
             <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"> 
                 <p>{{ artwork.title }}</p>
                     <p>{{ artwork.description }}</p>
-                        <button class="btn btn-secondary form-button">
-                            <a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">Découvrir</a>
-                        </button>
+                        <a class="btn btn-secondary form-button form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
         </div>               
     {% else %}
        <p>no records found</p>
