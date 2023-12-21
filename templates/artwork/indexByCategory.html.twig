@@ -1,18 +1,17 @@
 {% extends 'base.html.twig' %}
 
     {% block body %}
-        <h1>{{ category.name }}</h1>
 
-        {% for artwork in artworks %}   
+        <h2>Oeuvres : {{ category.name }}</h2>
 
-            <div id="card-artwork"> 
-                    <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"> 
-                       
-                    <p>{{ artwork.title }}</br>
-                    {{ artwork.description }}</p>
-                    <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">Découvrir</a></button>
-            </div>  
-                          
+        <div class="gallery-container">
+        {% for artwork in artworks %}
+            <div class="gallery">
+                <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"> 
+                <p>{{ artwork.title }}</br>
+                {{ artwork.description }}</p>
+                <button class="btn btn-secondary form-button"><a class="form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">Découvrir</a></button>
+            </div>      
         {% else %}
             <tr>
                 <td colspan="9">no records found</td>
