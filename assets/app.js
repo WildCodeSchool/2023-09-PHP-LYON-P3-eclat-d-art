@@ -36,6 +36,7 @@ function magnify(imgID, zoom) {
   /*and also for touch screens:*/
   glass.addEventListener("touchmove", moveMagnifier);
   img.addEventListener("touchmove", moveMagnifier);
+
   function moveMagnifier(e) {
     var pos, x, y;
     /*prevent any other actions that may occur when moving over the image*/
@@ -64,6 +65,7 @@ function magnify(imgID, zoom) {
     glass.style.backgroundPosition =
       "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
   }
+  
   const getCursorPos = (e) => {
     var a,
       x = 0,
