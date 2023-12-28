@@ -11,8 +11,11 @@
 
     <div class="box-right">
         <div class="box-describ">
-                <h1>{{ artwork.title }}</h1>
-            
+                <h1>{{ artwork.title }}</h1> 
+                <div class="user-image">
+                    <h5>Artiste:</h5>
+                    <img class="artwork-user" src="{{ asset('build/images/emilie.webp') }}" alt="">
+                </div>
                 <h5>Créé le </h5>
                 <p>{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</p>
         
