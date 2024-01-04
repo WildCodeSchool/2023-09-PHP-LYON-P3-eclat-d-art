@@ -193,7 +193,6 @@ class Artwork
     public function setCreatedAt(\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
-
         return $this;
     }
 }
