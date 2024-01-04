@@ -37,9 +37,7 @@ class ArtworkType extends AbstractType
             ->add('description', TextType::class, [
                 'label' => 'Description',
             ])
-            ->add('createdAt', TextType::class, [
-                'label' => 'Date de création',
-            ])
+            ->add('createdAt')
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
