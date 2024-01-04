@@ -281,6 +281,16 @@ hr {
 
 
 //////////////////////////////artwork///////////////////////    
+.user-image{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.artwork-user{
+  border-radius: 50%;
+  max-width: 3rem;
+}
 
 .box-artwork,
 .box-describ,
