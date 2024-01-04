@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\ArtworkRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ArtworkRepository::class)]
+#[Vich\Uploadable]
 class Artwork
 {
     #[ORM\Id]
@@ -40,6 +46,16 @@ class Artwork
 
     #[ORM\OneToMany(mappedBy: 'artwork', targetEntity: Image::class, orphanRemoval: true)]
     private Collection $images;
+
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'imageCover')]
+    #[Assert\File(
+        maxSize: '12M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    )]
+    private ?File $posterFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DateTimeInterface $updatedAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'artwork')]
     #[ORM\JoinColumn(nullable: false)]
@@ -140,6 +156,32 @@ class Artwork
     {
         $this->description = $description;
 
+        return $this;
+    }
+
+    public function setPosterFile(File $imageCover = null): Artwork
+    {
+        $this->posterFile = $imageCover;
+        if ($imageCover) {
+            $this->updatedAt = new DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(DatetimeInterface $updatedAt): Artwork
+    {
+        $this->updatedAt = $updatedAt;
         return $this;
     }
 

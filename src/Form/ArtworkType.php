@@ -10,6 +10,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ArtworkType extends AbstractType
 {
@@ -28,8 +29,10 @@ class ArtworkType extends AbstractType
             ->add('technique', TextType::class, [
                 'label' => 'Technique',
                 ])
-            ->add('imageCover', TextType::class, [
-                'label' => 'Image',
+            ->add('posterFile', VichFileType::class, [
+                'required' => false,
+                'allow_delete' => true,
+                'download_uri' => true,
                 ])
             ->add('description', TextType::class, [
                 'label' => 'Description',
