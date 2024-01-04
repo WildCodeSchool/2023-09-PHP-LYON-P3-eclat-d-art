@@ -26,10 +26,6 @@ class Artwork
     private ?string $title = null;
 
     #[ORM\Column]
-    #[Assert\DateTime]
-    private ?\DateTime $createdAt = null;
-
-    #[ORM\Column]
     private ?float $height = null;
 
     #[ORM\Column]
@@ -65,6 +61,9 @@ class Artwork
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -83,18 +82,6 @@ class Artwork
     public function setTitle(string $title): static
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTime
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): static
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -236,6 +223,17 @@ class Artwork
     {
         $this->category = $category;
 
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    {
+        $this->createdAt = $createdAt;
         return $this;
     }
 }

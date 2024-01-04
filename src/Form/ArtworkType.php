@@ -19,13 +19,13 @@ class ArtworkType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Titre',
-                ])
+            ])
             ->add('height', TextType::class, [
                 'label' => 'Hauteur',
-                ])
+            ])
             ->add('weight', TextType::class, [
                 'label' => 'Largeur',
-                ])
+            ])
             ->add('technique', TextType::class, [
                 'label' => 'Technique',
                 ])
@@ -36,17 +36,20 @@ class ArtworkType extends AbstractType
                 ])
             ->add('description', TextType::class, [
                 'label' => 'Description',
-                ])
+            ])
+            ->add('createdAt', TextType::class, [
+                'label' => 'Date de création',
+            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'label' => 'Nom de l\'artiste',
-                'choice_label' => 'name',
-                ])
+                'choice_label' => 'id',
+                'label' => 'Utilisateur',
+            ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
+                'choice_label' => 'id',
                 'label' => 'Catégorie',
-                'choice_label' => 'name',
-                ]);
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
