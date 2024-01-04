@@ -7,6 +7,7 @@ use App\Entity\Category;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -37,7 +38,10 @@ class ArtworkType extends AbstractType
             ->add('description', TextType::class, [
                 'label' => 'Description',
             ])
-            ->add('createdAt')
+            ->add('createdAt', DateType::class, [
+                'label' => 'Date de création',
+                'years' => range(date('Y'), date('Y') - 50),
+            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
                 'choice_label' => 'id',
