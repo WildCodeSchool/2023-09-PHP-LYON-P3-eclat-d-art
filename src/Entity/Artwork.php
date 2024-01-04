@@ -37,12 +37,6 @@ class Artwork
     #[ORM\Column(length: 255)]
     private ?string $imageCover = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $description = null;
-
-    #[ORM\OneToMany(mappedBy: 'artwork', targetEntity: Image::class, orphanRemoval: true)]
-    private Collection $images;
-
     #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'imageCover')]
     #[Assert\File(
         maxSize: '12M',
@@ -52,6 +46,12 @@ class Artwork
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $updatedAt = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $description = null;
+
+    #[ORM\OneToMany(mappedBy: 'artwork', targetEntity: Image::class, orphanRemoval: true)]
+    private Collection $images;
 
     #[ORM\ManyToOne(inversedBy: 'artwork')]
     #[ORM\JoinColumn(nullable: false)]

@@ -6,7 +6,7 @@
     
 <div class="box-area">
     <div class="box-artwork img-magnifier-container">
-            <img class="image" id="my_image" src=" {{ artwork.imageCover }} " alt="image de {{ artwork.title }}" >
+            <img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
     </div>
 
     <div class="box-right">

@@ -16,7 +16,7 @@ class ArtworkFixtures extends Fixture implements DependentFixtureInterface
     {
         foreach (CategoryFixtures:: CATEGORY as $category) {
             $faker = Factory::create();
-            for ($i = 0; $i < 50; $i++) {
+            for ($i = 0; $i < 1; $i++) {
                 $artwork = new Artwork();
                 $artwork->setTitle($faker->name());
                 $artwork->setHeight($faker->randomDigit());

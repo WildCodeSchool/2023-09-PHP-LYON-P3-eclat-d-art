@@ -9,7 +9,7 @@
 <div class="gallery-container">
     {% for artwork in artworks %}
         <div class="gallery">
-            <img class=" image-artwork" alt="{{ artwork.description }}" src="{{ artwork.imageCover }}"> 
+            <img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}"> 
                 <p>{{ artwork.title }}</p>
                     <p>{{ artwork.description }}</p>
                         <a class="btn btn-secondary form-button form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
