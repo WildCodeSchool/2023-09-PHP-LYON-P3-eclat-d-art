@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\ArtworkRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -18,10 +19,6 @@ class Artwork
 
     #[ORM\Column(length: 255)]
     private ?string $title = null;
-
-    #[ORM\Column]
-    #[Assert\DateTime]
-    private ?\DateTime $createdAt = null;
 
     #[ORM\Column]
     private ?float $height = null;
@@ -49,6 +46,9 @@ class Artwork
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -67,18 +67,6 @@ class Artwork
     public function setTitle(string $title): static
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTime
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): static
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -193,6 +181,18 @@ class Artwork
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    {
+        $this->createdAt = $createdAt;
 
         return $this;
     }
