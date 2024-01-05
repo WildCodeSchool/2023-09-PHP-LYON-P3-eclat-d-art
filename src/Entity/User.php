@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
-use App\Repository\ArtworkRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -30,22 +29,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
-    #[ORM\Column(length: 100)]
+    #[ORM\Column(length: 255)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 10000, nullable: true)]
+    #[ORM\Column(length: 255)]
     private ?string $description = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $nationality = null;
 
-    #[ORM\Column(length: 500, nullable: true)]
-    private ?string $photo = null;
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class, orphanRemoval: true)]
-    private Collection $artwork;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $picture = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class)]
+    private Collection $artworks;
+
     public function __construct()
     {
-        $this->artwork = new ArrayCollection();
+        $this->artworks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -135,7 +136,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->description;
     }
 
-    public function setDescription(?string $description): static
+    public function setDescription(string $description): static
     {
         $this->description = $description;
 
@@ -154,14 +155,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function getPicture(): ?string
     {
-        return $this->photo;
+        return $this->picture;
     }
 
-    public function setPhoto(?string $photo): static
+    public function setPicture(?string $picture): static
     {
-        $this->photo = $photo;
+        $this->picture = $picture;
 
         return $this;
     }
@@ -169,15 +170,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return Collection<int, Artwork>
      */
-    public function getArtwork(): Collection
+    public function getArtworks(): Collection
     {
-        return $this->artwork;
+        return $this->artworks;
     }
 
     public function addArtwork(Artwork $artwork): static
     {
-        if (!$this->artwork->contains($artwork)) {
-            $this->artwork->add($artwork);
+        if (!$this->artworks->contains($artwork)) {
+            $this->artworks->add($artwork);
             $artwork->setUser($this);
         }
 
@@ -186,8 +187,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function removeArtwork(Artwork $artwork): static
     {
-        if ($this->artwork->removeElement($artwork)) {
-// set the owning side to null (unless already changed)
+        if ($this->artworks->removeElement($artwork)) {
+            // set the owning side to null (unless already changed)
             if ($artwork->getUser() === $this) {
                 $artwork->setUser(null);
             }

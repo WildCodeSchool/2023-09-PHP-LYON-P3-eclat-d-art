@@ -53,16 +53,15 @@ class Artwork
     #[ORM\OneToMany(mappedBy: 'artwork', targetEntity: Image::class, orphanRemoval: true)]
     private Collection $images;
 
-    #[ORM\ManyToOne(inversedBy: 'artwork')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
-
     #[ORM\ManyToOne(inversedBy: 'artworks')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $createdAt = null;
+    #[ORM\ManyToOne(inversedBy: 'artworks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function __construct()
     {
