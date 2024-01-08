@@ -8,3 +8,8 @@ app_logout:
     path:
         en: /logout
     methods: GET
+
+login:
+    path:
+        en: /login
+    methods: GET
