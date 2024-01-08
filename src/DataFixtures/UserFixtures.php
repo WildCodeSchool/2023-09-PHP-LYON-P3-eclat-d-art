@@ -26,7 +26,7 @@ class UserFixtures extends Fixture
 
         $hashedPassword = $this->passwordHasher->hashPassword(
             $contributor,
-            'contributorpassword'
+            'user'
         );
 
         $contributor->setPassword($hashedPassword);
@@ -39,7 +39,7 @@ class UserFixtures extends Fixture
         $admin->setName("Admin");
         $hashedPassword = $this->passwordHasher->hashPassword(
             $admin,
-            'adminpassword'
+            'admin'
         );
         $admin->setPassword($hashedPassword);
         $manager->persist($admin);
