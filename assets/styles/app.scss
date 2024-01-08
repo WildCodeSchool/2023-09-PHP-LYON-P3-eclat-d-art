@@ -236,9 +236,9 @@ hr {
 
 // FORM //
 
-.form {
-  width: 20%;
-  margin: auto;
+h1 {
+  text-decoration:underline 0.1rem;
+  text-align: center;
 }
 
 .form-button, .form-link, .form-button:hover {
@@ -246,9 +246,12 @@ hr {
   color: var(--color);
 }
 
-form.form_login{
-  display: table;
+form.form_login{ 
+  border: solid;
+  max-width: 25rem;
+  margin: auto;
 }
+
 fieldset {
   display: flex;
   padding: 1rem;
