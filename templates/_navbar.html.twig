@@ -24,15 +24,12 @@
 			<div>
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="navbar-brand auth" aria-label="Here you can connect to your account" href="/auth"> Se connecter
-							{# <img src=" {{ asset('build/images/deco.png')}} " alt="" class="auth_nav"> #}
-						</a>
 						{% if app.user %}
 							{{ app.user.name }}
-							<a href="{{ path('app_logout') }}">
+							<a aria-label="Here you can disconnect from your account" href="{{ path('app_logout') }}">
 								Se déconnecter</a>
 						{% else %}
-							<a href="{{ path('login') }}">
+							<a aria-label="Here you can connect to your account"  href="{{ path('login') }}">
 								Se connecter</a>
 						{% endif %}
 					</li>

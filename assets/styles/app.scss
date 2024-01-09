@@ -24,7 +24,7 @@ body {
   background-color: var(--background);
 }
 
-// NAVBAR 
+// NAVBAR
 
 .nav-item,
 .auth {
@@ -246,7 +246,7 @@ h1 {
   color: var(--color);
 }
 
-form.form_login{ 
+form.form_login{
   border: solid;
   max-width: 25rem;
   margin: auto;
@@ -262,7 +262,7 @@ label {
   width: 5rem;
 }
 
-input, 
+input,
 button {
   border-radius: 2rem;
   padding-left: 0.6rem;
@@ -297,18 +297,18 @@ button.form_login {
 
 @media (max-width: 1200px) {
   .gallery {
-    width: 48%; /////// Réduire la largeur des éléments sur les écrans moyens 
+    width: 48%; /////// Réduire la largeur des éléments sur les écrans moyens
   }
 }
 
 @media (max-width: 768px) {
   .gallery {
-    width: 100%; ///////: Utiliser la largeur totale sur les petits écrans 
+    width: 100%; ///////: Utiliser la largeur totale sur les petits écrans
   }
 }
 
 
-//////////////////////////////artwork///////////////////////    
+//////////////////////////////artwork///////////////////////
 .user-image{
   display: flex;
   justify-content: space-between;
@@ -395,12 +395,12 @@ button.form_login {
 
 .img-magnifier-glass {
     position: absolute;
-    border: 3px solid #000;
+    border: 0.1px solid #000;
     border-radius: 50%;
-    cursor: auto;
+    cursor: none;
     /*Set the size of the magnifier glass:*/
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
 
 ////////////////////autres images de l'oeuvre//////////////////////
@@ -421,7 +421,7 @@ button.form_login {
 
 .slider-css-target ul li img{
   display: block;
-  
+
   max-height: 5rem;
   border: 2px solid white;
   box-shadow:0 0 5px rgba(0, 0, 0, 0.3)
