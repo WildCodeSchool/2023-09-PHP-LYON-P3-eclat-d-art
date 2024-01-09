@@ -21,20 +21,27 @@
 					<a class="link" href="/#about-us">A Propos</a>
 				</li>
 			</ul>
-			<div>
+			{% if is_granted("ROLE_USER") %}
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						{% if app.user %}
-							{{ app.user.name }}
-							<a href="{{ path('app_logout') }}">
-								Se déconnecter</a>
-						{% else %}
-							<a href="{{ path('login') }}">
-								Se connecter</a>
-						{% endif %}
+						<a href="{{ path('app_artwork_new') }}">Ajouter une oeuvre</a>
 					</li>
 				</ul>
+				{%endif%}
+				<div>
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							{% if app.user %}
+								{{ app.user.name }}
+								<a href="{{ path('app_logout') }}">
+									Se déconnecter</a>
+							{% else %}
+								<a href="{{ path('login') }}">
+									Se connecter</a>
+							{% endif %}
+						</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-</nav>
+	</nav>
