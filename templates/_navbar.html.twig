@@ -24,9 +24,14 @@
 			<div>
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="navbar-brand auth" href="/auth"> Se connecter
-							{# <img src=" {{ asset('build/images/deco.png')}} " alt="" class="auth_nav"> #}
-						</a>
+						{% if app.user %}
+							{{ app.user.name }}
+							<a href="{{ path('app_logout') }}">
+								Se déconnecter</a>
+						{% else %}
+							<a href="{{ path('login') }}">
+								Se connecter</a>
+						{% endif %}
 					</li>
 				</ul>
 			</div>
