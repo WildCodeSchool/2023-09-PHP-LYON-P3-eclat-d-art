@@ -21,6 +21,25 @@ class ArtworkRepository extends ServiceEntityRepository
         parent::__construct($registry, Artwork::class);
     }
 
+
+    public function findRandomImages(): array
+    {
+        $entityManager = $this->getEntityManager();
+        $totalArtworks = $entityManager
+        ->createQuery('SELECT COUNT(a.id) FROM App\Entity\Artwork a')
+        ->getSingleScalarResult();
+
+        $maxOffset = max(0, $totalArtworks - 3);
+
+        $offset = rand(0, $maxOffset);
+
+        $queryBuilder = $this->createQueryBuilder('a')
+        ->setFirstResult($offset)
+        ->setMaxResults(3)
+        ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
 //    /**
 //     * @return Artwork[] Returns an array of Artwork objects
 //     */
