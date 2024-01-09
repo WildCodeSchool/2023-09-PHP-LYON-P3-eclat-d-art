@@ -44,12 +44,12 @@ class ArtworkType extends AbstractType
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'label' => 'Utilisateur',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'label' => 'Catégorie',
             ]);
     }

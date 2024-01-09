@@ -14,23 +14,6 @@ class ArtworkFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager): void
     {
-        foreach (CategoryFixtures:: CATEGORY as $category) {
-            $faker = Factory::create();
-            for ($i = 0; $i < 1; $i++) {
-                $artwork = new Artwork();
-                $artwork->setTitle($faker->name());
-                $artwork->setHeight($faker->randomDigit());
-                $artwork->setWeight($faker->randomDigit());
-                $artwork->setTechnique($faker->name());
-                $artwork->setImageCover($faker->imageUrl());
-                $artwork->setDescription($faker->sentence(20));
-                $artwork->setUser($this->getReference('user_0'));
-                $artwork->setCreatedAt(date_create('now'));
-                $artwork->setCategory($this->getReference('category_' . $category));
-                $manager->persist($artwork);
-            }
-        }
-            $manager->flush();
     }
 
 
