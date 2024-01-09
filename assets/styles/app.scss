@@ -236,14 +236,42 @@ hr {
 
 // FORM //
 
-.form {
-  width: 30%;
-  margin: auto;
+h1 {
+  text-decoration:underline 0.1rem;
+  text-align: center;
 }
 
 .form-button, .form-link, .form-button:hover {
   background: none;
   color: var(--color);
+}
+
+form.form_login{ 
+  border: solid;
+  max-width: 25rem;
+  margin: auto;
+}
+
+fieldset {
+  display: flex;
+  padding: 1rem;
+}
+
+label {
+  padding-right: 1rem;
+  width: 5rem;
+}
+
+input, 
+button {
+  border-radius: 2rem;
+  padding-left: 0.6rem;
+}
+
+button.form_login {
+  margin-top: 1rem;
+  margin: auto;
+  width: 70%;
 }
 
 // Cards page categories //
