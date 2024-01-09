@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Artwork{% endblock %}
 
+{% block head %}
+    <head>
+        <meta name="Artwork" content="Highlighted Artwork with all his functional details">
+        <title>{% block title %} Artworks{% endblock %}</title>
+    </head>
+{% endblock %}
 {% block body %}
-    
+
 <div class="box-area">
     <div class="box-artwork img-magnifier-container">
             <img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
@@ -11,25 +16,25 @@
 
     <div class="box-right">
         <div class="box-describ">
-                <h1>{{ artwork.title }}</h1> 
+                <h1>{{ artwork.title }}</h1>
                 <div class="user-image">
                     <h5>Artiste:</h5>
                     <img class="artwork-user" src="{{ asset('build/images/emilie.webp') }}" alt="Photo de l'artiste">
                 </div>
                 <h5>Créé le </h5>
                 <p>{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</p>
-        
+
                 <h5>Dimension </h5>
                 <p>{{ artwork.height }} cm X  {{ artwork.weight }} cm</p>
-            
+
                 <h5>Technique utilisé</h5>
                 <p>{{ artwork.technique }}</p>
-            
+
                 <h5>Description </h5>
                 <p>{{ artwork.description }}</p>
         </div>
-    
-        
+
+
         <div class="mini-slides">
             <div class="slide slide">
                 <img src="{{ asset('build/images/caravage.webp') }}" alt="First slide">
@@ -42,22 +47,21 @@
             </div>
             </div>
         </div>
-        
+
     </div>
-    
+
 </div>
 
-<div class="slider-css-target"> 
+{# <div class="slider-css-target">
     <ul>
-        <li><a href="#votre_id1"><img src="{{ artwork.imageCover }}" alt="description" ></a></li> 
+        <li><a href="#votre_id1"><img src="{{ artwork.imageCover }}" alt="description" ></a></li>
         <li><a href="#votre_id2"><img src="{{ artwork.imageCover }}" alt="description" ></a></li>
         <li><a href="#votre_id3"><img src="{{ artwork.imageCover }}" alt="description" ></a></li>
     </ul>
-</div>
+</div> #}
+    <a href="{{ path('app_artwork_index') }}" aria-label="Back to the Artworks list">Liste des oeuvres</a>
 
-    <a href="{{ path('app_artwork_index') }}">back to list</a>
-
-    <a href="{{ path('app_artwork_edit', {'id': artwork.id}) }}">edit</a>
+    Vous pouvez modifier les détails de votre oeuvre <a href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Edit your artwork here">ici</a>
 
     {{ include('artwork/_delete_form.html.twig') }}
 {% endblock %}

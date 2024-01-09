@@ -1,7 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Éclat d'Art {% endblock %}
 
+{% block head %}
+<head>
+    <meta name="Artworks" content="Content of all the Artworks present on our website">
+    <title>{% block title %} Éclat d'Art {% endblock %}</title>
+</head>
+{% endblock %}
 {% block body %}
 
 <div class="slides">
@@ -39,35 +44,35 @@ créatifs du monde entier."</p>
 					<img class=" image" loading="lazy"  alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}"  >
 					<div class="overlay">
 						<h3>Photos</h3>
-            <a href="artwork/category/photo">Découvrir</a>
+            <a href="artwork/category/photo" aria-label="Discover all our photos">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class= " image"  loading="lazy" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
 					<div class="overlay">
 						<h3>Peintures</h3>
-						<a href="artwork/category/peinture">Découvrir</a>
+						<a href="artwork/category/peinture" aria-label="Discover all our painting">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy"  alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
 					<div class="overlay">
 						<h3>Sculptures</h3>
-						<a href="artwork/category/sculpture">Découvrir</a>
+						<a href="artwork/category/sculpture" aria-label="Discover all our sculpture">Découvrir</a>
 					</div>
 				</div>
         <div class="box">
 					<img class=" image" loading="lazy"  alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
 					<div class="overlay">
 						<h3>Fan Arts</h3>
-						<a href="artwork/category/fanart">Découvrir</a>
+						<a href="artwork/category/fanart" aria-label="Discover all our FanArts">Découvrir</a>
 					</div>
 				</div>
         <div class="box">
 					<img class=" image" loading="lazy"  alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
 					<div class="overlay">
 						<h3>IA</h3>
-						<a href="artwork/category/ia">Découvrir</a>
+						<a href="artwork/category/ia" aria-label="Discover all our IA generating artworks">Découvrir</a>
 					</div>
 				</div>
 		</div>
@@ -86,36 +91,33 @@ créatifs du monde entier."</p>
 					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Jeancolor" src="{{ asset('build/images/jean.webp') }}">
 					<div class="overlay">
 						<h3>Jeancolor</h3>
-            <a href="#">Découvrir</a>
+                        <a href="#" aria-label="Discover more about this Artwork">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Emilie" src="{{ asset('build/images/emilie.webp') }}">
 					<div class="overlay">
 						<h3>Émilie</h3>
-						<a href="#">Découvrir</a>
+						<a href="#" aria-label="Discover more about this artist">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste El Artiste" src="{{ asset('build/images/josé.webp') }}">
 					<div class="overlay">
 						<h3>El Artiste</h3>
-						<a href="#">Découvrir</a>
-					</div>
+                        <a href="#" aria-label="Discover more about this artist">Découvrir</a>					</div>
 				</div>
         <div class="box">
 					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Bertelli" src="{{ asset('build/images/bertelli.webp') }}">
 					<div class="overlay">
 						<h3>Bertelli</h3>
-						<a href="#">Découvrir</a>
-					</div>
+                        <a href="#" aria-label="Discover more about this artist">Découvrir</a>					</div>
 				</div>
         <div class="box">
 					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Khoa" src="{{ asset('build/images/khoa.webp') }}">
 					<div class="overlay">
 						<h3>Khoa</h3>
-						<a href="#">Découvrir</a>
-					</div>
+                        <a href="#" aria-label="Discover more about this artist">Découvrir</a>					</div>
 				</div>
 		</div>
 	</div>
