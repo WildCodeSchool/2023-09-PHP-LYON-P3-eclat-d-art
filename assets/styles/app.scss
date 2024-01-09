@@ -236,6 +236,15 @@ hr {
 
 
 // FORM //
+section.form_artwork{ 
+  max-width: 60rem;
+  margin: auto;
+}
+
+div.form_artwork {
+  border: solid;
+  padding: 1rem;
+}
 
 h1 {
   text-decoration:underline 0.1rem;
@@ -253,7 +262,7 @@ form.form_login{
   margin: auto;
 }
 
-fieldset {
+fieldset.form_login {
   display: flex;
   padding: 1rem;
 }
