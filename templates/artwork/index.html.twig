@@ -9,13 +9,17 @@
 <div class="gallery-container">
     {% for artwork in artworks %}
         <div class="gallery">
-            <img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}"> 
-                <p>{{ artwork.title }}</p>
-                    <p>{{ artwork.description }}</p>
-                        <a class="btn btn-secondary form-button form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
-        </div>               
+            <div class="gallery-image">
+                <img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
+            </div>
+            <div class="gallery-text">
+                <p class="titre">{{ artwork.title }}</p>
+                <a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
+            </div>
+        </div>
     {% else %}
        <p>no records found</p>
     {% endfor %}
     </div>
+
 {% endblock %}
