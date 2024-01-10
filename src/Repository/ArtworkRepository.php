@@ -22,7 +22,7 @@ class ArtworkRepository extends ServiceEntityRepository
     }
 
 
-    public function findImagesRandom(): array
+    public function findRandomImages(): array
     {
         $entityManager = $this->getEntityManager();
         $totalArtworks = $entityManager

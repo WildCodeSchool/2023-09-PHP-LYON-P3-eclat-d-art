@@ -13,7 +13,7 @@ class HomeController extends AbstractController
     public function index(
         ArtworkRepository $artworkRepository,
     ): Response {
-        $artworks = $artworkRepository->findImagesRandom();
+        $artworks = $artworkRepository->findRandomImages();
         return $this->render('home/index.html.twig', [
             'artworks' => $artworks,
         ]);
