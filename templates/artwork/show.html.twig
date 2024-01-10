@@ -16,22 +16,20 @@
 
     <div class="box-right">
         <div class="box-describ">
-                <h1>{{ artwork.title }}</h1>
+            <h1>{{ artwork.title }}</h1>
                 <div class="user-image">
-                    <h5>Artiste:</h5>
+                    <div class="art-details">
+                        <h5><i>Technique: {{ artwork.technique }}</i></h5>
+
+                        <h5>{{ artwork.height }} cm X  {{ artwork.weight }} cm</h5>
+
+                        <h5> Crée le: {{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</h5>
+                    </div>
                     <img class="artwork-user" src="{{ asset('build/images/emilie.webp') }}" alt="Photo de l'artiste">
                 </div>
-                <h5>Créé le </h5>
-                <p>{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</p>
-
-                <h5>Dimension </h5>
-                <p>{{ artwork.height }} cm X  {{ artwork.weight }} cm</p>
-
-                <h5>Technique utilisé</h5>
-                <p>{{ artwork.technique }}</p>
-
-                <h5>Description </h5>
                 <p>{{ artwork.description }}</p>
+
+
         </div>
 
 
