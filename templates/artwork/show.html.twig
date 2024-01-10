@@ -44,9 +44,10 @@
     </div>
 
 </div>
-
+<footer class="show-footer">
     <a href="{{ path('app_artwork_index') }}" aria-label="Back to the Artworks list">Liste des oeuvres</a>
     Vous pouvez modifier les détails de votre oeuvre <a href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Edit your artwork here">ici</a>
 
     {{ include('artwork/_delete_form.html.twig') }}
+</footer>
 {% endblock %}

@@ -426,8 +426,13 @@ button.form_login {
 .art-details{
     display: flex;
     flex-direction: column;
+}
 
-
+.show-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .mini-slides {
