@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<div class="title-page-artiste">
+    <h1>{{ user.name }}</h1>
+</div>   
+
+    <div class="profile-container">
+        <div class="info">
+            <h3>{{ user.name }}</h3>
+            <h4>{{ user.nationality }}france</h4>
+            <p>Description :{{ user.description }}blablaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+        </div>
+        <div class="image-container">
+            <img class="profile-artiste" src="{{ user.picture }}  {{ asset('build/images/emilie.webp')}} " alt="Profile Image">
+                <div class="social-links">
+                    <a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/instagram.png')}} "  alt="Instagram"></a>
+                    <a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/facebook.png')}} "  alt="Facebook"></a>
+                    <a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/twitter.png')}} " alt="Twitter"></a>
+                    <a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/pinterest.png')}} "  alt="Pinterest"></a>
+                </div>
+        </div>
+    </div>
+
+<div class="title-artiste">
+    <h2>Retrouver d'autres oeuvres de {{ user.name }}</h2>
+</div>
+<div class="gallery-container">
+    {% for artwork in artworks %}
+        <div class="gallery">
+            {#<img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">#} 
+                <p>{{ artwork.title }}</p>
+                    <p>{{ artwork.description }}</p>
+                         <a class="btn btn-secondary form-button form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
+        </div>
+    {% else %}
+        <p>no records found</p>
+    {% endfor %}
+    </div>
+<a href="{{ path('app_user_index') }}">back to list</a> 
+ 
+{% endblock %}

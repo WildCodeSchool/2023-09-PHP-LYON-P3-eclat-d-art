@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<h1>Artistes</h1>
+
+<div class="gallery-container">
+    {% for user in user %}
+        <div class="gallery">
+            {#<img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ user.title }}"> #}
+                <p>{{ user.name }}</p>
+                    <p>{{ user.description }}</p>
+                        <a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
+        </div>               
+    {% else %}
+       <p>no records found</p>
+    {% endfor %}
+    </div>
+{% endblock %}
