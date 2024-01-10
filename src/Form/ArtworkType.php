@@ -32,8 +32,9 @@ class ArtworkType extends AbstractType
                 ])
             ->add('posterFile', VichFileType::class, [
                 'required' => false,
-                'allow_delete' => true,
-                'download_uri' => true,
+                'label' => 'Image',
+                'allow_delete' => false,
+                'download_uri' => false,
                 ])
             ->add('description', TextType::class, [
                 'label' => 'Description',
@@ -41,15 +42,19 @@ class ArtworkType extends AbstractType
             ->add('createdAt', DateType::class, [
                 'label' => 'Date de création',
                 'years' => range(date('Y'), date('Y') - 50),
+                'format' => 'dd-MM-yyyy',
+                'placeholder' => [
+                    'year' => 'Années', 'month' => 'Mois', 'day' => 'Jours',
+                ],
             ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'label' => 'Utilisateur',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
                 'label' => 'Catégorie',
             ]);
     }
