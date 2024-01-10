@@ -12,4 +12,11 @@ app_logout:
 login:
     path:
         en: /login
+        fr: /login
+    methods: GET
+
+register:
+    path:
+        en: /register
+        fr: /register
     methods: GET
