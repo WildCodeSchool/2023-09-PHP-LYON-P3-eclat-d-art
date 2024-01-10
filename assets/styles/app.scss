@@ -234,8 +234,11 @@ hr {
   }
 }
 
-
 // FORM //
+ul.register {
+  font-size: medium;
+}
+
 section.form_artwork{
   max-width: 60rem;
   margin: auto;
@@ -408,7 +411,7 @@ button.form_login {
     font-size: x-large;
 }
 
-.box-describ h5, {
+.box-describ h5 {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -514,5 +517,5 @@ button.form_login {
 
   max-height: 5rem;
   border: 2px solid white;
-  box-shadow:0 0 5px rgba(0, 0, 0, 0.3)
+  box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
 }
