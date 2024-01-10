@@ -31,18 +31,24 @@
 <div class="title-artiste">
     <h2>Retrouver d'autres oeuvres de {{ user.name }}</h2>
 </div>
+
 <div class="gallery-container">
     {% for artwork in artworks %}
         <div class="gallery">
-            {#<img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">#} 
-                <p>{{ artwork.title }}</p>
-                    <p>{{ artwork.description }}</p>
-                         <a class="btn btn-secondary form-button form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
+            <div class="galelery-image">
+                <a href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">
+                <img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}"></a>
+            </div>
+            <div class="gallery-text">
+                <p class="titre">{{ artwork.title }}</p>
+                {#<p>{{ artwork.description }}</p>#}
+                <a class="btn btn-secondary form-button form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
+            </div>
         </div>
     {% else %}
         <p>no records found</p>
     {% endfor %}
-    </div>
+</div>
 <a href="{{ path('app_user_index') }}">back to list</a> 
  
 {% endblock %}

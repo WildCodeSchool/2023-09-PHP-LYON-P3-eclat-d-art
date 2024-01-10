@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\ArtworkRepository;
-use App\Repository\CategoryRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -25,7 +24,6 @@ class UserController extends AbstractController
     public function show(User $user, ArtworkRepository $artworkRepository): Response
     {
         $artworks = $artworkRepository->findBy(['user' => $user]);
-
 
         return $this->render('user/show.html.twig', [
             'user' => $user,

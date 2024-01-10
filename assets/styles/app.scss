@@ -52,6 +52,7 @@ a,
 }
 
 //////////////////////cards////////////////////////////////
+/// 
 .image {
   width: 100%;
   height: 100%;
@@ -234,8 +235,8 @@ hr {
   }
 }
 
-
 // FORM //
+
 section.form_artwork{
   max-width: 60rem;
   margin: auto;
@@ -284,25 +285,6 @@ button.form_login {
   width: 70%;
 }
 
-// Cards page categories //
-
-.gallery-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 15px;
-}
-
-.gallery {
-  width: 29%;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-}
-
-.image-artwork {
-  width: 100%;
-}
-
 /////// Media queries pour rendre le contenu des oeuvres plus responsive /////////
 
 @media (max-width: 1200px) {
@@ -318,7 +300,6 @@ button.form_login {
 }
 
 ///////////////////////artwork,index///////////////////////
-
 
 .gallery-container {
   display: flex;
@@ -337,7 +318,7 @@ button.form_login {
 
 .gallery-image {
   width: 100%;
-  height: 15rem; /* Ajustez la hauteur à votre préférence */
+  height: 15rem;
   overflow: hidden;
 }
 
@@ -356,7 +337,9 @@ button.form_login {
 .titre{
   text-align: center;
 }
+
 //////////////////////////////artwork///////////////////////
+
 .user-image{
     display: flex;
     flex-direction: row;
@@ -408,7 +391,7 @@ button.form_login {
     font-size: x-large;
 }
 
-.box-describ h5, {
+.box-describ h5 {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -418,6 +401,7 @@ button.form_login {
     font-style: italic;
     font-family: monospace;
 }
+
 .box-describ p{
     display: flex;
     justify-self : flex-end;
@@ -453,6 +437,7 @@ button.form_login {
 }
 
 /* Media queries for responsive design */
+
 @media screen and (max-width: 1200px) {
   .box-artwork,
   .box-right {
@@ -476,7 +461,6 @@ button.form_login {
   }
 }
 
-
 ///////////////////////magnified glass//////////////////////
 
 .img-magnifier-container {
@@ -488,7 +472,6 @@ button.form_login {
     border: 0.1px solid #000;
     border-radius: 50%;
     cursor: none;
-    /*Set the size of the magnifier glass:*/
     width: 200px;
     height: 200px;
 }
