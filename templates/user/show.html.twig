@@ -11,14 +11,12 @@
     <div class="profile-container">
         <div class="info">
             <h3>{{ user.name }}</h3>
-            <h4>{{ user.nationality }}france</h4>
-            <p>Description :{{ user.description }}blablaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-            aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
+            <h4>{{ user.nationality }}</h4>
+            <h4>Description :</h4>
+            <p>{{ user.description }}</p>
         </div>
         <div class="image-container">
-            <img class=" image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
+            <img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
                 <div class="social-links">
                     <a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/instagram.png')}} "  alt="Instagram"></a>
                     <a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/facebook.png')}} "  alt="Facebook"></a>
@@ -41,7 +39,6 @@
             </div>
             <div class="gallery-text">
                 <p class="titre">{{ artwork.title }}</p>
-                {#<p>{{ artwork.description }}</p>#}
                 <a class="btn btn-secondary form-button form-link" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
             </div>
         </div>
