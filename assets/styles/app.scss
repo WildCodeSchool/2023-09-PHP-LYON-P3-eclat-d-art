@@ -140,7 +140,8 @@ a,
   height: 100%;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: var(--font-family-body);
   color: var(--color);
   font-size: 40px;
@@ -240,7 +241,7 @@ ul.register {
   font-size: medium;
 }
 
-section.form_artwork{
+section.form_artwork {
   max-width: 60rem;
   margin: auto;
 }
@@ -251,16 +252,18 @@ div.form_artwork {
 }
 
 h1 {
-  text-decoration:underline 0.1rem;
+  text-decoration: underline 0.1rem;
   text-align: center;
 }
 
-.form-button, .form-link, .form-button:hover {
+.form-button,
+.form-link,
+.form-button:hover {
   background: none;
   color: var(--color);
 }
 
-form.form_login{
+form.form_login {
   border: solid;
   max-width: 25rem;
   margin: auto;
@@ -271,9 +274,13 @@ fieldset.form_login {
   padding: 1rem;
 }
 
+form.form_login label {
+  padding-right: 1rem;
+  width: 6rem;
+}
+
 label {
   padding-right: 1rem;
-  width: 5rem;
 }
 
 input,
@@ -322,6 +329,7 @@ button.form_login {
 .gallery-image {
   width: 100%;
   height: 15rem;
+  /* Ajustez la hauteur à votre préférence */
   overflow: hidden;
 }
 
@@ -337,28 +345,29 @@ button.form_login {
   padding: 1rem;
 }
 
-.titre{
+.titre {
   text-align: center;
 }
 
+
 //////////////////////////////artwork///////////////////////
 
-.user-image{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+.user-image {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
 }
 
-.artwork-user{
-    display: flex;
-    align-self: flex-start;
-    clip-path:ellipse(50% 35%);
-    border-radius: 50%;
-    max-width: 10rem;
-    border-width: 1rem;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+.artwork-user {
+  display: flex;
+  align-self: flex-start;
+  clip-path: ellipse(50% 35%);
+  border-radius: 50%;
+  max-width: 10rem;
+  border-width: 1rem;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
 }
 
 .box-artwork,
@@ -386,40 +395,44 @@ button.form_login {
   min-height: 20rem;
 }
 
-.box-describ h1{
-    display: flex;
-    align-self: start;
-    margin-bottom: unset;
-    margin-top: unset;
-    font-size: x-large;
+.box-describ h1 {
+  display: flex;
+  align-self: start;
+  margin-bottom: unset;
+  margin-top: unset;
+  font-size: x-large;
 }
 
 .box-describ h5 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-self: start;
-    justify-self: flex-start;
-    font-size: larger;
-    font-style: italic;
-    font-family: monospace;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-self: start;
+  justify-self: flex-start;
+  font-size: larger;
+  font-style: italic;
+  font-family: monospace;
 }
 
-.box-describ p{
-    display: flex;
-    justify-self : flex-end;
+
+.box-describ p {
+  display: flex;
+  justify-self: flex-end;
 }
 
-.art-details{
-    display: flex;
-    flex-direction: column;
+.art-details {
+  display: flex;
+  flex-direction: column;
 }
 
-.show-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
+.show-footer {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.show-footer a {
+  margin-right: 1rem;
 }
 
 .mini-slides {
@@ -442,6 +455,7 @@ button.form_login {
 /* Media queries for responsive design */
 
 @media screen and (max-width: 1200px) {
+
   .box-artwork,
   .box-right {
     flex: 0 0 100%;
@@ -455,6 +469,7 @@ button.form_login {
 }
 
 @media screen and (max-width: 369px) {
+
   .box-artwork,
   .box-describ,
   .mini-slides,
@@ -467,37 +482,37 @@ button.form_login {
 ///////////////////////magnified glass//////////////////////
 
 .img-magnifier-container {
-    position:relative;
+  position: relative;
 }
 
 .img-magnifier-glass {
-    position: absolute;
-    border: 0.1px solid #000;
-    border-radius: 50%;
-    cursor: none;
-    width: 200px;
-    height: 200px;
+  position: absolute;
+  border: 0.1px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 200px;
+  height: 200px;
 }
 
 ////////////////////autres images de l'oeuvre//////////////////////
 
-.slider-css-target{
+.slider-css-target {
   max-width: 20rem;
   max-height: 20rem;
   margin: 0 auto;
 }
 
-.slider-css-target ul{
+.slider-css-target ul {
   padding: 0;
-  list-style-type:none;
-  display:flex;
+  list-style-type: none;
+  display: flex;
   justify-content: space-between;
-  gap:1rem;
+  gap: 1rem;
 }
 
-.slider-css-target ul li img{
+.slider-css-target ul li img {
   display: block;
-
   max-height: 5rem;
   border: 2px solid white;
   box-shadow:0 0 5px rgba(0, 0, 0, 0.3);

@@ -2,52 +2,64 @@
 
 
 {% block head %}
-    <head>
-        <meta name="Artwork" content="Highlighted Artwork with all his functional details">
-        <title>{% block title %} Artworks{% endblock %}</title>
-    </head>
+	<head>
+		<meta name="Artwork" content="Highlighted Artwork with all his functional details">
+		<title>
+			{% block title %}
+				Oeuvres
+			{% endblock %}
+		</title>
+	</head>
 {% endblock %}
 {% block body %}
 
-<div class="box-area">
-    <div class="box-artwork img-magnifier-container">
-            <img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
-    </div>
+	<div class="box-area">
+		<div class="box-artwork img-magnifier-container">
+			<img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
+		</div>
 
-    <div class="box-right">
-        <div class="box-describ">
-            <h1>{{ artwork.title }}</h1>
-                <div class="user-image">
-                    <div class="art-details">
-                        <h5><i>Technique: {{ artwork.technique }}</i></h5>
+		<div class="box-right">
+			<div class="box-describ">
+				<h1>{{ artwork.title }}</h1>
+				<div class="user-image">
+					<div class="art-details">
+						<h5>
+							<i>Technique:
+								{{ artwork.technique }}</i>
+						</h5>
+						<h5>{{ artwork.height }}
+							cm X
+							{{ artwork.weight }}
+							cm</h5>
+						<h5>
+							Crée le:
+							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</h5>
+					</div>
+					<img class="artwork-user" src="{{ asset('build/images/emilie.webp') }}" alt="Photo de l'artiste">
+				</div>
+				<p>{{ artwork.description }}</p>
+			</div>
 
-                        <h5>{{ artwork.height }} cm X  {{ artwork.weight }} cm</h5>
+			<div class="mini-slides">
+				<div class="slide slide">
+					<img src="{{ asset('build/images/caravage.webp') }}" alt="First slide">
+				</div>
+				<div class="slide slide-2">
+					<img src="{{ asset('build/images/luffy.webp') }}" alt="Second slide">
+				</div>
+				<div class="slide slide-3">
+					<img src="{{ asset('build/images/colorBou.webp') }}" alt="Third slide">
+				</div>
+			</div>
+			
+		</div>
+{% if is_granted("ROLE_ADMIN") or app.user.id == artwork.user.id %}
+				<div class="show-footer">
+					<a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_index') }}" aria-label="Retour aux oeuvres" role="button">Liste des oeuvres</a>
+					<a class="btn btn-primary artwork-descovery" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
+					{{ include('artwork/_delete_form.html.twig') }}
+				</div>
+			{% endif %}
+	</div>
 
-                        <h5> Crée le: {{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</h5>
-                    </div>
-                    <img class="artwork-user" src="{{ asset('build/images/emilie.webp') }}" alt="Photo de l'artiste">
-                </div>
-                <p>{{ artwork.description }}</p>
-        </div>
-
-        <div class="mini-slides">
-            <div class="slide slide">
-                <img src="{{ asset('build/images/caravage.webp') }}" alt="First slide">
-            </div>
-            <div class="slide slide-2">
-                <img src="{{ asset('build/images/luffy.webp') }}" alt="Second slide">
-            </div>
-            <div class="slide slide-3">
-                <img src="{{ asset('build/images/colorBou.webp') }}" alt="Third slide">
-            </div>
-        </div>
-    </div>
-
-</div>
-<footer class="show-footer">
-    <a href="{{ path('app_artwork_index') }}" aria-label="Back to the Artworks list">Liste des oeuvres</a>
-    Vous pouvez modifier les détails de votre oeuvre <a href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Edit your artwork here">ici</a>
-
-    {{ include('artwork/_delete_form.html.twig') }}
-</footer>
 {% endblock %}
