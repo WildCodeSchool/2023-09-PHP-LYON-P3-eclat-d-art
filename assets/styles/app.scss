@@ -24,7 +24,7 @@ body {
   background-color: var(--background);
 }
 
-// NAVBAR 
+// NAVBAR
 
 .nav-item,
 .auth {
@@ -189,7 +189,7 @@ hr {
   height: 100%;
   object-fit: cover;
   object-position: 50% 20%;
-  
+
 }
 
 @keyframes slide-show {
@@ -234,9 +234,12 @@ hr {
   }
 }
 
-
 // FORM //
-section.form_artwork{ 
+ul.register {
+  font-size: medium;
+}
+
+section.form_artwork{
   max-width: 60rem;
   margin: auto;
 }
@@ -256,7 +259,7 @@ h1 {
   color: var(--color);
 }
 
-form.form_login{ 
+form.form_login{
   border: solid;
   max-width: 25rem;
   margin: auto;
@@ -272,7 +275,7 @@ label {
   width: 5rem;
 }
 
-input, 
+input,
 button {
   border-radius: 2rem;
   padding-left: 0.6rem;
@@ -307,17 +310,18 @@ button.form_login {
 
 @media (max-width: 1200px) {
   .gallery {
-    width: 48%; /////// Réduire la largeur des éléments sur les écrans moyens 
+    width: 48%; /////// Réduire la largeur des éléments sur les écrans moyens
   }
 }
 
 @media (max-width: 768px) {
   .gallery {
-    width: 100%; ///////: Utiliser la largeur totale sur les petits écrans 
+    width: 100%; ///////: Utiliser la largeur totale sur les petits écrans
   }
 }
 
 ///////////////////////artwork,index///////////////////////
+
 
 .gallery-container {
   display: flex;
@@ -355,16 +359,23 @@ button.form_login {
 .titre{
   text-align: center;
 }
-//////////////////////////////artwork///////////////////////    
+//////////////////////////////artwork///////////////////////
 .user-image{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
 }
 
 .artwork-user{
-  border-radius: 50%;
-  max-width: 3rem;
+    display: flex;
+    align-self: flex-start;
+    clip-path:ellipse(50% 35%);
+    border-radius: 50%;
+    max-width: 10rem;
+    border-width: 1rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
 }
 
 .box-artwork,
@@ -390,6 +401,41 @@ button.form_login {
   padding: 1rem;
   width: 30rem;
   min-height: 20rem;
+}
+
+.box-describ h1{
+    display: flex;
+    align-self: start;
+    margin-bottom: unset;
+    margin-top: unset;
+    font-size: x-large;
+}
+
+.box-describ h5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-self: start;
+    justify-self: flex-start;
+    font-size: larger;
+    font-style: italic;
+    font-family: monospace;
+}
+.box-describ p{
+    display: flex;
+    justify-self : flex-end;
+}
+
+.art-details{
+    display: flex;
+    flex-direction: column;
+}
+
+.show-footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
 
 .mini-slides {
@@ -442,12 +488,12 @@ button.form_login {
 
 .img-magnifier-glass {
     position: absolute;
-    border: 3px solid #000;
+    border: 0.1px solid #000;
     border-radius: 50%;
-    cursor: auto;
+    cursor: none;
     /*Set the size of the magnifier glass:*/
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
 }
 
 ////////////////////autres images de l'oeuvre//////////////////////
@@ -468,8 +514,8 @@ button.form_login {
 
 .slider-css-target ul li img{
   display: block;
-  
+
   max-height: 5rem;
   border: 2px solid white;
-  box-shadow:0 0 5px rgba(0, 0, 0, 0.3)
+  box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
 }

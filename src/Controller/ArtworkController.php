@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Artwork;
+use App\Entity\User;
 use App\Form\ArtworkType;
 use App\Repository\ArtworkRepository;
 use App\Repository\CategoryRepository;
@@ -54,11 +55,10 @@ class ArtworkController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_USER')]
     #[Route('/{id}/edit', name: 'app_artwork_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Artwork $artwork, EntityManagerInterface $entityManager): Response
     {
-        if ($this->getUser() !== $artwork->getUser()) {
+        if ($this->getUser() !== $artwork->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             // If not the owner, throws a 403 Access Denied exception
             throw $this->createAccessDeniedException('Only the owner can edit the program!');
         }
@@ -77,11 +77,10 @@ class ArtworkController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_artwork_delete', methods: ['POST'])]
     public function delete(Request $request, Artwork $artwork, EntityManagerInterface $entityManager): Response
     {
-        if ($this->getUser() !== $artwork->getUser()) {
+        if ($this->getUser() !== $artwork->getUser() && !$this->isGranted('ROLE_ADMIN')) {
             // If not the owner, throws a 403 Access Denied exception
             throw $this->createAccessDeniedException('Only the owner can edit the program!');
         }

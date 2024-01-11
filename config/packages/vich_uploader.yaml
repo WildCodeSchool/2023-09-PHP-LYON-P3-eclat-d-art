@@ -8,4 +8,4 @@ vich_uploader:
         poster_file:
             uri_prefix: /uploads/images/posters
             upload_destination: '%upload_directory%'
-            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer
+            namer: Vich\UploaderBundle\Naming\SmartUniqueNamer    
