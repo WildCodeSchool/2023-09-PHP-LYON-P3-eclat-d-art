@@ -442,11 +442,10 @@ button.form_login {
 }
 
 .show-footer {
-  width: 100%;
+  width: 70%;
   display: flex;
   justify-content: flex-end;
-  padding-right: 12.5rem;
-  padding-top: 2rem;
+  padding-right: 4.5rem;
 }
 
 .show-footer a {
@@ -531,7 +530,6 @@ button.form_login {
 
 .slider-css-target ul li img {
   display: block;
-
   max-height: 5rem;
   border: 2px solid white;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
