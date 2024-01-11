@@ -52,6 +52,7 @@ a,
 }
 
 //////////////////////cards////////////////////////////////
+/// 
 .image {
   width: 100%;
   height: 100%;
@@ -287,25 +288,6 @@ button.form_login {
   width: 70%;
 }
 
-// Cards page categories //
-
-.gallery-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 15px;
-}
-
-.gallery {
-  width: 29%;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-}
-
-.image-artwork {
-  width: 100%;
-}
-
 /////// Media queries pour rendre le contenu des oeuvres plus responsive /////////
 
 @media (max-width: 1200px) {
@@ -321,7 +303,6 @@ button.form_login {
 }
 
 ///////////////////////artwork,index///////////////////////
-
 
 .gallery-container {
   display: flex;
@@ -340,7 +321,7 @@ button.form_login {
 
 .gallery-image {
   width: 100%;
-  height: 15rem; /* Ajustez la hauteur à votre préférence */
+  height: 15rem;
   overflow: hidden;
 }
 
@@ -359,7 +340,9 @@ button.form_login {
 .titre{
   text-align: center;
 }
+
 //////////////////////////////artwork///////////////////////
+
 .user-image{
     display: flex;
     flex-direction: row;
@@ -421,6 +404,7 @@ button.form_login {
     font-style: italic;
     font-family: monospace;
 }
+
 .box-describ p{
     display: flex;
     justify-self : flex-end;
@@ -456,6 +440,7 @@ button.form_login {
 }
 
 /* Media queries for responsive design */
+
 @media screen and (max-width: 1200px) {
   .box-artwork,
   .box-right {
@@ -479,7 +464,6 @@ button.form_login {
   }
 }
 
-
 ///////////////////////magnified glass//////////////////////
 
 .img-magnifier-container {
@@ -491,7 +475,6 @@ button.form_login {
     border: 0.1px solid #000;
     border-radius: 50%;
     cursor: none;
-    /*Set the size of the magnifier glass:*/
     width: 200px;
     height: 200px;
 }
@@ -518,4 +501,58 @@ button.form_login {
   max-height: 5rem;
   border: 2px solid white;
   box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+///// Page show (perso) d'un artsite/user
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 50%;
+  width: 90%;
+  margin-top: 5%;
+  margin-left: 3%;
+}
+
+img.profile-artiste {
+   
+  width: 100px; 
+  height: 100px; 
+  object-fit: cover; 
+  border-radius: 50%;
+}
+
+.info {
+  display: grid;
+  justify-content: space-between;
+  grid-template-columns: auto;
+  gap: 1rem;
+  padding: 1rem;
+  box-shadow: 3px 3px 3px 3px rgba(37, 36, 36, 0.166);
+  border-radius: 1rem;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+img.icon {
+  max-width: 2rem;
+  height: auto;
+  border-radius: 50%;
+}
+
+.social-links {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  margin-left: 0.2rem;
+}
+
+.title-artiste {
+  margin-top: 5%;
 }
