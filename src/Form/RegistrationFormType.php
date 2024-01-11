@@ -60,6 +60,12 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])
+            ->add('posterFile', VichFileType::class, [
+                'required' => false,
+                'label' => 'Image',
+                'allow_delete' => false,
+                'download_uri' => false,
             ]);
     }
 
