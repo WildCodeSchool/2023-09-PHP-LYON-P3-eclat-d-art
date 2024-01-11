@@ -28,13 +28,6 @@
 					</li>
 				</ul>
 				{%endif%}
-				{% if app.user %}
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a href="{{ path('app_user_show', {'id': app.user.id}) }}">Mon compte</a>
-						</li>
-					</ul>
-					{%endif%}
 					<div>
 						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 							<li class="nav-item">
