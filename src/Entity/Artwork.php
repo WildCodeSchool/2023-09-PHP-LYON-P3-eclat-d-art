@@ -34,7 +34,7 @@ class Artwork
     #[ORM\Column(length: 255)]
     private ?string $technique = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageCover = null;
 
     #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'imageCover')]
@@ -127,7 +127,7 @@ class Artwork
         return $this->imageCover;
     }
 
-    public function setImageCover(string $imageCover): static
+    public function setImageCover(?string $imageCover): static
     {
         $this->imageCover = $imageCover;
 
