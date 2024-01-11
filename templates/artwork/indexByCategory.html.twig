@@ -12,10 +12,7 @@
                     <img class=" image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
                 </a>
             </div>
-            <div class="gallery-text">
-                <p class="titre">{{ artwork.title }}</p>
-                    <a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
-            </div>
+                <a class="titre" href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">{{ artwork.title }}</a>
         </div>
     {% else %}
         <p>no records found</p>

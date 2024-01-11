@@ -328,6 +328,7 @@ button.form_login {
   flex-wrap: wrap;
   justify-content: space-between;
   padding: 0 15px;
+  gap: 2rem;
 }
 
 .gallery {
@@ -347,16 +348,10 @@ button.form_login {
 .image-artwork {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
-.gallery-text {
-  border: #7B652D solid 1px;
-  border-radius: 0 0 1rem 1rem;
-  padding: 1rem;
-}
-
-.titre{
+.titre {
   text-align: center;
 }
 //////////////////////////////artwork///////////////////////
