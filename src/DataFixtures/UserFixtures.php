@@ -5,25 +5,46 @@ namespace App\DataFixtures;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
 {
-    public const USER = 'user';
+    private UserPasswordHasherInterface $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
 
     public function load(ObjectManager $manager): void
     {
-        for ($i = 0; $i <= 50; $i++) {
-            $user = new User();
-            $user->setName('name' . $i);
-            $user->setEmail('email' . $i);
-            $user->setPassword('password' . $i);
-            $user->setDescription('description' . $i);
-            $user->setNationality('nationality' . $i);
-            $user->setPhoto('photo' . $i);
-            $manager->persist($user);
-            $this->addReference('user_' . $i, $user);
-        }
+        // Création d’un utilisateur de type “contributeur” (= auteur)
+        $contributor = new User();
+        $contributor->setEmail('contributor@monsite.com');
+        $contributor->setRoles(['ROLE_CONTRIBUTOR']);
+        $contributor->setName('User');
 
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $contributor,
+            'user'
+        );
+
+        $contributor->setPassword($hashedPassword);
+        $manager->persist($contributor);
+
+        // Création d’un utilisateur de type “administrateur”
+        $admin = new User();
+        $admin->setEmail('admin@monsite.com');
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setName("Admin");
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $admin,
+            'admin'
+        );
+        $admin->setPassword($hashedPassword);
+        $manager->persist($admin);
+
+        // Sauvegarde des 2 nouveaux utilisateurs :
         $manager->flush();
     }
 }

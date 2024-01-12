@@ -7,9 +7,11 @@ use App\Entity\Category;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 
 class ArtworkType extends AbstractType
 {
@@ -18,32 +20,43 @@ class ArtworkType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Titre',
-                ])
+            ])
             ->add('height', TextType::class, [
                 'label' => 'Hauteur',
-                ])
+            ])
             ->add('weight', TextType::class, [
                 'label' => 'Largeur',
-                ])
+            ])
             ->add('technique', TextType::class, [
                 'label' => 'Technique',
                 ])
-            ->add('imageCover', TextType::class, [
+            ->add('posterFile', VichFileType::class, [
+                'required' => false,
                 'label' => 'Image',
+                'allow_delete' => false,
+                'download_uri' => false,
                 ])
             ->add('description', TextType::class, [
                 'label' => 'Description',
-                ])
+            ])
+            ->add('createdAt', DateType::class, [
+                'label' => 'Date de création',
+                'years' => range(date('Y'), date('Y') - 50),
+                'format' => 'dd-MM-yyyy',
+                'placeholder' => [
+                    'year' => 'Années', 'month' => 'Mois', 'day' => 'Jours',
+                ],
+            ])
             ->add('user', EntityType::class, [
                 'class' => User::class,
-                'label' => 'Nom de l\'artiste',
                 'choice_label' => 'name',
-                ])
+                'label' => 'Utilisateur',
+            ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'label' => 'Catégorie',
                 'choice_label' => 'name',
-                ]);
+                'label' => 'Catégorie',
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

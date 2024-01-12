@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Artwork;
+use App\Entity\User;
 use App\Form\ArtworkType;
 use App\Repository\ArtworkRepository;
 use App\Repository\CategoryRepository;
@@ -11,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 #[Route('/artwork')]
 class ArtworkController extends AbstractController
@@ -23,7 +25,7 @@ class ArtworkController extends AbstractController
         ]);
     }
 
-
+    #[IsGranted('ROLE_USER')]
     #[Route('/new', name: 'app_artwork_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -32,6 +34,7 @@ class ArtworkController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $artwork->setUser($this->getUser());
             $entityManager->persist($artwork);
             $entityManager->flush();
 
@@ -55,6 +58,10 @@ class ArtworkController extends AbstractController
     #[Route('/{id}/edit', name: 'app_artwork_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Artwork $artwork, EntityManagerInterface $entityManager): Response
     {
+        if ($this->getUser() !== $artwork->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            // If not the owner, throws a 403 Access Denied exception
+            throw $this->createAccessDeniedException('Only the owner can edit the program!');
+        }
         $form = $this->createForm(ArtworkType::class, $artwork);
         $form->handleRequest($request);
 
@@ -73,6 +80,10 @@ class ArtworkController extends AbstractController
     #[Route('/{id}', name: 'app_artwork_delete', methods: ['POST'])]
     public function delete(Request $request, Artwork $artwork, EntityManagerInterface $entityManager): Response
     {
+        if ($this->getUser() !== $artwork->getUser() && !$this->isGranted('ROLE_ADMIN')) {
+            // If not the owner, throws a 403 Access Denied exception
+            throw $this->createAccessDeniedException('Only the owner can edit the program!');
+        }
         if ($this->isCsrfTokenValid('delete' . $artwork->getId(), $request->request->get('_token'))) {
             $entityManager->remove($artwork);
             $entityManager->flush();

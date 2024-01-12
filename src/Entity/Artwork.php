@@ -3,12 +3,18 @@
 namespace App\Entity;
 
 use App\Repository\ArtworkRepository;
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
 
 #[ORM\Entity(repositoryClass: ArtworkRepository::class)]
+#[Vich\Uploadable]
 class Artwork
 {
     #[ORM\Id]
@@ -20,10 +26,6 @@ class Artwork
     private ?string $title = null;
 
     #[ORM\Column]
-    #[Assert\DateTime]
-    private ?\DateTime $createdAt = null;
-
-    #[ORM\Column]
     private ?float $height = null;
 
     #[ORM\Column]
@@ -32,8 +34,18 @@ class Artwork
     #[ORM\Column(length: 255)]
     private ?string $technique = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageCover = null;
+
+    #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'imageCover')]
+    #[Assert\File(
+        maxSize: '5M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    )]
+    private ?File $posterFile = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DateTimeInterface $updatedAt = null;
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
@@ -41,13 +53,16 @@ class Artwork
     #[ORM\OneToMany(mappedBy: 'artwork', targetEntity: Image::class, orphanRemoval: true)]
     private Collection $images;
 
-    #[ORM\ManyToOne(inversedBy: 'artwork')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
-
     #[ORM\ManyToOne(inversedBy: 'artworks')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Category $category = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $createdAt = null;
+
+    #[ORM\ManyToOne(inversedBy: 'artworks')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
 
     public function __construct()
     {
@@ -67,18 +82,6 @@ class Artwork
     public function setTitle(string $title): static
     {
         $this->title = $title;
-
-        return $this;
-    }
-
-    public function getCreatedAt(): ?\DateTime
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTime $createdAt): static
-    {
-        $this->createdAt = $createdAt;
 
         return $this;
     }
@@ -124,7 +127,7 @@ class Artwork
         return $this->imageCover;
     }
 
-    public function setImageCover(string $imageCover): static
+    public function setImageCover(?string $imageCover): static
     {
         $this->imageCover = $imageCover;
 
@@ -140,6 +143,32 @@ class Artwork
     {
         $this->description = $description;
 
+        return $this;
+    }
+
+    public function setPosterFile(File $imageCover = null): Artwork
+    {
+        $this->posterFile = $imageCover;
+        if ($imageCover) {
+            $this->updatedAt = new DateTime('now');
+        }
+
+        return $this;
+    }
+
+    public function getPosterFile(): ?File
+    {
+        return $this->posterFile;
+    }
+
+    public function getUpdatedAt(): ?DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(DatetimeInterface $updatedAt): Artwork
+    {
+        $this->updatedAt = $updatedAt;
         return $this;
     }
 
@@ -194,6 +223,17 @@ class Artwork
     {
         $this->category = $category;
 
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): static
+    {
+        $this->createdAt = $createdAt;
         return $this;
     }
 }
