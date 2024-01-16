@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">
+<nav class="navbar navbar-expand-lg navbar-light line ">
 	<div class="container-fluid">
 		<a class="navbar-brand" aria-label="Our website logo who will send you back to our homepage" href="/">
 			<img src=" {{ asset('build/images/logo-eclat.png')}} " alt="" class="logo_nav">
@@ -17,9 +17,6 @@
 				<li class="nav-item">
 					<a class="link" aria-label="Click here to see all our Artworks" href="/artwork/">Oeuvres</a>
 				</li>
-				<li class="nav-item">
-					<a class="link" aria-label="Click here to learn more about us" href="/#about-us">A Propos</a>
-				</li>
 			</ul>
 			{% if is_granted("ROLE_USER") %}
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -27,28 +24,24 @@
 						<a href="{{ path('app_artwork_new') }}">Ajouter une oeuvre</a>
 					</li>
 				</ul>
-				{%endif%}
-					<div>
-						<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-							<li class="nav-item">
-								{% if app.user %}
-									{{ app.user.name }}
-									<a href="{{ path('app_logout') }}">&ensp;Se déconnecter</a>
-								{% else %}
-									<ul class="register">
-										<li class="nav-item">
-											<a href="{{ path('register') }}">
-												S'inscrire</a>
-										</li>
-										<li class="nav-item">
-											<a href="{{ path('login') }}">
-												Se connecter</a>
-										</li>
-									</ul>
-								{% endif %}
-							</li>
-						</ul>
-					</div>
-				</div>
+			{% endif %}
+			<div>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						{% if app.user %}
+							{{ app.user.name }}
+							<a href="{{ path('app_logout') }}">&ensp;Se déconnecter</a>
+						{% else %}
+							<ul class="register">
+								<li class="nav-item">
+									<a href="{{ path('login') }}">
+										Inscription / Connexion</a>
+								</li>
+							</ul>
+						{% endif %}
+					</li>
+				</ul>
 			</div>
-		</nav>
+		</div>
+	</div>
+</nav>
