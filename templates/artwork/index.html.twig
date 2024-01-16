@@ -12,7 +12,7 @@
 			<div class="box-area">
 				{% for artwork in artworks %}
 					<div class="box">
-						<img class="image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
+						<img class="image" src="{{ vich_uploader_asset(artwork) | imagine_filter('toto' }}" alt="{{ artwork.title }}">
 						<div class="overlay">
 							<h3>{{ artwork.title }}</h3>
 							<a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
