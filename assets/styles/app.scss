@@ -51,8 +51,12 @@ a,
   background-color: #EBEAE5;
 }
 
+.line {
+  border-bottom: 0.05rem solid var(--color); 
+}
+
 //////////////////////cards////////////////////////////////
-/// 
+
 .image {
   width: 100%;
   height: 100%;
@@ -167,7 +171,7 @@ hr {
   width: 100%;
   overflow: hidden;
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.35) 0rem 1rem 1rem, rgba(0, 0, 0, 0.35) 0rem -1rem 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0rem 1rem 1rem;
 }
 
 .slide {
@@ -311,45 +315,7 @@ button.form_login {
 
 ///////////////////////artwork,index///////////////////////
 
-.gallery-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  padding: 0 15px;
-}
-
-.gallery {
-  width: 29%;
-  box-sizing: border-box;
-  margin-bottom: 20px;
-  display: flex;
-  flex-direction: column;
-}
-
-.gallery-image {
-  width: 100%;
-  height: 15rem;
-
-  /* Ajustez la hauteur à votre préférence */
-
-  overflow: hidden;
-}
-
-.image-artwork {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.gallery-text {
-  border: #7B652D solid 1px;
-  border-radius: 0 0 1rem 1rem;
-  padding: 1rem;
-}
-
-.titre {
-  text-align: center;
-}
+// on utilise le même css que pour les cards catégories de la page d'accueil
 
 //////////////////////////////artwork///////////////////////
 
