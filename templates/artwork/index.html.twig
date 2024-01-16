@@ -11,9 +11,9 @@
 		{% for artwork in artworks %}
 			<div class="gallery">
 				<div class="gallery-image">
-                <a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">
-    					<img class="image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}"> 
-                </a>
+					<a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">
+						<img class="image-artwork" src="{{ vich_uploader_asset(artwork) | imagine_filter('toto') }}" alt="{{ artwork.title }}">
+					</a>
 				</div>
 				<div class="gallery-text">
 					<p class="titre">{{ artwork.title }}</p>
