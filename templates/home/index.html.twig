@@ -24,18 +24,18 @@
 			<img src="{{ vich_uploader_asset(artworks[2]) }}" alt="{{ artworks[2].title }}">
 		</div>
 	</div>
-	<hr>
+	
 	<div>
 		<h1>Éclats d’art : Galerie d'art en ligne.</h1>
 		<a id="about-us"></a>
 		<p class="présentation">"Plongez dans un monde d'expression infinie où les artistes se rencontrent,
-						partagent et célèbrent leur créativité. Notre galerie d'art en ligne est un
-						espace dynamique dédié à la découverte de talents émergents et établis.
-						Rejoignez notre communauté passionnée, explorez des œuvres captivantes et
-						plongez dans l'univers vibrant de l'art contemporain partagé par des esprits
-						créatifs du monde entier."</p>
+												partagent et célèbrent leur créativité. Notre galerie d'art en ligne est un
+												espace dynamique dédié à la découverte de talents émergents et établis.
+												Rejoignez notre communauté passionnée, explorez des œuvres captivantes et
+												plongez dans l'univers vibrant de l'art contemporain partagé par des esprits
+												créatifs du monde entier."</p>
 	</div>
-	<hr>
+	
 	<div>
 		<h2>Catégories</h2>
 	</div>
@@ -82,50 +82,24 @@
 		</div>
 	</div>
 
-	<hr>
-
 	<h2>
 		<a href="{{ path('app_user_index') }}">Artistes</a>
 	</h2>
 
-	<div id="card-area-artistes">
+	<div id="card-area-categories">
 		<div class="wrapper">
 			<div class="box-area">
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy" alt="photo d' l'artiste Jeancolor" src="{{ asset('build/images/jean.webp') }}">
-					<div class="overlay">
-						<h3>Jeancolor</h3>
-						<a href="user" aria-label="Discover more about this Artwork">Découvrir</a>
+				{% for user in users %}
+					<div class="box">
+						<img class=" image" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
+						<div class="overlay">
+							<h3>{{ user.name }}</h3>
+							<a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
+						</div>
 					</div>
-				</div>
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy" alt="photo d' l'artiste Emilie" src="{{ asset('build/images/emilie.webp') }}">
-					<div class="overlay">
-						<h3>Émilie</h3>
-						<a href="user" aria-label="Discover more about this artist">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy" alt="photo d' l'artiste El Artiste" src="{{ asset('build/images/josé.webp') }}">
-					<div class="overlay">
-						<h3>El Artiste</h3>
-						<a href="user" aria-label="Discover more about this artist">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy" alt="photo d' l'artiste Bertelli" src="{{ asset('build/images/bertelli.webp') }}">
-					<div class="overlay">
-						<h3>Bertelli</h3>
-						<a href="user" aria-label="Discover more about this artist">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy" alt="photo d' l'artiste Khoa" src="{{ asset('build/images/khoa.webp') }}">
-					<div class="overlay">
-						<h3>Khoa</h3>
-						<a href="user" aria-label="Discover more about this artist">Découvrir</a>
-					</div>
-				</div>
+				{% else %}
+					<p>no records found</p>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
