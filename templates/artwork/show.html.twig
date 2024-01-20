@@ -42,13 +42,16 @@
 
 			<div class="mini-slides">
 				<div class="slide slide">
-					<img src="{{ asset('build/images/caravage.webp') }}" alt="First slide">
+<img src="{{ vich_uploader_asset(artworks[0]) }}" alt="{{ artworks[0].title }}">
+
 				</div>
 				<div class="slide slide-2">
-					<img src="{{ asset('build/images/luffy.webp') }}" alt="Second slide">
+<img src="{{ vich_uploader_asset(artworks[1]) }}" alt="{{ artworks[1].title }}">
+
 				</div>
 				<div class="slide slide-3">
-					<img src="{{ asset('build/images/colorBou.webp') }}" alt="Third slide">
+<img src="{{ vich_uploader_asset(artworks[2]) }}" alt="{{ artworks[2].title }}">
+
 				</div>
 			</div>
 			{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}
