@@ -24,12 +24,10 @@ class UserController extends AbstractController
     public function show(User $user, ArtworkRepository $artworkRepository, UserRepository $userRepository): Response
     {
         $artworks = $artworkRepository->findBy(['user' => $user]);
-        
 
         return $this->render('user/show.html.twig', [
             'user' => $user,
             'artworks' => $artworks,
-             
-    ]);
+        ]);
     }
 }
