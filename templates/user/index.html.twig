@@ -4,23 +4,25 @@
 
 {% block body %}
 
-<h1>Artistes</h1>
+	<h1>Artistes</h1>
 
-<div class="gallery-container">
-    {% for user in user %}
-        <div class="gallery">
-            <div class="galelery-image">
-                <a href="{{ path('app_artwork_show', {'id': user.id}) }} ">
-                <img class=" image-artwork" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}"></a>
-            </div>   
-            <div class="gallery-text">
-                <p class="titre">{{ user.name }}</p>
-                {#<p>{{ user.description }}</p>#}
-                <a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
-            </div>    
-        </div>               
-    {% else %}
-       <p>no records found</p>
-    {% endfor %}
-</div>
+	<div id="card-area-categories">
+		<div class="wrapper">
+			<div class="box-area">
+				{% for user in user %}
+					<div class="box">
+						<img class=" image" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
+						<div class="overlay">
+							<h3>{{ user.name }}</h3>
+							<a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
+						</div>
+					</div>
+				{% else %}
+					<p>no records found</p>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
 {% endblock %}
