@@ -13,7 +13,6 @@ import './bootstrap';
 
 require('bootstrap');
 
-
 function magnify(imgID, zoom)
 {
     let img, glass, w, h, bw;
@@ -72,4 +71,4 @@ function magnify(imgID, zoom)
     };
 }
 
-magnify("my_image", 2);
+magnify("my_image", 2); 

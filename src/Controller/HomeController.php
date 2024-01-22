@@ -16,10 +16,17 @@ class HomeController extends AbstractController
         ArtworkRepository $artworkRepository,
         UserRepository $userRepository
     ): Response {
+
         $artworks = $artworkRepository->findRandomImages();
+        $users = $userRepository->findAll();
+
+        shuffle($users);
+
+        $selectedUsers = array_slice($users, 0, 6);
+
         return $this->render('home/index.html.twig', [
             'artworks' => $artworks,
-            'users' => $userRepository->findAll(),
+            'users' => $selectedUsers,
         ]);
     }
 }
