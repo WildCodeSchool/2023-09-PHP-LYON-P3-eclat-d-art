@@ -40,6 +40,28 @@ class ArtworkRepository extends ServiceEntityRepository
 
         return $queryBuilder->getResult();
     }
+
+    public function findImagesByUser(int $userId): array
+    {
+        $entityManager = $this->getEntityManager();
+        $totalArtworks = $entityManager
+            ->createQuery('SELECT COUNT(a.id) FROM App\Entity\Artwork a WHERE a.user = :userId')
+            ->setParameter('userId', $userId)
+            ->getSingleScalarResult();
+
+        $maxOffset = max(0, $totalArtworks - 3);
+
+        $offset = rand(0, $maxOffset);
+
+        $queryBuilder = $this->createQueryBuilder('a')
+            ->andWhere('a.user = :userId')
+            ->setParameter('userId', $userId)
+            ->setFirstResult($offset)
+            ->setMaxResults(3)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
 //    /**
 //     * @return Artwork[] Returns an array of Artwork objects
 //     */
