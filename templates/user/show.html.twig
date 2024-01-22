@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	<div class="button-user">
-	{% if is_granted("ROLE_ADMIN") or (app.user and app.user == user.id) %}
+	{% if is_granted("ROLE_ADMIN") or (app.user and app.user.id == user.id) %}
 				<div class="show-footer">
 					<a class="btn btn-primary artwork-descovery" href="{{ path('app_user_edit', {'id': user.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
 					{{ include('user/_delete_form.html.twig') }}
