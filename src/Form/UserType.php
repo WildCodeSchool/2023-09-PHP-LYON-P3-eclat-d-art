@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
@@ -40,10 +41,26 @@ class UserType extends AbstractType
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Description',
-
+                'required' => false,
             ])
             ->add('nationality', CountryType::class, [
                 'label' => 'Nationalité',
+            ])
+            ->add('instagram', UrlType::class, [
+                'label' => 'Instagram',
+                'required' => false,
+            ])
+            ->add('facebook', UrlType::class, [
+                'label' => 'Facebook',
+                'required' => false,
+            ])
+            ->add('twitter', UrlType::class, [
+                'label' => 'X',
+                'required' => false,
+            ])
+            ->add('pinterest', UrlType::class, [
+                'label' => 'Pinterest',
+                'required' => false,
             ])
             ->add('posterFile', VichFileType::class, [
                 'required' => false,
