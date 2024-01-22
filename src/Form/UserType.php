@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -36,6 +37,10 @@ class UserType extends AbstractType
                         'message' => 'Veuillez renseigner une adresse e-mail valide'
                     ]),
                 ]
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description',
+
             ])
             ->add('nationality', CountryType::class, [
                 'label' => 'Nationalité',
