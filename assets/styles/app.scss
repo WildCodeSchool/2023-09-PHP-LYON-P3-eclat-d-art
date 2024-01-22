@@ -335,11 +335,11 @@ div.button-user {
 .artwork-user {
   display: flex;
   align-self: flex-start;
-  clip-path: ellipse(50% 35%);
   border-radius: 50%;
-  max-width: 10rem;
-  border-width: 1rem;
+  width: 10rem;
+  height: 10rem;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.9);
+  object-fit: cover;
 }
 
 .box-artwork,
