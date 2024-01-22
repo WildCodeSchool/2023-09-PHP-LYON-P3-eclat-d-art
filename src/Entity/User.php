@@ -60,7 +60,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class, cascade: ['remove'])]
     private Collection $artworks;
 
     public function __construct()
