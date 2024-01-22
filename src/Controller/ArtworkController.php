@@ -51,12 +51,13 @@ class ArtworkController extends AbstractController
     #[Route('/{id}', name: 'app_artwork_show', methods: ['GET'])]
     public function show(Artwork $artwork, ArtworkRepository $artworkRepository): Response
     {
+        $user = $artwork->getUser();
         $userId = $artwork->getUser()->getId();
         $artworksUser = $artworkRepository->findImagesByUser($userId);
         return $this->render('artwork/show.html.twig', [
             'artworks' => $artworksUser,
             'artwork' => $artwork,
-            'user' => $artwork->getUser(),
+            'user' => $user,
         ]);
     }
 
