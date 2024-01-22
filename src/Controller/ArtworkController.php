@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\ArtworkType;
 use App\Repository\ArtworkRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,6 +56,7 @@ class ArtworkController extends AbstractController
         return $this->render('artwork/show.html.twig', [
             'artworks' => $artworksUser,
             'artwork' => $artwork,
+            'user' => $artwork->getUser(),
         ]);
     }
 

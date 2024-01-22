@@ -35,7 +35,7 @@
 							Crée le:
 							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</h5>
 					</div>
-					<img class="artwork-user" src="{{ asset('build/images/emilie.webp') }}" alt="Photo de l'artiste" loading="lazy">
+					<img class="artwork-user" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
 				</div>
 				<p>{{ artwork.description }}</p>
 			</div>
