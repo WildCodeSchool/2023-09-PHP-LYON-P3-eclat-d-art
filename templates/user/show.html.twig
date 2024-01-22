@@ -16,7 +16,7 @@
 			<p>{{ user.description }}</p>
 		</div>
 		<div class="image-container">
-			<img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
+			<img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
 			<div class="social-links">
 				<a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/instagram.png')}} " alt="Instagram"></a>
 				<a href="#" class="social-link"><img class="icon" src=" {{ asset('build/images/facebook.png')}} " alt="Facebook"></a>
@@ -36,7 +36,7 @@
 			<div class="box-area">
 				{% for artwork in artworks %}
 					<div class="box">
-						<img class="image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
+						<img class="image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
 						<div class="overlay">
 							<h3>{{ artwork.title }}</h3>
 							<a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
