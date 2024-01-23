@@ -13,8 +13,6 @@ import './bootstrap';
 
 require('bootstrap');
 
-import 'bootstrap-icons/font/bootstrap-icons.css';
-
 
 function magnify(imgID, zoom)
 {
