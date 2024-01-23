@@ -17,12 +17,22 @@
 		</div>
 		<div class="image-container">
 			<img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
+			{% if user.instagram or user.facebook or user.twitter or user.pinterest %}
 			<div class="social-links">
-				<a href="http://www.instagram.com/" ><i class="fa-brands fa-instagram" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
-				<a href="http://www.facebook.com/" ><i class="fa-brands fa-facebook" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
-				<a href="http://www.x.com/" ><i class="fa-brands fa-x-twitter" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
-				<a href="http://www.pinterest.com/" ><i class="fa-brands fa-pinterest" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
+			{% if user.instagram %}
+				<a href="{{ user.instagram }}" ><i class="fa-brands fa-instagram" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
+			{% endif %}
+			{% if user.facebook %}
+				<a href="{{ user.facebook }}" ><i class="fa-brands fa-facebook" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
+			{% endif %}	
+			{% if user.twitter %}
+				<a href="{{ user.twitter }}" ><i class="fa-brands fa-x-twitter" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
+			{% endif %}	
+			{% if user.pinterest %}	
+				<a href="{{ user.pinterest }}" ><i class="fa-brands fa-pinterest" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i></a>
+			{% endif %}	
 			</div>
+			{% endif %}
 		</div>
 	</div>
 	<div class="button-user">
@@ -46,7 +56,7 @@
 						<img class="image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
 						<div class="overlay">
 							<h3>{{ artwork.title }}</h3>
-							<a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
+							<a class="btn btn-secondary form-button form-link artwork-descovery;" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
 						</div>
 					</div>
 				{% else %}
