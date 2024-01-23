@@ -25,7 +25,7 @@ class UserController extends AbstractController
     }
 
     #[Route('/show/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user, ArtworkRepository $artworkRepository, UserRepository $userRepository): Response
+    public function show(User $user, ArtworkRepository $artworkRepository): Response
     {
         $artworks = $artworkRepository->findBy(['user' => $user]);
 
