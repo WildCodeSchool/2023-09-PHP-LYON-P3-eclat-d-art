@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\File\File;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[Vich\Uploadable]
-class User implements UserInterface, PasswordAuthenticatedUserInterface
+class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -62,6 +62,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class, cascade: ['remove'])]
     private Collection $artworks;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $instagram = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $facebook = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $twitter = null;
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $pinterest = null;
 
     public function __construct()
     {
@@ -240,5 +248,66 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function getInstagram(): ?string
+    {
+        return $this->instagram;
+    }
+
+    public function setInstagram(?string $instagram): static
+    {
+        $this->instagram = $instagram;
+        return $this;
+    }
+
+    public function getFacebook(): ?string
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(?string $facebook): static
+    {
+        $this->facebook = $facebook;
+        return $this;
+    }
+
+    public function getTwitter(): ?string
+    {
+        return $this->twitter;
+    }
+
+    public function setTwitter(?string $twitter): static
+    {
+        $this->twitter = $twitter;
+        return $this;
+    }
+
+    public function getPinterest(): ?string
+    {
+        return $this->pinterest;
+    }
+
+    public function setPinterest(?string $pinterest): static
+    {
+        $this->pinterest = $pinterest;
+        return $this;
+    }
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->email,
+            $this->password,
+        ));
+    }
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->email,
+            $this->password,
+        ) = unserialize($serialized);
     }
 }
