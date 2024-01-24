@@ -1,12 +1,13 @@
 @import "~bootstrap/scss/bootstrap";
+@import url(" https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap ");
 
 
 :root {
   --background: #EBEAE5;
   --color: #7B652D;
   --font-color-black: #1D1D1D;
-  --font-family-nav: "Montserrat-Alt1", Verdana, Geneva, Tahoma, sans-serif;
-  --font-family-body: "Montserrat-Alt1 Thin", Verdana, Geneva, Tahoma, sans-serif;
+  --font-family-nav:'DM Serif Display', serif;
+  --font-family-body:'DM Serif Display', serif;
 }
 
 * {
@@ -410,6 +411,7 @@ div.button-user {
 }
 
 .show-footer {
+  margin-top: 1rem;
   width: 50%;
   display: flex;
   justify-content: flex-end;
@@ -598,5 +600,9 @@ font-size: 1.8rem;
     width: 100%;
     margin-bottom: 10%;
   }
+}
 
+.bi {
+  font-size: 1.2rem;
+  background-color: black;
 }

@@ -29,13 +29,15 @@
 						</h5>
 						<h5>{{ artwork.height }}
 							cm X
-							{{ artwork.weight }}
+							{{ artwork.width }}
 							cm</h5>
 						<h5>
 							Crée le:
 							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</h5>
 					</div>
+					<a href="{{ path('app_user_show', {'id': user.id}) }}" aria-label="Voir le profil de {{ user.name }}">
 					<img class="artwork-user" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
+					</a>
 				</div>
 				<p>{{ artwork.description }}</p>
 			</div>

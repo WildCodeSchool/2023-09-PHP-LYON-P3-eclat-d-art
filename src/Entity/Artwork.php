@@ -29,7 +29,7 @@ class Artwork
     private ?float $height = null;
 
     #[ORM\Column]
-    private ?float $weight = null;
+    private ?float $width = null;
 
     #[ORM\Column(length: 255)]
     private ?string $technique = null;
@@ -98,14 +98,14 @@ class Artwork
         return $this;
     }
 
-    public function getWeight(): ?float
+    public function getWidth(): ?float
     {
-        return $this->weight;
+        return $this->width;
     }
 
-    public function setWeight(float $weight): static
+    public function setWidth(float $width): static
     {
-        $this->weight = $weight;
+        $this->width = $width;
 
         return $this;
     }
