@@ -236,4 +236,9 @@ class Artwork
         $this->createdAt = $createdAt;
         return $this;
     }
+    public function __toString(): string
+    {
+        return $this->getTitle();
+    }
+
 }

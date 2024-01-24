@@ -42,21 +42,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
     /**
-     * @throws NonUniqueResultException
-     * @throws NoResultException
-     */
-    public function countUsers(): float|bool|int|string|null
-    {
-        return $this->createQueryBuilder('u')
-            ->select('count(u.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
-    }
-
-    /**
      * @return User[] Returns an array of User objects
      */
-    public function findByExampleField($value): array
+    public function findByExampleField(string $value): array
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.exampleField = :val')
@@ -71,7 +59,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     /**
      * @throws NonUniqueResultException
      */
-    public function findOneBySomeField($value): ?User
+    public function findOneBySomeField(string $value): ?User
     {
         return $this->createQueryBuilder('u')
             ->andWhere('u.exampleField = :val')
