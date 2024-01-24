@@ -240,5 +240,4 @@ class Artwork
     {
         return $this->getTitle();
     }
-
 }

@@ -27,5 +27,4 @@ class ArtworkCrudController extends AbstractCrudController
             CollectionField::new('user'),
         ];
     }
-
 }
