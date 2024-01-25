@@ -26,8 +26,11 @@ class ArtworkCrudController extends AbstractCrudController
             IdField::new('id'),
             TextField::new('title'),
             TextEditorField::new('description'),
-            ImageField::new('imageCover'),
-            AssociationField::new('user')
+            ImageField::new('imagecover')
+                ->setBasePath('uploads/images/posters') // the base path to view the file
+                ->setUploadDir('public/uploads/images/posters') // the upload directory
+                ->setUploadedFileNamePattern('[randomhash].[extension]') // file name pattern
+                ->setRequired(false),AssociationField::new('user')
                 ->setCrudController(UserCrudController::class),        ];
     }
 }
