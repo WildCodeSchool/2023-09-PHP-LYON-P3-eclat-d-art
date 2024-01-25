@@ -44,6 +44,30 @@ class UserFixtures extends Fixture
         $admin->setPassword($hashedPassword);
         $manager->persist($admin);
 
+        $artist1 = new User();
+        $artist1->setEmail('artist1@monsite.com');
+        $artist1->setRoles(['ROLE_CONTRIBUTOR']);
+        $artist1->setName('artist_1');
+        $this->addReference('artist_1', $artist1);
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $artist1,
+            'artist1'
+        );
+        $artist1->setPassword($hashedPassword);
+        $manager->persist($artist1);
+
+        $artist2 = new User();
+        $artist2->setEmail('artist2@monsite.com');
+        $artist2->setRoles(['ROLE_CONTRIBUTOR']);
+        $artist2->setName('artist_2');
+        $this->addReference('artist_2', $artist2);
+        $hashedPassword = $this->passwordHasher->hashPassword(
+            $artist2,
+            'artist2'
+        );
+        $artist2->setPassword($hashedPassword);
+        $manager->persist($artist2);
+
         // Sauvegarde des 2 nouveaux utilisateurs :
         $manager->flush();
     }
