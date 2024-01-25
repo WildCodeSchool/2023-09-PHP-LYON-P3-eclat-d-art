@@ -26,5 +26,4 @@ class CategoryCrudController extends AbstractCrudController
                 ->setCrudController(ArtworkCrudController::class),
         ];
     }
-
 }
