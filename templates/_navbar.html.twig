@@ -24,23 +24,30 @@
 						<a href="{{ path('app_artwork_new') }}">Ajouter une oeuvre</a>
 					</li>
 				</ul>
-				{%endif%}
-				<div>
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							{% if app.user %}
-								{{ app.user.name }}
-								<a href="{{ path('app_logout') }}">&ensp;Se déconnecter</a>
-							{% else %}
-								<ul class="register">
-									<li class="nav-item">
-										<a href="{{ path('register') }}">Inscription</a>&nbsp;<a href="{{ path('login') }}">/ Connexion</a>
-									</li>
-								</ul>
-							{% endif %}
-						</li>
-					</ul>
-				</div>
+			{% endif %}
+			{% if is_granted("ROLE_ADMIN") %}
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a href="{{ path('admin') }}">Admin dashboard</a>
+					</li>
+				</ul>
+			{% endif %}
+			<div>
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						{% if app.user %}
+							{{ app.user.name }}
+							<a href="{{ path('app_logout') }}">Se déconnecter</a>
+						{% else %}
+							<ul class="register">
+								<li class="nav-item">
+									<a href="{{ path('register') }}">Inscription</a>&nbsp;<a href="{{ path('login') }}">/ Connexion</a>
+								</li>
+							</ul>
+						{% endif %}
+					</li>
+				</ul>
 			</div>
 		</div>
-	</nav>
+	</div>
+</nav>
