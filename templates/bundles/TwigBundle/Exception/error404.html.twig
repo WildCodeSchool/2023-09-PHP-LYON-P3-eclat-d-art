@@ -6,8 +6,10 @@
 {% block body %}
 	<div>
 		<h1>La page que vous demandez n'existe pas</h1>
-		<a id="about-us"></a>
-		<p class="présentation">
-			Veuillez retourner à l'accueil</p>
+	</div>
+	<div class="box-area">
+		<div class="box">
+			<img class=" image" loading="lazy" alt="Photo indiquant une page error 404" src="{{ asset('build/images/error.jpeg') }}">
+		</div>
 	</div>
 {% endblock %}
