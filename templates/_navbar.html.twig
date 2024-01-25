@@ -25,13 +25,13 @@
 					</li>
 				</ul>
 			{% endif %}
-            {% if is_granted("ROLE_ADMIN") %}
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a href="{{ path('admin') }}">Admin dashboard</a>
-                    </li>
-                </ul>
-            {% endif %}
+			{% if is_granted("ROLE_ADMIN") %}
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a href="{{ path('admin') }}">Admin dashboard</a>
+					</li>
+				</ul>
+			{% endif %}
 			<div>
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
@@ -41,8 +41,7 @@
 						{% else %}
 							<ul class="register">
 								<li class="nav-item">
-									<a href="{{ path('login') }}">
-										Inscription / Connexion</a>
+									<a href="{{ path('register') }}">Inscription</a>&nbsp;<a href="{{ path('login') }}">/ Connexion</a>
 								</li>
 							</ul>
 						{% endif %}
@@ -50,5 +49,5 @@
 				</ul>
 			</div>
 		</div>
-    </div>
+	</div>
 </nav>
