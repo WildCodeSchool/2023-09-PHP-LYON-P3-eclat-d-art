@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\File\File;
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
 #[Vich\Uploadable]
-class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -62,12 +62,16 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
 
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class, cascade: ['remove'])]
     private Collection $artworks;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $instagram = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $facebook = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $twitter = null;
+
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $pinterest = null;
 
@@ -294,20 +298,31 @@ class User implements UserInterface, \Serializable, PasswordAuthenticatedUserInt
         return $this;
     }
 
-    public function serialize()
+    public function __serialize(): array
     {
-        return serialize(array(
-            $this->id,
-            $this->email,
-            $this->password,
-        ));
+        return [
+            'id' => $this->id,
+            'email' => $this->email,
+            'password' => $this->password,
+            'roles' => $this->roles,
+            'name' => $this->name,
+            'description' => $this->description,
+            'nationality' => $this->nationality,
+            'picture' => $this->picture,
+            'artworks' => $this->artworks,
+        ];
     }
-    public function unserialize($serialized)
+
+    public function __unserialize(array $data): void
     {
-        list(
-            $this->id,
-            $this->email,
-            $this->password,
-        ) = unserialize($serialized);
+        $this->id = $data['id'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
+        $this->roles = $data['roles'];
+        $this->name = $data['name'];
+        $this->description = $data['description'];
+        $this->nationality = $data['nationality'];
+        $this->picture = $data['picture'];
+        $this->artworks = $data['artworks'];
     }
 }
