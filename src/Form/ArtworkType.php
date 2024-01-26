@@ -44,7 +44,7 @@ class ArtworkType extends AbstractType
                 'years' => range(date('Y'), date('Y') - 50),
                 'format' => 'dd-MM-yyyy',
                 'placeholder' => [
-                    'year' => 'Années', 'month' => 'Mois', 'day' => 'Jours',
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ],
             ])
             ->add('user', EntityType::class, [
