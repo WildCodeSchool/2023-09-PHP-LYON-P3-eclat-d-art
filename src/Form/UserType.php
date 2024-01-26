@@ -35,7 +35,7 @@ class UserType extends AbstractType
                 'label' => 'Nom d\'utilisateur',
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Veuillez renseigner une adresse e-mail valide'
+                        'message' => 'Veuillez renseigner un nom valide'
                     ]),
                 ]
             ])
@@ -67,14 +67,6 @@ class UserType extends AbstractType
                 'label' => 'Image',
                 'allow_delete' => false,
                 'download_uri' => false,
-            ])
-            ->add('agreeTerms', CheckboxType::class, [
-                'mapped' => false,
-                'constraints' => [
-                    new IsTrue([
-                        'message' => 'You should agree to our terms.',
-                    ]),
-                ],
             ]);
     }
 
