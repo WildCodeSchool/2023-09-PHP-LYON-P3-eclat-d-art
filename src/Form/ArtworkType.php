@@ -47,11 +47,6 @@ class ArtworkType extends AbstractType
                     'year' => 'Années', 'month' => 'Mois', 'day' => 'Jours',
                 ],
             ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'name',
-                'label' => 'Utilisateur',
-            ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
