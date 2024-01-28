@@ -8,4 +8,4 @@ liip_imagine:
         toto:
             quality: 100
             filters:
-                thumbnail: { size: [1000, 1000], mode: outbound }
+                thumbnail: { size: [1000, 1000], mode: inset }
