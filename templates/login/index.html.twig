@@ -1,9 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!
+{% block title %}Page de connexion
 {% endblock %}
 
 {% block body %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success flash-message">
+			{{ message }}
+		</div>
+	{% endfor %}
 	<section class="form">
 		<h1>Connexion</h1>
 		<form class="form_login" action="{{ path('app_login') }}" method="post">

@@ -39,6 +39,8 @@ class ArtworkController extends AbstractController
             $entityManager->persist($artwork);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre Oeuvre a bien été ajoutée');
+
             return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -74,6 +76,8 @@ class ArtworkController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre Oeuvre a bien été modifiée');
+
             return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -94,6 +98,7 @@ class ArtworkController extends AbstractController
             $entityManager->remove($artwork);
             $entityManager->flush();
         }
+        $this->addFlash('success', 'Votre Oeuvre a bien été supprimée');
 
         return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
     }
