@@ -74,4 +74,5 @@ function magnify(imgID, zoom)
 
 magnify("my_image", 2);
 
+
 import "./flashMessage.js";

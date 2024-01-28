@@ -11,8 +11,15 @@
 		</title>
 	</head>
 {% endblock %}
+
 {% block body %}
 
+{% for message in app.flashes('success') %}
+	<div class="alert alert-success flash-message">
+		{{ message }} {{ app.user.name }} !
+	</div>
+	
+{% endfor %}
 	<div class="slides">
 		{% if artworks[0] is defined %}
 			<div class="slide slide-1">
