@@ -103,6 +103,11 @@ a,
 }
 
 .box img {
+  width: 100%;
+  height: 100%; /* Fixe la hauteur pour remplir la boîte */
+  object-fit: fill; /* Remplit la boîte sans respecter les proportions */
+  border-radius: 10px;
+  display: block;
   transition: transform 0.5s;
 }
 
