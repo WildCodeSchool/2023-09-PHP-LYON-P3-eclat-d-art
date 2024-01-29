@@ -28,7 +28,7 @@ class UserController extends AbstractController
     public function show(User $user, ArtworkRepository $artworkRepository): Response
     {
         if (in_array('ROLE_ADMIN', $user->getRoles())) {
-            return $this->render('/Exception/error404.html.twig');
+            return $this->render('@Twig/Exception/error404.html.twig');
         }
         $artworks = $artworkRepository->findBy(['user' => $user]);
 
