@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter une nouvelle Oeuvre{% endblock %}
+{% block title %}Ajouter une nouvelle Oeuvre
+{% endblock %}
 
 {% block body %}
-<section class="form_artwork">
-    <h1>Ajouter une nouvelle Oeuvre</h1>
-<div class="form_artwork">
-    {{ include('artwork/_form.html.twig') }}
-    </div>
-</section>
+	<section class="form_artwork">
+		<h1>Ajouter une nouvelle Oeuvre</h1>
+		<div class="form_artwork">
+			{{ include('artwork/_form.html.twig') }}
+		</div>
+	</section>
 {% endblock %}
