@@ -22,8 +22,8 @@
         {% endblock %}
     </head>
     <body>
-    <header>{% include "/_navbar.html.twig" %}</header>
-        {% block body %}{% endblock %}
-    <footer>{% include "/_footer.html.twig" %}</footer>    
+        <header>{% include "/_navbar.html.twig" %}</header>
+        <main>{% block body %}{% endblock %}</main>
+        {% include "/_footer.html.twig" %}  
     </body>
 </html>
