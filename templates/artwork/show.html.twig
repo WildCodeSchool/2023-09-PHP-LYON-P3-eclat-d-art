@@ -20,12 +20,16 @@
 
 		<div class="box-right">
 			<div class="box-describ">
-				<h1>{{ artwork.title }}</h1>
+				<h5>{{ artwork.title }}</h5>
 				<div class="user-image">
 					<div class="art-details">
+					<h5>
+							Artiste :
+							{{ user.name }}
+						</h5>
 						<h5>
-							<i>Technique:
-								{{ artwork.technique }}</i>
+							Technique:
+								{{ artwork.technique }}
 						</h5>
 						<h5>{{ artwork.height }}
 							cm X
@@ -33,7 +37,9 @@
 							cm</h5>
 						<h5>
 							Créée le:
-							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</h5>
+							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}
+						</h5>
+						
 					</div>
 					<a href="{{ path('app_user_show', {'id': user.id}) }}" aria-label="Voir le profil de {{ user.name }}">
 						<img class="artwork-user" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
@@ -65,6 +71,7 @@
 					</div>
 				{% endif %}
 			</div>
+
 		</div>
 		{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}
 			<div class="show-footer">
