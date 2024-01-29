@@ -23,6 +23,9 @@
 
 body {
   background-color: var(--background);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 //////////////////////////////////////ADMIN/////////////////////////////////////////////
@@ -608,10 +611,10 @@ font-size: 1.8rem;
 }
 
 footer {
-  background-color: #333;
-  color: #fff;
+  display: flex;
+  background-color: var(--background);
   text-align: center;
-  padding: 10px;
-  border-top: #7B652D;
-  
+  padding: 0.5rem;
+  justify-content: center;
+  margin-top: auto;
 }
