@@ -3,7 +3,7 @@
 {% block title %}Inscription
 {% endblock %}
 {% block head %}
-    <meta name="description" content="Notre formulaire  d'enregistrement sur notre site">
+    <meta name="description" content="Formulaire d'enregistrement sur notre site">
 {% endblock %}
 {% block body %}
 <section class="form_artwork">
@@ -26,7 +26,7 @@
 
         {{ form_row(registrationForm.posterFile) }}
 
-    <button class="btn btn-light btn-block" aria-label="Click here to send your registration">{{ button_label|default(' Valider ') }}</button>
+    <button class="btn btn-light btn-block" aria-label="Cliquez ici pour pouvoir vous enregistrer">{{ button_label|default(' Valider ') }}</button>
     {{ form_end(registrationForm) }}
 </div>
 </section>
