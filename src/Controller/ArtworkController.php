@@ -41,7 +41,7 @@ class ArtworkController extends AbstractController
 
             $this->addFlash('success', 'Votre Oeuvre a bien été ajoutée');
 
-            return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_artwork_show', ['id' => $artwork->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('artwork/new.html.twig', [
