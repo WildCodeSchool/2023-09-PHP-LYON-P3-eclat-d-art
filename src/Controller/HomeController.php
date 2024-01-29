@@ -24,11 +24,13 @@ class HomeController extends AbstractController
 
         $selectedUsers = array_slice($users, 0, 6);
 
+        if($this->getUser()) {
             $this->addFlash('success', 'Heureux de vous revoir');
-
+            }
         return $this->render('home/index.html.twig', [
             'artworks' => $artworks,
             'users' => $selectedUsers,
+            'user' => $this->getUser(),
         ]);
     }
 }
