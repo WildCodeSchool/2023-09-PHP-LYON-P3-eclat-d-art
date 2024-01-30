@@ -282,6 +282,15 @@ hr {
 }
 
 // FORM //
+
+p.p_login {
+  margin-bottom: 3rem;
+}
+
+p.form {
+  margin-top: 2rem;
+}
+
 ul.register {
   font-size: medium;
 }
@@ -297,8 +306,9 @@ div.form_artwork {
 }
 
 h1 {
-  text-decoration: underline 0.1rem;
+  text-decoration: underline 0.01rem;
   text-align: center;
+  margin-bottom: 5.5rem;
 }
 
 .form-button,
@@ -310,18 +320,19 @@ h1 {
 
 form.form_login {
   border: solid;
-  max-width: 25rem;
+  max-width: 36rem;
   margin: auto;
 }
 
 fieldset.form_login {
   display: flex;
-  padding: 1rem;
+  padding-top: 3rem;
+  justify-content: center;
 }
 
 form.form_login label {
-  padding-right: 1rem;
-  width: 6rem;
+  padding-right: 2rem;
+  width: 9rem;
 }
 
 label {
@@ -337,6 +348,7 @@ button {
 button.form_login {
   margin-top: 1rem;
   margin: auto;
+  padding: 0.5rem;
   width: 70%;
 }
 
