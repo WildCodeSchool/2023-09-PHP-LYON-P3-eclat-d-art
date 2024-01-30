@@ -19,28 +19,28 @@ class ArtworkType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'Titre',
+                'label' => 'Titre *',
             ])
             ->add('height', TextType::class, [
-                'label' => 'Hauteur en cm',
+                'label' => 'Hauteur en cm *',
             ])
             ->add('width', TextType::class, [
-                'label' => 'Largeur en cm',
+                'label' => 'Largeur en cm *',
             ])
             ->add('technique', TextType::class, [
-                'label' => 'Technique',
+                'label' => 'Technique *',
                 ])
             ->add('posterFile', VichFileType::class, [
                 'required' => false,
-                'label' => 'Image',
+                'label' => 'Image *',
                 'allow_delete' => false,
                 'download_uri' => false,
                 ])
             ->add('description', TextType::class, [
-                'label' => 'Description',
+                'label' => 'Description *',
             ])
             ->add('createdAt', DateType::class, [
-                'label' => 'Date de création',
+                'label' => 'Date de création *',
                 'years' => range(date('Y'), date('Y') - 50),
                 'format' => 'dd-MM-yyyy',
                 'placeholder' => [
@@ -50,7 +50,7 @@ class ArtworkType extends AbstractType
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'name',
-                'label' => 'Catégorie',
+                'label' => 'Catégorie *',
             ]);
     }
 
