@@ -550,7 +550,7 @@ img.profile-artiste {
 }
 
 .info {
-  display: grid;
+  display: flex;
   justify-content: space-between;
   grid-template-columns: auto;
   width: 80%;
