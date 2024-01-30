@@ -19,6 +19,7 @@ class HomeController extends AbstractController
 
         $artworks = $artworkRepository->findRandomImages();
         $users = $userRepository->findAll();
+        $user = $this->getUser();
 
         shuffle($users);
 
@@ -30,7 +31,7 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'artworks' => $artworks,
             'users' => $selectedUsers,
-            'user' => $this->getUser(),
+            'user' => $user,
         ]);
     }
 }
