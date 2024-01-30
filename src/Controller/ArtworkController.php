@@ -21,8 +21,10 @@ class ArtworkController extends AbstractController
     #[Route('/', name: 'app_artwork_index', methods: ['GET'])]
     public function index(ArtworkRepository $artworkRepository): Response
     {
+            $lastArtwork = $artworkRepository->findAllByOrderDesc();
+
         return $this->render('artwork/index.html.twig', [
-            'artworks' => $artworkRepository->findAll(),
+            'artworks' => $lastArtwork,
         ]);
     }
 
@@ -116,6 +118,16 @@ class ArtworkController extends AbstractController
         return $this->render('artwork/indexByCategory.html.twig', [
             'artworks' => $artworks,
             'category' => $category,
+        ]);
+    }
+    #[Route('/search/results', name: 'search_results')]
+    public function search(Request $request, ArtworkRepository $artworkRepository): Response
+    {
+        $query = $request->query->get('query');
+        $artworks = $artworkRepository->searchByQuery($query);
+
+        return $this->render('artwork/search/results.html.twig', [
+            'artworks' => $artworks,
         ]);
     }
 }
