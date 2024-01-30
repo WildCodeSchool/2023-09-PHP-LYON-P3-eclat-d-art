@@ -21,10 +21,10 @@ class ArtworkController extends AbstractController
     #[Route('/', name: 'app_artwork_index', methods: ['GET'])]
     public function index(ArtworkRepository $artworkRepository): Response
     {
-            $artworkRepository->findAllByOrderDesc();
+            $order = $artworkRepository->findAllByOrderDesc();
 
         return $this->render('artwork/index.html.twig', [
-            'artworks' => $artworkRepository
+            'artworks' => $order,
         ]);
     }
 
