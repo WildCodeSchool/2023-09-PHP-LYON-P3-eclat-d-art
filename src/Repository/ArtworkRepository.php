@@ -70,4 +70,12 @@ class ArtworkRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findAllByOrderDesc(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
