@@ -3,7 +3,7 @@
 
 {% block head %}
 	<head>
-		<meta name="description" content="Content of all the Artworks present on our website">
+		<meta name="description" content="Contenu de toutes les œuvres d'art présentes sur notre site Eclat d'art">
 		<title>
 			{% block title %}
 				Éclat d'Art
@@ -16,7 +16,7 @@
 
 {% for message in app.flashes('success') %}
 	<div class="alert alert-success flash-message">
-		{{ message }} {{ app.user.name }} !
+		{{ message }} {{ user.name }}
 	</div>
 	
 {% endfor %}
@@ -60,35 +60,35 @@
 					<img class=" image" loading="lazy" alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}">
 					<div class="overlay">
 						<h3>Photos</h3>
-						<a href="artwork/category/photo" aria-label="Discover all our photos">Découvrir</a>
+						<a href="artwork/category/photo" aria-label="Découvrez toutes les photos">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
 					<div class="overlay">
 						<h3>Peintures</h3>
-						<a href="artwork/category/peinture" aria-label="Discover all our painting">Découvrir</a>
+						<a href="artwork/category/peinture" aria-label="Découvrez toutes les peintures">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
 					<div class="overlay">
 						<h3>Sculptures</h3>
-						<a href="artwork/category/sculpture" aria-label="Discover all our sculpture">Découvrir</a>
+						<a href="artwork/category/sculpture" aria-label="Découvrez toutes les sculptures">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
 					<div class="overlay">
 						<h3>Fan Arts</h3>
-						<a href="artwork/category/fanart" aria-label="Discover all our FanArts">Découvrir</a>
+						<a href="artwork/category/fanart" aria-label="Découvrez tous les FanArt">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
 					<div class="overlay">
 						<h3>IA</h3>
-						<a href="artwork/category/ia" aria-label="Discover all our IA generating artworks">Découvrir</a>
+						<a href="artwork/category/ia" aria-label="Découvrez tous le contenue générer par IA">Découvrir</a>
 					</div>
 				</div>
 			</div>
@@ -103,13 +103,15 @@
 		<div class="wrapper">
 			<div class="box-area">
 				{% for user in users %}
-					<div class="box">
-						<img class=" image" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
-						<div class="overlay">
-							<h3>{{ user.name }}</h3>
-							<a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
+					{% if 'ROLE_ADMIN' not in user.roles %}
+						<div class="box">
+							<img class=" image" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
+							<div class="overlay">
+								<h3>{{ user.name }}</h3>
+								<a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
+							</div>
 						</div>
-					</div>
+					{% endif %}
 				{% else %}
 					<p>no records found</p>
 				{% endfor %}

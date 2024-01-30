@@ -17,7 +17,7 @@
 		<div class="wrapper">
 			<div class="box-area">
 				{% for artwork in artworks %}
-					<div class="box">
+					<div class="artworks-list">
 						<img class="image" src="{{ vich_uploader_asset(artwork) | imagine_filter('toto') }}" alt="{{ artwork.title }}" loading="lazy">
 						<div class="overlay">
 							<h3>{{ artwork.title }}</h3>
