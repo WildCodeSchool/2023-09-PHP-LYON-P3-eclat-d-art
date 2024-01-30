@@ -456,8 +456,14 @@ div.button-user {
 }
 
 .box-artwork {
-  flex: 0 0 calc(45% - 2rem);
-  max-width: calc(45% - 2rem);
+  max-height: 650px;
+  max-width: 650px;
+}
+
+.box-artwork img {
+  height: 100%;
+  width: 100%;
+  object-fit: fill;
 }
 
 .box-right {
@@ -473,24 +479,34 @@ div.button-user {
 
   .box-artwork,
   .box-right {
-    flex: 0 0 100%;
-    max-width: 100%;
+    justify-content: center;
+    flex: 0 0 95%;
+    max-width: 95%;
+    object-fit: cover;
+  }
+
+  .box-artwork img {
+    object-fit: cover;
+  }
+
+  .artwork-user {
+    height: 6rem;
+    width: 6rem;
+    border-radius: 50%;
+  }
+
+  h5 {
+    size: 0.3rem;
+    text-decoration: underline;
+  }
+
+  .box-right {
+    padding-right: 1rem;
   }
 
   .box-describ,
   .mini-slides {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 369px) {
-
-  .box-artwork,
-  .box-describ,
-  .mini-slides,
-  .box-right {
-    flex: 0 0 100%;
-    max-width: 100%;
+    width: 95%;
   }
 }
 
