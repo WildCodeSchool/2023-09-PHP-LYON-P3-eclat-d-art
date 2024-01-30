@@ -111,7 +111,7 @@ a,
   border-radius: 10px;
   display: block;
   transition: transform 0.5s;
-} 
+}
 
 .artworks-list {
   border-radius: 1rem;
@@ -131,7 +131,7 @@ a,
   border-radius: 10px;
   display: block;
   transition: transform 0.5s;
-} 
+}
 .overlay {
   width: 100%;
   height: 0;
@@ -550,7 +550,7 @@ img.profile-artiste {
 }
 
 .info {
-  display: grid;
+  display: flex;
   justify-content: space-between;
   grid-template-columns: auto;
   width: 80%;
@@ -558,6 +558,11 @@ img.profile-artiste {
   padding: 1rem;
   box-shadow: 3px 3px 3px 3px rgba(37, 36, 36, 0.222);
   border-radius: 1rem;
+}
+
+.description {
+    overflow: auto;
+    width: 50em;
 }
 
 .image-container {
@@ -611,27 +616,33 @@ font-size: 1.8rem;
   }
 }
 
-@media screen and (max-width: 700px) {
-  .profile-container
-   {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin-left: 1rem;
-    margin-top: 1rem;
-  }
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 10%;
+    }
 
-  .info
-  {
-    align-items: center;
-    width: 100%;
-    margin-bottom: 10%;
-  }
-}
+    img.profile-artiste {
+        width: 150px;
+        height: 150px;
+    }
 
-.bi {
-  font-size: 1.2rem;
-  background-color: black;
+    .info {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+
+    .description {
+        width: 100%;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 footer {

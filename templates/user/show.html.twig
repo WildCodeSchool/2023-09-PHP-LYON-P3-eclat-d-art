@@ -10,40 +10,42 @@
 
 	<div class="profile-container">
 		<div class="info">
-			<h3>{{ user.name }}</h3>
-			<h4>{{ user.nationality }}</h4>
-			<h4>Description :</h4>
-			<p>{{ user.description }}</p>
-		</div>
-		<div class="image-container">
-			<img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
-			<p>
-				{{ user.name }}
-			</p>
-			{% if user.instagram or user.facebook or user.twitter or user.pinterest %}
-				<div class="social-links">
-					{% if user.instagram %}
-						<a href="{{ user.instagram }}">
-							<i class="fa-brands fa-instagram" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
-						</a>
-					{% endif %}
-					{% if user.facebook %}
-						<a href="{{ user.facebook }}">
-							<i class="fa-brands fa-facebook" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
-						</a>
-					{% endif %}
-					{% if user.twitter %}
-						<a href="{{ user.twitter }}">
-							<i class="fa-brands fa-x-twitter" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
-						</a>
-					{% endif %}
-					{% if user.pinterest %}
-						<a href="{{ user.pinterest }}">
-							<i class="fa-brands fa-pinterest" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
-						</a>
-					{% endif %}
-				</div>
-			{% endif %}
+            <section class="text">
+                <h3>{{ user.name }}</h3>
+                <h4>{{ user.nationality }}</h4>
+                <h4>Description :</h4>
+                <p class="description">{{ user.description }}</p>
+            </section>
+            <div class="image-container">
+                <img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
+                <p>
+                    {{ user.name }}
+                </p>
+                {% if user.instagram or user.facebook or user.twitter or user.pinterest %}
+                    <div class="social-links">
+                        {% if user.instagram %}
+                            <a href="{{ user.instagram }}">
+                                <i class="fa-brands fa-instagram" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
+                            </a>
+                        {% endif %}
+                        {% if user.facebook %}
+                            <a href="{{ user.facebook }}">
+                                <i class="fa-brands fa-facebook" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
+                            </a>
+                        {% endif %}
+                        {% if user.twitter %}
+                            <a href="{{ user.twitter }}">
+                                <i class="fa-brands fa-x-twitter" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
+                            </a>
+                        {% endif %}
+                        {% if user.pinterest %}
+                            <a href="{{ user.pinterest }}">
+                                <i class="fa-brands fa-pinterest" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
 		</div>
 	</div>
 	<div class="button-user">
@@ -58,7 +60,6 @@
 		<h2>Retrouver d'autres oeuvres de
 			{{ user.name }}</h2>
 	</div>
-
 	<div id="card-area-categories">
 		<div class="wrapper">
 			<div class="box-area">
