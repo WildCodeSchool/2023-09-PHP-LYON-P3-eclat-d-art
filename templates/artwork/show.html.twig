@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block head %}
 	<head>
 		<meta name="Artwork" content="Œuvre d'art mise en valeur avec tous ses détails et informations">
@@ -51,36 +50,35 @@
 				<p>{{ artwork.description }}</p>
 			</div>
 
-			<div class="mini-slides">
+			<div id="slider-container" class="slideur">
 				{% if artworks[0] is defined %}
-					<div class="slide slide-1">
-						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
+					<div class="slid">
+						<a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">
 							<img src="{{ vich_uploader_asset(artworks[0]) }}" alt="{{ artworks[0].title }}" loading="lazy">
 						</a>
 					</div>
 				{% endif %}
 				{% if artworks[1] is defined %}
-					<div class="slide slide-2">
-						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
+					<div class="slid">
+						<a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">
 							<img src="{{ vich_uploader_asset(artworks[1]) }}" alt="{{ artworks[1].title }}" loading="lazy">
 						</a>
 					</div>
 				{% endif %}
 				{% if artworks[2] is defined %}
-					<div class="slide slide-3">
-						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
+					<div class="slid">
+						<a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">
 							<img src="{{ vich_uploader_asset(artworks[2]) }}" alt="{{ artworks[2].title }}" loading="lazy">
 						</a>
 					</div>
 				{% endif %}
 			</div>
+			{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}
+				<div class="show-footer">
+					<a class="btn btn-light artwork-descovery" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
+					{{ include('artwork/_delete_form.html.twig') }}
+				</div>
+			{% endif %}
 		</div>
-		{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}
-			<div class="show-footer">
-				<a class="btn btn-light artwork-descovery" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
-				{{ include('artwork/_delete_form.html.twig') }}
-			</div>
-		{% endif %}
 	</div>
-
-</div>{% endblock %}
+{% endblock %}
