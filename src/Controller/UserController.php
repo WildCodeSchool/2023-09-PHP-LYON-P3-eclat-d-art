@@ -78,4 +78,14 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }
+    #[Route('/search/index', name: 'search_users')]
+    public function search(Request $request, UserRepository $userRepository): Response
+    {
+        $query = $request->query->get('query');
+        $users = $userRepository->searchByQuery($query);
+
+        return $this->render('user/index.html.twig', [
+            'users' => $users,
+        ]);
+    }
 }
