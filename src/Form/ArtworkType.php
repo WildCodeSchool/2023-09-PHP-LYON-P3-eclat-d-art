@@ -22,10 +22,10 @@ class ArtworkType extends AbstractType
                 'label' => 'Titre',
             ])
             ->add('height', TextType::class, [
-                'label' => 'Hauteur',
+                'label' => 'Hauteur en cm',
             ])
-            ->add('weight', TextType::class, [
-                'label' => 'Largeur',
+            ->add('width', TextType::class, [
+                'label' => 'Largeur en cm',
             ])
             ->add('technique', TextType::class, [
                 'label' => 'Technique',
@@ -44,13 +44,8 @@ class ArtworkType extends AbstractType
                 'years' => range(date('Y'), date('Y') - 50),
                 'format' => 'dd-MM-yyyy',
                 'placeholder' => [
-                    'year' => 'Années', 'month' => 'Mois', 'day' => 'Jours',
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ],
-            ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'name',
-                'label' => 'Utilisateur',
             ])
             ->add('category', EntityType::class, [
                 'class' => Category::class,

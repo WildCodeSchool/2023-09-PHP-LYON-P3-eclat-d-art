@@ -40,28 +40,42 @@ class ArtworkRepository extends ServiceEntityRepository
 
         return $queryBuilder->getResult();
     }
-//    /**
-//     * @return Artwork[] Returns an array of Artwork objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('o.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
 
-//    public function findOneBySomeField($value): ?Artwork
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->andWhere('o.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function findImagesByUser(int $userId): array
+    {
+        $entityManager = $this->getEntityManager();
+        $totalArtworks = $entityManager
+            ->createQuery('SELECT COUNT(a.id) FROM App\Entity\Artwork a WHERE a.user = :userId')
+            ->setParameter('userId', $userId)
+            ->getSingleScalarResult();
+
+        $maxOffset = max(0, $totalArtworks - 3);
+
+        $offset = rand(0, $maxOffset);
+
+        $queryBuilder = $this->createQueryBuilder('a')
+            ->andWhere('a.user = :userId')
+            ->setParameter('userId', $userId)
+            ->setFirstResult($offset)
+            ->setMaxResults(3)
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+    public function searchByQuery(string $query): array
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.title LIKE :query')
+            ->setParameter('query', '%' . $query . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findAllByOrderDesc(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->orderBy('a.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

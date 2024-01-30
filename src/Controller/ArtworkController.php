@@ -7,6 +7,7 @@ use App\Entity\User;
 use App\Form\ArtworkType;
 use App\Repository\ArtworkRepository;
 use App\Repository\CategoryRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,8 +21,10 @@ class ArtworkController extends AbstractController
     #[Route('/', name: 'app_artwork_index', methods: ['GET'])]
     public function index(ArtworkRepository $artworkRepository): Response
     {
+            $lastArtwork = $artworkRepository->findAllByOrderDesc();
+
         return $this->render('artwork/index.html.twig', [
-            'artworks' => $artworkRepository->findAll(),
+            'artworks' => $lastArtwork,
         ]);
     }
 
@@ -38,7 +41,9 @@ class ArtworkController extends AbstractController
             $entityManager->persist($artwork);
             $entityManager->flush();
 
-            return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
+            $this->addFlash('success', 'Votre Oeuvre a bien été ajoutée');
+
+            return $this->redirectToRoute('app_artwork_show', ['id' => $artwork->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('artwork/new.html.twig', [
@@ -48,10 +53,15 @@ class ArtworkController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_artwork_show', methods: ['GET'])]
-    public function show(Artwork $artwork): Response
+    public function show(Artwork $artwork, ArtworkRepository $artworkRepository): Response
     {
+        $user = $artwork->getUser();
+        $userId = $artwork->getUser()->getId();
+        $artworksUser = $artworkRepository->findImagesByUser($userId);
         return $this->render('artwork/show.html.twig', [
+            'artworks' => $artworksUser,
             'artwork' => $artwork,
+            'user' => $user,
         ]);
     }
 
@@ -67,6 +77,8 @@ class ArtworkController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
+
+            $this->addFlash('success', 'Votre Oeuvre a bien été modifiée');
 
             return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
         }
@@ -88,6 +100,7 @@ class ArtworkController extends AbstractController
             $entityManager->remove($artwork);
             $entityManager->flush();
         }
+        $this->addFlash('success', 'Votre Oeuvre a bien été supprimée');
 
         return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
     }
@@ -105,6 +118,16 @@ class ArtworkController extends AbstractController
         return $this->render('artwork/indexByCategory.html.twig', [
             'artworks' => $artworks,
             'category' => $category,
+        ]);
+    }
+    #[Route('/search/results', name: 'search_results')]
+    public function search(Request $request, ArtworkRepository $artworkRepository): Response
+    {
+        $query = $request->query->get('query');
+        $artworks = $artworkRepository->searchByQuery($query);
+
+        return $this->render('artwork/search/results.html.twig', [
+            'artworks' => $artworks,
         ]);
     }
 }

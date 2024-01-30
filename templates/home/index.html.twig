@@ -2,126 +2,121 @@
 
 
 {% block head %}
-<head>
-    <meta name="Artworks" content="Content of all the Artworks present on our website">
-    <title>{% block title %} Éclat d'Art {% endblock %}</title>
-</head>
+	<head>
+		<meta name="description" content="Contenu de toutes les œuvres d'art présentes sur notre site Eclat d'art">
+		<title>
+			{% block title %}
+				Éclat d'Art
+			{% endblock %}
+		</title>
+	</head>
 {% endblock %}
+
 {% block body %}
 
-	<div class="slides">
-    <div class="slide slide-1">
-      <img src="{{ vich_uploader_asset(artworks[0]) }}" alt="{{ artworks[0].title }}">
-    </div>
-		<div class="slide slide-2">
-			<img src="{{ vich_uploader_asset(artworks[1]) }}" alt="{{ artworks[1].title }}">
-		</div>
-		<div class="slide slide-3">
-			<img src="{{ vich_uploader_asset(artworks[2]) }}" alt="{{ artworks[2].title }}">
-		</div>
-  </div>
-<hr>
-<hr>
-	<div>
-        <h1>Éclats d’art : Galerie d'art en ligne.</h1>
-		<a id="about-us"></a>
-			<p class="présentation">"Plongez dans un monde d'expression infinie où les artistes se rencontrent,
-			partagent et célèbrent leur créativité. Notre galerie d'art en ligne est un
-			espace dynamique dédié à la découverte de talents émergents et établis.
-			Rejoignez notre communauté passionnée, explorez des œuvres captivantes et
-			plongez dans l'univers vibrant de l'art contemporain partagé par des esprits
-			créatifs du monde entier."</p>
+{% for message in app.flashes('success') %}
+	<div class="alert alert-success flash-message">
+		{{ message }} {{ user.name }}
 	</div>
-<hr>
-<hr>
-<div>
-<h2>Catégories</h2>
-</div>
+	
+{% endfor %}
+	<div class="slides">
+		{% if artworks[0] is defined %}
+			<div class="slide slide-1">
+				<img src="{{ vich_uploader_asset(artworks[0]) }}" alt="{{ artworks[0].title }}" loading="lazy">
+			</div>
+		{% endif %}
+		{% if artworks[1] is defined %}
+			<div class="slide slide-2">
+				<img src="{{ vich_uploader_asset(artworks[1]) }}" alt="{{ artworks[1].title }}" loading="lazy">
+			</div>
+		{% endif %}
+		{% if artworks[2] is defined %}
+			<div class="slide slide-3">
+				<img src="{{ vich_uploader_asset(artworks[2]) }}" alt="{{ artworks[2].title }}" loading="lazy">
+			</div>
+		{% endif %}
+	</div>
 
-<div id="card-area-categories">
+	<div>
+		<h1>Éclats d’art : Galerie d'art en ligne.</h1>
+		<a id="about-us"></a>
+		<p class="présentation">"Plongez dans un monde d'expression infinie où les artistes se rencontrent,
+												partagent et célèbrent leur créativité. Notre galerie d'art en ligne est un
+												espace dynamique dédié à la découverte de talents émergents et établis.
+												Rejoignez notre communauté passionnée, explorez des œuvres captivantes et
+												plongez dans l'univers vibrant de l'art contemporain partagé par des esprits
+												créatifs du monde entier."</p>
+	</div>
+
+	<div>
+		<h2>Catégories</h2>
+	</div>
+
+	<div id="card-area-categories">
 		<div class="wrapper">
 			<div class="box-area">
 				<div class="box">
-					<img class=" image" loading="lazy"  alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}"  >
+					<img class=" image" loading="lazy" alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}">
 					<div class="overlay">
 						<h3>Photos</h3>
-            <a href="artwork/category/photo" aria-label="Discover all our photos">Découvrir</a>
+						<a href="artwork/category/photo" aria-label="Découvrez toutes les photos">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
-					<img class= " image"  loading="lazy" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
+					<img class=" image" loading="lazy" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
 					<div class="overlay">
 						<h3>Peintures</h3>
-						<a href="artwork/category/peinture" aria-label="Discover all our painting">Découvrir</a>
+						<a href="artwork/category/peinture" aria-label="Découvrez toutes les peintures">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
-					<img class=" image" loading="lazy"  alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
+					<img class=" image" loading="lazy" alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
 					<div class="overlay">
 						<h3>Sculptures</h3>
-						<a href="artwork/category/sculpture" aria-label="Discover all our sculpture">Découvrir</a>
+						<a href="artwork/category/sculpture" aria-label="Découvrez toutes les sculptures">Découvrir</a>
 					</div>
 				</div>
-        <div class="box">
-					<img class=" image" loading="lazy"  alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
+				<div class="box">
+					<img class=" image" loading="lazy" alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
 					<div class="overlay">
 						<h3>Fan Arts</h3>
-						<a href="artwork/category/fanart" aria-label="Discover all our FanArts">Découvrir</a>
+						<a href="artwork/category/fanart" aria-label="Découvrez tous les FanArt">Découvrir</a>
 					</div>
 				</div>
-        <div class="box">
-					<img class=" image" loading="lazy"  alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
+				<div class="box">
+					<img class=" image" loading="lazy" alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
 					<div class="overlay">
 						<h3>IA</h3>
-						<a href="artwork/category/ia" aria-label="Discover all our IA generating artworks">Découvrir</a>
+						<a href="artwork/category/ia" aria-label="Découvrez tous le contenue générer par IA">Découvrir</a>
 					</div>
 				</div>
+			</div>
 		</div>
 	</div>
-</div>
 
-<hr>
-<hr>
+	<h2>
+		<a href="{{ path('app_user_index') }}">Artistes</a>
+	</h2>
 
-<h2><a href="user">Artistes</a></h2>
-
-<div id="card-area-artistes">
+	<div id="card-area-categories">
 		<div class="wrapper">
 			<div class="box-area">
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Jeancolor" src="{{ asset('build/images/jean.webp') }}">
-					<div class="overlay">
-						<h3>Jeancolor</h3>
-                        <a href="user" aria-label="Discover more about this Artwork">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Emilie" src="{{ asset('build/images/emilie.webp') }}">
-					<div class="overlay">
-						<h3>Émilie</h3>
-						<a href="user" aria-label="Discover more about this artist">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste El Artiste" src="{{ asset('build/images/josé.webp') }}">
-					<div class="overlay">
-						<h3>El Artiste</h3>
-                        <a href="user" aria-label="Discover more about this artist">Découvrir</a>					</div>
-				</div>
-        <div class="box">
-					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Bertelli" src="{{ asset('build/images/bertelli.webp') }}">
-					<div class="overlay">
-						<h3>Bertelli</h3>
-                        <a href="user" aria-label="Discover more about this artist">Découvrir</a>					</div>
-				</div>
-        <div class="box">
-					<img class="img-thumbnail image" loading="lazy"  alt="photo d' l'artiste Khoa" src="{{ asset('build/images/khoa.webp') }}">
-					<div class="overlay">
-						<h3>Khoa</h3>
-                        <a href="user" aria-label="Discover more about this artist">Découvrir</a>					</div>
-				</div>
+				{% for user in users %}
+					{% if 'ROLE_ADMIN' not in user.roles %}
+						<div class="box">
+							<img class=" image" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
+							<div class="overlay">
+								<h3>{{ user.name }}</h3>
+								<a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
+							</div>
+						</div>
+					{% endif %}
+				{% else %}
+					<p>no records found</p>
+				{% endfor %}
+			</div>
 		</div>
 	</div>
-</div>
 
 {% endblock %}

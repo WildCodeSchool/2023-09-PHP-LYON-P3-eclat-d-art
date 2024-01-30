@@ -60,8 +60,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?DateTimeInterface $updatedAt = null;
 
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class)]
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Artwork::class, cascade: ['remove'])]
     private Collection $artworks;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $instagram = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $facebook = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $twitter = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $pinterest = null;
 
     public function __construct()
     {
@@ -240,5 +252,82 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+
+    public function __toString(): string
+    {
+        return $this->getName();
+    }
+    public function getInstagram(): ?string
+    {
+        return $this->instagram;
+    }
+
+    public function setInstagram(?string $instagram): static
+    {
+        $this->instagram = $instagram;
+        return $this;
+    }
+
+    public function getFacebook(): ?string
+    {
+        return $this->facebook;
+    }
+
+    public function setFacebook(?string $facebook): static
+    {
+        $this->facebook = $facebook;
+        return $this;
+    }
+
+    public function getTwitter(): ?string
+    {
+        return $this->twitter;
+    }
+
+    public function setTwitter(?string $twitter): static
+    {
+        $this->twitter = $twitter;
+        return $this;
+    }
+
+    public function getPinterest(): ?string
+    {
+        return $this->pinterest;
+    }
+
+    public function setPinterest(?string $pinterest): static
+    {
+        $this->pinterest = $pinterest;
+        return $this;
+    }
+
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'email' => $this->email,
+            'password' => $this->password,
+            'roles' => $this->roles,
+            'name' => $this->name,
+            'description' => $this->description,
+            'nationality' => $this->nationality,
+            'picture' => $this->picture,
+            'artworks' => $this->artworks,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->id = $data['id'];
+        $this->email = $data['email'];
+        $this->password = $data['password'];
+        $this->roles = $data['roles'];
+        $this->name = $data['name'];
+        $this->description = $data['description'];
+        $this->nationality = $data['nationality'];
+        $this->picture = $data['picture'];
+        $this->artworks = $data['artworks'];
     }
 }

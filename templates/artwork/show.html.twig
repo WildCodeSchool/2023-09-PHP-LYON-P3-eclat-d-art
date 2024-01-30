@@ -3,7 +3,7 @@
 
 {% block head %}
 	<head>
-		<meta name="Artwork" content="Highlighted Artwork with all his functional details">
+		<meta name="Artwork" content="Œuvre d'art mise en valeur avec tous ses détails et informations">
 		<title>
 			{% block title %}
 				Oeuvres
@@ -15,51 +15,70 @@
 
 	<div class="box-area">
 		<div class="box-artwork img-magnifier-container">
-			<img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}">
+			<img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
 		</div>
 
 		<div class="box-right">
 			<div class="box-describ">
-				<h1>{{ artwork.title }}</h1>
+				<h5>{{ artwork.title }}</h5>
 				<div class="user-image">
 					<div class="art-details">
+					<h5>
+							Artiste :
+							{{ user.name }}
+						</h5>
 						<h5>
-							<i>Technique:
-								{{ artwork.technique }}</i>
+							Technique:
+								{{ artwork.technique }}
 						</h5>
 						<h5>{{ artwork.height }}
 							cm X
-							{{ artwork.weight }}
+							{{ artwork.width }}
 							cm</h5>
 						<h5>
-							Crée le:
-							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}</h5>
+							Créée le:
+							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}
+						</h5>
+						
 					</div>
-					<img class="artwork-user" src="{{ asset('build/images/emilie.webp') }}" alt="Photo de l'artiste">
+					<a href="{{ path('app_user_show', {'id': user.id}) }}" aria-label="Voir le profil de {{ user.name }}">
+						<img class="artwork-user" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
+					</a>
 				</div>
 				<p>{{ artwork.description }}</p>
 			</div>
 
 			<div class="mini-slides">
-				<div class="slide slide">
-					<img src="{{ asset('build/images/caravage.webp') }}" alt="First slide">
-				</div>
-				<div class="slide slide-2">
-					<img src="{{ asset('build/images/luffy.webp') }}" alt="Second slide">
-				</div>
-				<div class="slide slide-3">
-					<img src="{{ asset('build/images/colorBou.webp') }}" alt="Third slide">
-				</div>
+				{% if artworks[0] is defined %}
+					<div class="slide slide-1">
+						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
+							<img src="{{ vich_uploader_asset(artworks[0]) }}" alt="{{ artworks[0].title }}" loading="lazy">
+						</a>
+					</div>
+				{% endif %}
+				{% if artworks[1] is defined %}
+					<div class="slide slide-2">
+						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
+							<img src="{{ vich_uploader_asset(artworks[1]) }}" alt="{{ artworks[1].title }}" loading="lazy">
+						</a>
+					</div>
+				{% endif %}
+				{% if artworks[2] is defined %}
+					<div class="slide slide-3">
+						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
+							<img src="{{ vich_uploader_asset(artworks[2]) }}" alt="{{ artworks[2].title }}" loading="lazy">
+						</a>
+					</div>
+				{% endif %}
 			</div>
-			
+
 		</div>
-{% if is_granted("ROLE_ADMIN") or app.user.id == artwork.user.id %}
-				<div class="show-footer">
-					<a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_index') }}" aria-label="Retour aux oeuvres" role="button">Liste des oeuvres</a>
-					<a class="btn btn-primary artwork-descovery" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
-					{{ include('artwork/_delete_form.html.twig') }}
-				</div>
-			{% endif %}
+		{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}
+			<div class="show-footer">
+				<a class="btn btn-light artwork-descovery" href="{{ path('app_artwork_edit', {'id': artwork.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
+				{{ include('artwork/_delete_form.html.twig') }}
+			</div>
+		{% endif %}
 	</div>
 
-{% endblock %}
+</div>{% endblock %}

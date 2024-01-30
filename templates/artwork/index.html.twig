@@ -4,25 +4,31 @@
 {% endblock %}
 
 {% block body %}
-
-	<h2>Oeuvres</h2>
-
-	<div class="gallery-container">
-		{% for artwork in artworks %}
-			<div class="gallery">
-				<div class="gallery-image">
-                <a href="{{ path('app_artwork_show', {'id': artwork.id}) }}">
-    					<img class="image-artwork" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}"> 
-                </a>
-				</div>
-				<div class="gallery-text">
-					<p class="titre">{{ artwork.title }}</p>
-					<a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
-				</div>
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success flash-message">
+			{{ message }}
+		</div>
+	{% endfor %}
+	<h2>Œuvres</h2>
+    <div class="searchbar">
+        {{ include('artwork/search/_form.html.twig') }}
+    </div>
+	<div id="card-area-categories">
+		<div class="wrapper">
+			<div class="box-area">
+				{% for artwork in artworks %}
+					<div class="artworks-list">
+						<img class="image" src="{{ vich_uploader_asset(artwork) | imagine_filter('toto') }}" alt="{{ artwork.title }}" loading="lazy">
+						<div class="overlay">
+							<h3>{{ artwork.title }}</h3>
+							<a class="btn btn-secondary form-button form-link artwork-descovery" href="{{ path('app_artwork_show', {'id': artwork.id}) }} " role="button">Découvrir</a>
+						</div>
+					</div>
+				{% else %}
+					<p>Aucunes œuvres ne correspond à votre recherche</p>
+				{% endfor %}
 			</div>
-		{% else %}
-			<p>no records found</p>
-		{% endfor %}
+		</div>
 	</div>
 
 {% endblock %}

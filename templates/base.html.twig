@@ -5,6 +5,10 @@
         <meta name="description" content="Notre galerie d'art en ligne propose un éspace virtuel où les artistes peuvent exposé leurs oeuvres aux regards du monde entier ">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="icon" type="image/png" href="{{ asset('build/images/logo-eclat.png') }}"/>
+        <script src="https://kit.fontawesome.com/829a2c6c69.js" crossorigin="anonymous"></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
         <title>
             {% block title %}Eclat d'Art{% endblock %}
         </title>
@@ -18,7 +22,8 @@
         {% endblock %}
     </head>
     <body>
-    <header>{% include "/_navbar.html.twig" %}</header>
-        {% block body %}{% endblock %}
+        <header>{% include "/_navbar.html.twig" %}</header>
+        <main>{% block body %}{% endblock %}</main>
+        {% include "/_footer.html.twig" %}  
     </body>
 </html>
