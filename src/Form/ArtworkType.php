@@ -37,7 +37,7 @@ class ArtworkType extends AbstractType
                 'download_uri' => false,
                 ])
             ->add('description', TextType::class, [
-                'label' => 'Description *',
+                'label' => 'Description',
             ])
             ->add('createdAt', DateType::class, [
                 'label' => 'Date de création *',
