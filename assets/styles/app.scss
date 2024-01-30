@@ -111,7 +111,7 @@ a,
   border-radius: 10px;
   display: block;
   transition: transform 0.5s;
-} 
+}
 
 .artworks-list {
   border-radius: 1rem;
@@ -131,7 +131,7 @@ a,
   border-radius: 10px;
   display: block;
   transition: transform 0.5s;
-} 
+}
 .overlay {
   width: 100%;
   height: 0;
@@ -282,6 +282,15 @@ hr {
 }
 
 // FORM //
+
+p.p_login {
+  margin-bottom: 3rem;
+}
+
+p.form {
+  margin-top: 2rem;
+}
+
 ul.register {
   font-size: medium;
 }
@@ -296,9 +305,10 @@ div.form_artwork {
   padding: 1rem;
 }
 
-h1 {
-  text-decoration: underline 0.1rem;
+.h1-form {
+  text-decoration: underline 0.01rem;
   text-align: center;
+  margin-bottom: 5.5rem;
 }
 
 .form-button,
@@ -310,18 +320,19 @@ h1 {
 
 form.form_login {
   border: solid;
-  max-width: 25rem;
+  max-width: 36rem;
   margin: auto;
 }
 
 fieldset.form_login {
   display: flex;
-  padding: 1rem;
+  padding-top: 3rem;
+  justify-content: center;
 }
 
 form.form_login label {
-  padding-right: 1rem;
-  width: 6rem;
+  padding-right: 2rem;
+  width: 9rem;
 }
 
 label {
@@ -337,6 +348,7 @@ button {
 button.form_login {
   margin-top: 1rem;
   margin: auto;
+  padding: 0.5rem;
   width: 70%;
 }
 
@@ -550,7 +562,7 @@ img.profile-artiste {
 }
 
 .info {
-  display: grid;
+  display: flex;
   justify-content: space-between;
   grid-template-columns: auto;
   width: 80%;
@@ -558,6 +570,11 @@ img.profile-artiste {
   padding: 1rem;
   box-shadow: 3px 3px 3px 3px rgba(37, 36, 36, 0.222);
   border-radius: 1rem;
+}
+
+.description {
+    overflow: auto;
+    width: 50em;
 }
 
 .image-container {
@@ -611,27 +628,33 @@ font-size: 1.8rem;
   }
 }
 
-@media screen and (max-width: 700px) {
-  .profile-container
-   {
-    display: flex;
-    flex-direction: column;
-    width: 90%;
-    margin-left: 1rem;
-    margin-top: 1rem;
-  }
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        margin-top: 10%;
+    }
 
-  .info
-  {
-    align-items: center;
-    width: 100%;
-    margin-bottom: 10%;
-  }
-}
+    img.profile-artiste {
+        width: 150px;
+        height: 150px;
+    }
 
-.bi {
-  font-size: 1.2rem;
-  background-color: black;
+    .info {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 2rem;
+    }
+
+    .description {
+        width: 100%;
+    }
+
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 footer {
