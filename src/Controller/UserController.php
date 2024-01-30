@@ -27,6 +27,9 @@ class UserController extends AbstractController
     #[Route('/show/{id}', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user, ArtworkRepository $artworkRepository): Response
     {
+        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+            return $this->render('@Twig/Exception/error404.html.twig');
+        }
         $artworks = $artworkRepository->findBy(['user' => $user]);
 
         return $this->render('user/show.html.twig', [
@@ -68,8 +71,8 @@ class UserController extends AbstractController
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
             $entityManager->remove($user);
             $entityManager->flush();
+            $this->addFlash('success', 'Votre profil a bien été supprimé');
         }
-        $this->addFlash('success', 'Votre profil a bien été supprimé');
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
     }

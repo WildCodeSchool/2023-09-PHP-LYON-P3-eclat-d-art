@@ -19,16 +19,19 @@ class HomeController extends AbstractController
 
         $artworks = $artworkRepository->findRandomImages();
         $users = $userRepository->findAll();
+        $user = $this->getUser();
 
         shuffle($users);
 
         $selectedUsers = array_slice($users, 0, 6);
 
+        if ($this->getUser()) {
             $this->addFlash('success', 'Heureux de vous revoir');
-
+        }
         return $this->render('home/index.html.twig', [
             'artworks' => $artworks,
             'users' => $selectedUsers,
+            'user' => $user,
         ]);
     }
 }
