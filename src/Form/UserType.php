@@ -24,7 +24,7 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class, [
-                'label' => 'Email',
+                'label' => 'Email *',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez renseigner une adresse e-mail valide'
@@ -32,7 +32,7 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nom d\'utilisateur',
+                'label' => 'Nom d\'utilisateur *',
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Veuillez renseigner un nom valide'
@@ -40,11 +40,11 @@ class UserType extends AbstractType
                 ]
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Description',
+                'label' => 'Description *',
                 'required' => false,
             ])
             ->add('nationality', CountryType::class, [
-                'label' => 'Nationalité',
+                'label' => 'Nationalitée *',
             ])
             ->add('instagram', UrlType::class, [
                 'label' => 'Instagram',
