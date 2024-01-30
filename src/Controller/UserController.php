@@ -57,11 +57,11 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_ADMIN')]
+    #[IsGranted('ROLE_USER')]
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
-        if (!$this->isGranted('ROLE_ADMIN')) {
+        if ($this->getUser() !== $user && !$this->isGranted('ROLE_ADMIN')) {
             // If not the owner, throws a 403 Access Denied exception
             throw $this->createAccessDeniedException('Only the owner can edit the program!');
         }
