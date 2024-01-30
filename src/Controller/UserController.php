@@ -69,6 +69,8 @@ class UserController extends AbstractController
             throw $this->createAccessDeniedException('Only the owner can edit the program!');
         }
         if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
+            $request->getSession()->invalidate();
+            $this->container->get('security.token_storage')->setToken(null);
             $entityManager->remove($user);
             $entityManager->flush();
             $this->addFlash('success', 'Votre profil a bien été supprimé');
