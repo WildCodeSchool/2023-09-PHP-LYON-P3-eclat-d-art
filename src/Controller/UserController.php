@@ -20,10 +20,10 @@ class UserController extends AbstractController
     public function index(UserRepository $userRepository): Response
     {
 
-        $lastUser = $userRepository->findAllByUserDesc();
+        $user = $userRepository->findAllByUserDesc();
 
         return $this->render('user/index.html.twig', [
-            'users' => $lastUser,
+            'users' => $user,
         ]);
     }
 
