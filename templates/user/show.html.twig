@@ -4,6 +4,13 @@
 
 {% block body %}
 
+{% for message in app.flashes('success') %}
+	<div class="alert alert-success flash-message">
+		{{ message }} {{ user.name }}
+	</div>
+	
+{% endfor %}
+
 	<div class="title-page-artiste">
 		<h1>{{ user.name }}</h1>
 	</div>

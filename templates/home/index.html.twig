@@ -14,12 +14,13 @@
 
 {% block body %}
 
-{% for message in app.flashes('success') %}
-	<div class="alert alert-success flash-message">
-		{{ message }} {{ user.name }}
-	</div>
-	
-{% endfor %}
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success flash-message">
+			{{ message }}
+			{{ user.name }}
+		</div>
+
+	{% endfor %}
 	<div class="slides">
 		{% if artworks[0] is defined %}
 			<div class="slide slide-1">
@@ -41,12 +42,20 @@
 	<div>
 		<h1>Éclats d’art : Galerie d'art en ligne.</h1>
 		<a id="about-us"></a>
-		<p class="présentation">"Plongez dans un monde d'expression infinie où les artistes se rencontrent,
-												partagent et célèbrent leur créativité. Notre galerie d'art en ligne est un
-												espace dynamique dédié à la découverte de talents émergents et établis.
-												Rejoignez notre communauté passionnée, explorez des œuvres captivantes et
-												plongez dans l'univers vibrant de l'art contemporain partagé par des esprits
-												créatifs du monde entier."</p>
+		<p class="box-about">"Immergez-vous dans un monde d'expression infinie, où les artistes se rassemblent, partagent et célèbrent leur créativité. 
+		Notre galerie d'art en ligne offre un espace dynamique dédié à la découverte de talents émergents et établis. Rejoignez une communauté passionnée, 
+		explorez des œuvres captivantes et plongez dans l'univers vibrant de l'art contemporain partagé par des esprits créatifs du monde entier.
+		Découvrez la diversité artistique à travers une gamme éclectique de médiums, de styles et de visions uniques. <br>
+		Que vous soyez un amateur d'art avide ou un collectionneur passionné, notre plateforme vous offre un accès exclusif à des créations exceptionnelles.
+		Explorez des peintures expressives, des sculptures intrigantes, des photographies évocatrices et bien plus encore, toutes créées par des artistes talentueux qui repoussent les limites de l'imagination.
+		En tant que membre de notre communauté artistique, vous aurez l'opportunité de participer à des événements exclusifs, des expositions virtuelles et des rencontres avec des artistes renommés.
+		Connectez-vous avec des esprits créatifs du monde entier, échangez des idées et partagez votre passion pour l'art contemporain.
+		Notre plateforme devient ainsi un lieu de convergence où l'inspiration fuse et où les frontières artistiques s'effacent.<br>
+		Parcourez notre galerie en ligne avec une facilité intuitive, découvrez de nouvelles perspectives et laissez-vous emporter par la puissance de l'expression artistique.
+		Que vous soyez à la recherche de pièces uniques pour enrichir votre collection ou que vous souhaitiez simplement vous immerger dans l'effervescence artistique mondiale,
+		notre galerie est l'endroit idéal pour explorer, apprécier et célébrer l'art contemporain à son meilleur.
+		Rejoignez-nous dans cette aventure artistique captivante, où la créativité connaît une expression infinie et où chaque œuvre raconte une histoire unique. Bienvenue dans notre galerie d'art en ligne, 
+		où la passion et l'inspiration se rencontrent pour créer un monde artistique véritablement exceptionnel."</p>
 	</div>
 
 	<div>
