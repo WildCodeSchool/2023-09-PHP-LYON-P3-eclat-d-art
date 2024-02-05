@@ -32,10 +32,17 @@ body {
 
 .searchbar {
     display: flex;
-    justify-content : center;
+    justify-content : start;
 }
 .search_button {
     border: none;
+}
+
+@media screen and (max-width: 768px) {
+  .searchbar {
+    display: flex;
+    justify-content : end;
+  }
 }
 
 // NAVBAR
@@ -777,4 +784,32 @@ footer {
   .control-next-btn {
     top: 37%;
  }
+}
+
+.notFound {
+  text-align: center;
+  padding: 1.2rem; 
+  background-color: #e6dbdb8f;
+  border: 0.4 solid var(--color);
+  border-radius: 2rem;
+  width: 80%; 
+  max-width: 800px; 
+  margin: 0 auto;
+}
+
+.notFoundCategory,.notFoundUser {
+  text-align: center;
+  padding: 1.2rem; 
+  background-color: #e9d9d98f;
+  border: 0.4 solid var(--color);
+  border-radius: 2rem;
+  width: 80%;
+  height: 20%; 
+  max-width: 800px; 
+  margin: 0 auto;
+}
+
+.box-about {
+  text-align: center;
+  padding: 3rem;
 }
