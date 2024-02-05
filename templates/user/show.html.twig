@@ -18,16 +18,12 @@
 	<div class="profile-container">
 		<div class="info">
             <section class="text">
-                <h3>{{ user.name }}</h3>
                 <h4>{{ user.nationality }}</h4>
                 <h4>Description :</h4>
                 <p class="description">{{ user.description }}</p>
             </section>
             <div class="image-container">
                 <img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
-                <p>
-                    {{ user.name }}
-                </p>
                 {% if user.instagram or user.facebook or user.twitter or user.pinterest %}
                     <div class="social-links">
                         {% if user.instagram %}
@@ -79,7 +75,7 @@
 						</div>
 					</div>
 				{% else %}
-					<p>no records found</p>
+					<div class="notFound ">{{ user.name }} n'a pas encore d'autres oeuvres à consulter</div>
 				{% endfor %}
 			</div>
 		</div>
