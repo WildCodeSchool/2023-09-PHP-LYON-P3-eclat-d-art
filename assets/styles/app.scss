@@ -784,6 +784,7 @@ footer {
   .control-next-btn {
     top: 37%;
  }
+ 
 }
 
 .notFound {
@@ -812,4 +813,10 @@ footer {
 .box-about {
   text-align: center;
   padding: 3rem;
+}
+
+.loginError{
+  display: flex;
+  justify-content: center;
+  background-color: #dd8e8e8f;
 }
