@@ -12,6 +12,14 @@
 {% endblock %}
 {% block body %}
 
+{% for message in app.flashes('success') %}
+	<div class="alert alert-success flash-message">
+		{{ message }}
+		{{ user.name }}
+	</div>
+
+{% endfor %}
+
 	<div class="box-area">
 		<div class="box-artwork">
 			<img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">

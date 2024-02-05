@@ -48,4 +48,12 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->getQuery()
             ->getResult();
     }
+
+    public function findAllByUserDesc(): array
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.updatedAt', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }
