@@ -24,6 +24,13 @@
 		<div class="box-artwork">
 			<img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
 		</div>
+        <div class="img-popup">
+            <img src="{{ vich_uploader_asset(artwork) }}" alt="Popup Image">
+            <div class="close-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
 
 		<div class="box-right">
 			<div class="box-describ">
