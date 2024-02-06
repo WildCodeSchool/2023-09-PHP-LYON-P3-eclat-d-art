@@ -62,6 +62,7 @@ class ArtworkRepository extends ServiceEntityRepository
 
         return $queryBuilder->getResult();
     }
+    
     public function searchByQuery(string $query): array
     {
         return $this->createQueryBuilder('a')

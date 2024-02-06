@@ -32,7 +32,7 @@ body {
 
 .searchbar {
     display: flex;
-    justify-content : start;
+    justify-content : center;
     margin: 2rem;
 }
 
@@ -46,11 +46,6 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-  .searchbar {
-    display: flex;
-    justify-content : center;
-  }
-
   .searchbar input {
     width: 250px;
   }
@@ -85,6 +80,15 @@ a,
 
 .line {
   border-bottom: 0.05rem solid var(--color);
+}
+
+.dropdown-toggle {
+  justify-content: end;
+  color: var(--color)
+}
+
+.link-show {
+  color: var(--color);
 }
 
 //////////////////////cards////////////////////////////////
