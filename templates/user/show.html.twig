@@ -6,43 +6,43 @@
 
 {% for message in app.flashes('success') %}
 	<div class="alert alert-success flash-message">
-		{{ message }} {{ user.name }}
+		{{ message }} {{ artist.name }}
 	</div>
 	
 {% endfor %}
 
 	<div class="title-page-artiste">
-		<h1>{{ user.name }}</h1>
+		<h1>{{ artist.name }}</h1>
 	</div>
 
 	<div class="profile-container">
 		<div class="info">
             <section class="text">
-                <h4>{{ user.nationality }}</h4>
+                <h4>{{ artist.nationality }}</h4>
                 <h4>Description :</h4>
-                <p class="description">{{ user.description }}</p>
+                <p class="description">{{ artist.description }}</p>
             </section>
             <div class="image-container">
-                <img class="image-artwork-mini" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
-                {% if user.instagram or user.facebook or user.twitter or user.pinterest %}
+                <img class="image-artwork-mini" src="{{ vich_uploader_asset(artist) }}" alt="{{ artist.picture }}" loading="lazy">
+                {% if artist.instagram or artist.facebook or artist.twitter or artist.pinterest %}
                     <div class="social-links">
-                        {% if user.instagram %}
-                            <a href="{{ user.instagram }}">
+                        {% if artist.instagram %}
+                            <a href="{{ artist.instagram }}">
                                 <i class="fa-brands fa-instagram" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
                             </a>
                         {% endif %}
-                        {% if user.facebook %}
-                            <a href="{{ user.facebook }}">
+                        {% if artist.facebook %}
+                            <a href="{{ artist.facebook }}">
                                 <i class="fa-brands fa-facebook" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
                             </a>
                         {% endif %}
-                        {% if user.twitter %}
-                            <a href="{{ user.twitter }}">
+                        {% if artist.twitter %}
+                            <a href="{{ artist.twitter }}">
                                 <i class="fa-brands fa-x-twitter" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
                             </a>
                         {% endif %}
-                        {% if user.pinterest %}
-                            <a href="{{ user.pinterest }}">
+                        {% if artist.pinterest %}
+                            <a href="{{ artist.pinterest }}">
                                 <i class="fa-brands fa-pinterest" style="color: #000000; font-size: 1.8rem; margin-right: 1rem;"></i>
                             </a>
                         {% endif %}
@@ -52,16 +52,19 @@
 		</div>
 	</div>
 	<div class="button-user">
-		{% if is_granted("ROLE_ADMIN") or (app.user and app.user.id == user.id) %}
+		{% if is_granted("ROLE_ADMIN") or (app.user and app.user.id == artist.id) %}
 			<div class="show-footer">
-				<a class="btn btn-light artwork-descovery" href="{{ path('app_user_edit', {'id': user.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
+				<a class="btn btn-light artwork-descovery" href="{{ path('app_user_edit', {'id': artist.id}) }}" aria-label="Editer l\'oeuvre">Editer</a>
 				{{ include('user/_delete_form.html.twig') }}
 			</div>
 		{% endif %}
 	</div>
 	<div class="title-artiste">
-		<h2>Retrouver d'autres oeuvres de
-			{{ user.name }}</h2>
+		{% if (app.user and app.user.id == artist.id) %}
+			<h2>Mes oeuvres</h2>
+		{% else %}
+			<h2>Retrouver d'autres oeuvres de {{ artist.name }}</h2>
+		{% endif %}
 	</div>
 	<div id="card-area-categories">
 		<div class="wrapper">
@@ -75,7 +78,7 @@
 						</div>
 					</div>
 				{% else %}
-					<div class="notFound ">{{ user.name }} n'a pas encore d'autres oeuvres à consulter</div>
+					<div class="notFound ">{{ artist.name }} n'a pas encore d'autres oeuvres à consulter</div>
 				{% endfor %}
 			</div>
 		</div>

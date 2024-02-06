@@ -40,7 +40,7 @@
 	</div>
 
 	<div>
-		<h1>Éclats d’art : Galerie d'art en ligne.</h1>
+		<h1>Éclat d’art : Galerie d'art en ligne.</h1>
 		<a id="about-us"></a>
 		<p class="box-about">"Immergez-vous dans un monde d'expression infinie, où les artistes se rassemblent, partagent et célèbrent leur créativité. 
 		Notre galerie d'art en ligne offre un espace dynamique dédié à la découverte de talents émergents et établis. Rejoignez une communauté passionnée, 
@@ -69,35 +69,35 @@
 					<img class=" image" loading="lazy" alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}">
 					<div class="overlay">
 						<h3>Photos</h3>
-						<a href="artwork/category/photo" aria-label="Découvrez toutes les photos">Découvrir</a>
+						<a href="{{ path('app_artworks_by_category', {'categoryName': 'photo'}) }}" aria-label="Découvrez toutes les photos">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
 					<div class="overlay">
 						<h3>Peintures</h3>
-						<a href="artwork/category/peinture" aria-label="Découvrez toutes les peintures">Découvrir</a>
+						<a href="{{ path('app_artworks_by_category', {'categoryName': 'peinture'}) }}" aria-label="Découvrez toutes les peintures">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
 					<div class="overlay">
 						<h3>Sculptures</h3>
-						<a href="artwork/category/sculpture" aria-label="Découvrez toutes les sculptures">Découvrir</a>
+						<a href="{{ path('app_artworks_by_category', {'categoryName': 'sculpture'}) }}" aria-label="Découvrez toutes les sculptures">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
 					<div class="overlay">
 						<h3>Fan Art</h3>
-						<a href="artwork/category/fanart" aria-label="Découvrez tous les FanArt">Découvrir</a>
+						<a href="{{ path('app_artworks_by_category', {'categoryName': 'fanart'}) }}" aria-label="Découvrez tous les FanArt">Découvrir</a>
 					</div>
 				</div>
 				<div class="box">
 					<img class=" image" loading="lazy" alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
 					<div class="overlay">
 						<h3>IA</h3>
-						<a href="artwork/category/ia" aria-label="Découvrez tous le contenue générer par IA">Découvrir</a>
+						<a href="{{ path('app_artworks_by_category', {'categoryName': 'ia'}) }}" aria-label="Découvrez tous le contenue générer par IA">Découvrir</a>
 					</div>
 				</div>
 			</div>

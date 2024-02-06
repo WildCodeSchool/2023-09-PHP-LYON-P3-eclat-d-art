@@ -33,7 +33,14 @@ body {
 .searchbar {
     display: flex;
     justify-content : start;
+    margin: 2rem;
 }
+
+.searchbar input {
+  height: 3rem;
+  width: 350px;
+}
+
 .search_button {
     border: none;
 }
@@ -41,7 +48,11 @@ body {
 @media screen and (max-width: 768px) {
   .searchbar {
     display: flex;
-    justify-content : end;
+    justify-content : center;
+  }
+
+  .searchbar input {
+    width: 250px;
   }
 }
 
@@ -338,12 +349,8 @@ fieldset.form_login {
 }
 
 form.form_login label {
-  padding-right: 2rem;
-  width: 9rem;
-}
-
-label {
   padding-right: 1rem;
+  width: 9rem;
 }
 
 input,
