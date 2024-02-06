@@ -44,7 +44,7 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('nationality', CountryType::class, [
-                'label' => 'Nationalitée *',
+                'label' => 'Nationalité *',
             ])
             ->add('instagram', UrlType::class, [
                 'label' => 'Instagram',

@@ -60,12 +60,14 @@
 			</div>
 
 			<div id="slider-container" class="slideur">
-				{% for artwork in artworks %}
+				{% for userArtwork in artworks %}
+					{% if userArtwork != artwork %}
 					<div class="slid">
-						<a href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">
-							<img src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
+						<a href="{{ path('app_artwork_show', {'id': userArtwork.id}) }} ">
+							<img src="{{ vich_uploader_asset(userArtwork) }}" alt="{{ userArtwork.title }}" loading="lazy">
 						</a>
 					</div>
+					{% endif %}
 				{% endfor %}
 			</div>
 			{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}
