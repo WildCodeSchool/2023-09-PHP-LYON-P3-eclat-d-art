@@ -56,7 +56,6 @@ class ArtworkController extends AbstractController
     public function show(Artwork $artwork, ArtworkRepository $artworkRepository): Response
     {
         $user = $artwork->getUser();
-        //$artworksUser = $artworkRepository->findImagesByUser($user->getId());
         $artworksUser = $artworkRepository->findBy(['user' => $user]);
         return $this->render('artwork/show.html.twig', [
             'artworks' => $artworksUser,
