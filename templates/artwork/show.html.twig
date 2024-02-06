@@ -20,10 +20,17 @@
 
 {% endfor %}
 
-	<div class="box-area">
+	<div class="box-area artwork-show">
 		<div class="box-artwork">
 			<img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
 		</div>
+        <div class="img-popup">
+            <img src="{{ vich_uploader_asset(artwork) }}" alt="Popup Image">
+            <div class="close-btn">
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
 
 		<div class="box-right">
 			<div class="box-describ">
@@ -53,12 +60,14 @@
 			</div>
 
 			<div id="slider-container" class="slideur">
-				{% for artwork in artworks %}
+				{% for userArtwork in artworks %}
+					{% if userArtwork != artwork %}
 					<div class="slid">
-						<a href="{{ path('app_artwork_show', {'id': artwork.id}) }} ">
-							<img src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
+						<a href="{{ path('app_artwork_show', {'id': userArtwork.id}) }} ">
+							<img src="{{ vich_uploader_asset(userArtwork) }}" alt="{{ userArtwork.title }}" loading="lazy">
 						</a>
 					</div>
+					{% endif %}
 				{% endfor %}
 			</div>
 			{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}

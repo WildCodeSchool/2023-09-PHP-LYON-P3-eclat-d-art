@@ -13,7 +13,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/artiste')]
+#[Route('/artist')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
@@ -36,7 +36,7 @@ class UserController extends AbstractController
         $artworks = $artworkRepository->findBy(['user' => $user]);
 
         return $this->render('user/show.html.twig', [
-            'user' => $user,
+            'artist' => $user,
             'artworks' => $artworks,
         ]);
     }

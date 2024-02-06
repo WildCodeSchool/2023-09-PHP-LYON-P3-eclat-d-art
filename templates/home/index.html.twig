@@ -40,92 +40,84 @@
 	</div>
 
 	<div>
-		<h1>Éclats d’art : Galerie d'art en ligne.</h1>
-		<a id="about-us"></a>
-		<p class="box-about">"Immergez-vous dans un monde d'expression infinie, où les artistes se rassemblent, partagent et célèbrent leur créativité. 
-		Notre galerie d'art en ligne offre un espace dynamique dédié à la découverte de talents émergents et établis. Rejoignez une communauté passionnée, 
-		explorez des œuvres captivantes et plongez dans l'univers vibrant de l'art contemporain partagé par des esprits créatifs du monde entier.
-		Découvrez la diversité artistique à travers une gamme éclectique de médiums, de styles et de visions uniques. <br>
-		Que vous soyez un amateur d'art avide ou un collectionneur passionné, notre plateforme vous offre un accès exclusif à des créations exceptionnelles.
-		Explorez des peintures expressives, des sculptures intrigantes, des photographies évocatrices et bien plus encore, toutes créées par des artistes talentueux qui repoussent les limites de l'imagination.
-		En tant que membre de notre communauté artistique, vous aurez l'opportunité de participer à des événements exclusifs, des expositions virtuelles et des rencontres avec des artistes renommés.
-		Connectez-vous avec des esprits créatifs du monde entier, échangez des idées et partagez votre passion pour l'art contemporain.
-		Notre plateforme devient ainsi un lieu de convergence où l'inspiration fuse et où les frontières artistiques s'effacent.<br>
-		Parcourez notre galerie en ligne avec une facilité intuitive, découvrez de nouvelles perspectives et laissez-vous emporter par la puissance de l'expression artistique.
-		Que vous soyez à la recherche de pièces uniques pour enrichir votre collection ou que vous souhaitiez simplement vous immerger dans l'effervescence artistique mondiale,
-		notre galerie est l'endroit idéal pour explorer, apprécier et célébrer l'art contemporain à son meilleur.
-		Rejoignez-nous dans cette aventure artistique captivante, où la créativité connaît une expression infinie et où chaque œuvre raconte une histoire unique. Bienvenue dans notre galerie d'art en ligne, 
-		où la passion et l'inspiration se rencontrent pour créer un monde artistique véritablement exceptionnel."</p>
-	</div>
-
-	<div>
-		<h2>Catégories</h2>
-	</div>
-
-	<div id="card-area-categories">
-		<div class="wrapper">
-			<div class="box-area">
-				<div class="box">
-					<img class=" image" loading="lazy" alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}">
-					<div class="overlay">
-						<h3>Photos</h3>
-						<a href="artwork/category/photo" aria-label="Découvrez toutes les photos">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class=" image" loading="lazy" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
-					<div class="overlay">
-						<h3>Peintures</h3>
-						<a href="artwork/category/peinture" aria-label="Découvrez toutes les peintures">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class=" image" loading="lazy" alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
-					<div class="overlay">
-						<h3>Sculptures</h3>
-						<a href="artwork/category/sculpture" aria-label="Découvrez toutes les sculptures">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class=" image" loading="lazy" alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
-					<div class="overlay">
-						<h3>Fan Art</h3>
-						<a href="artwork/category/fanart" aria-label="Découvrez tous les FanArt">Découvrir</a>
-					</div>
-				</div>
-				<div class="box">
-					<img class=" image" loading="lazy" alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
-					<div class="overlay">
-						<h3>IA</h3>
-						<a href="artwork/category/ia" aria-label="Découvrez tous le contenue générer par IA">Découvrir</a>
-					</div>
-				</div>
-			</div>
+		<h1>Éclat d’art : Galerie d'art en ligne.</h1>
+		<div class="box-about">
+			<p>
+				Plongez dans un monde d'expression infinie avec notre galerie d'art en ligne. Découvrez des talents émergents et établis, explorez des œuvres captivantes, et connectez-vous avec une communauté passionnée. 
+				Profitez d'un accès exclusif à une diversité artistique exceptionnelle, avec des peintures, sculptures, photographies et plus encore, toutes créées par des artistes talentueux. 
+				Participez à des événements exclusifs, des expositions virtuelles et des rencontres avec des artistes renommés. Notre plateforme devient un lieu de convergence où l'inspiration fuse et les frontières artistiques s'effacent. 
+				Rejoignez cette aventure artistique captivante où chaque œuvre raconte une histoire unique. 
+				Bienvenue dans notre galerie d'art en ligne, où passion et inspiration se rencontrent pour créer un monde artistique exceptionnel.</p>
 		</div>
-	</div>
 
-	<h2>
-		<a href="{{ path('app_user_index') }}">Artistes</a>
-	</h2>
+		<div>
+			<h2>Catégories</h2>
+		</div>
 
-	<div id="card-area-categories">
-		<div class="wrapper">
-			<div class="box-area">
-				{% for user in users %}
-					{% if 'ROLE_ADMIN' not in user.roles %}
-						<div class="box">
-							<img class=" image" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
-							<div class="overlay">
-								<h3>{{ user.name }}</h3>
-								<a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
-							</div>
+		<div id="card-area-categories">
+			<div class="wrapper">
+				<div class="box-area">
+					<div class="box">
+						<img class=" image" loading="lazy" alt="Photo d'un panorama" src="{{ asset('build/images/janez.webp') }}">
+						<div class="overlay">
+							<h3>Photos</h3>
+							<a href="{{ path('app_artworks_by_category', {'categoryName': 'photo'}) }}" aria-label="Découvrez toutes les photos">Découvrir</a>
 						</div>
-					{% endif %}
-				{% else %}
-					<div class="notFound ">Aucun résultat trouvé</div>
-				{% endfor %}
+					</div>
+					<div class="box">
+						<img class=" image" loading="lazy" alt="Peinture d'une femme" src="{{ asset('build/images/caravage.webp') }}">
+						<div class="overlay">
+							<h3>Peintures</h3>
+							<a href="{{ path('app_artworks_by_category', {'categoryName': 'peinture'}) }}" aria-label="Découvrez toutes les peintures">Découvrir</a>
+						</div>
+					</div>
+					<div class="box">
+						<img class=" image" loading="lazy" alt="Sculture d'écureuil" src="{{ asset('build/images/squirrel.png') }}">
+						<div class="overlay">
+							<h3>Sculptures</h3>
+							<a href="{{ path('app_artworks_by_category', {'categoryName': 'sculpture'}) }}" aria-label="Découvrez toutes les sculptures">Découvrir</a>
+						</div>
+					</div>
+					<div class="box">
+						<img class=" image" loading="lazy" alt="Fan art de Luffy" src="{{ asset('build/images/luffy.webp') }}">
+						<div class="overlay">
+							<h3>Fan Art</h3>
+							<a href="{{ path('app_artworks_by_category', {'categoryName': 'fanart'}) }}" aria-label="Découvrez tous les FanArt">Découvrir</a>
+						</div>
+					</div>
+					<div class="box">
+						<img class=" image" loading="lazy" alt="Image générée par IA" src="{{ asset('build/images/colorBou.webp') }}">
+						<div class="overlay">
+							<h3>IA</h3>
+							<a href="{{ path('app_artworks_by_category', {'categoryName': 'ia'}) }}" aria-label="Découvrez tous le contenue générer par IA">Découvrir</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-{% endblock %}
+		<h2>
+			<a href="{{ path('app_user_index') }}">Artistes</a>
+		</h2>
+
+		<div id="card-area-categories">
+			<div class="wrapper">
+				<div class="box-area">
+					{% for user in users %}
+						{% if 'ROLE_ADMIN' not in user.roles %}
+							<div class="box">
+								<img class=" image" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}">
+								<div class="overlay">
+									<h3>{{ user.name }}</h3>
+									<a class="btn btn-secondary form-button form-link" href="{{ path('app_user_show', {'id': user.id}) }} " role="button">Découvrir</a>
+								</div>
+							</div>
+						{% endif %}
+					{% else %}
+						<div class="notFound ">Aucun résultat trouvé</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+	{% endblock %}
