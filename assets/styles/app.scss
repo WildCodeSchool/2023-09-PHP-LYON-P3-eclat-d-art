@@ -847,9 +847,6 @@ footer {
     justify-content: center;
     align-items: center;
     display: none;
-}
-
-.img-popup img {
     max-width: 900px;
     width: 100%;
     opacity: 0;
@@ -859,6 +856,8 @@ footer {
     -ms-transform: translateY(-100px);
     -o-transform: translateY(-100px);
 }
+
+
 
 .close-btn {
     width: 35px;
