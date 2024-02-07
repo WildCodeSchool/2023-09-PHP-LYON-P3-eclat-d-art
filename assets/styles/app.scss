@@ -529,6 +529,7 @@ div.button-user {
   }
 }
 
+
 ///////////////////////magnified glass//////////////////////
 
 .img-magnifier-container {
@@ -687,6 +688,45 @@ font-size: 1.8rem;
     .social-links {
         flex-direction: column;
         align-items: center;
+    }
+}
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        margin-left: 0;
+    }
+
+    .info, .description {
+        width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .image-artwork-mini, img.profile-artiste {
+        width: 8rem; /* Adjust image sizes for smaller screens */
+        height: 8rem;
+    }
+
+    .title-artiste h2, .title-page-artiste h1 {
+        font-size: 1.5rem; /* Adjust font size for smaller screens */
+        margin-top: 2%;
+        margin-bottom: 3rem;
+    }
+
+    img.icon {
+        max-width: 1.5rem; /* Adjust icon sizes for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .info {
+        flex-direction: column; /* Stack info elements vertically on very small screens */
+        gap: 0.5rem;
     }
 }
 
