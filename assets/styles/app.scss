@@ -567,7 +567,15 @@ div.button-user {
   box-shadow:0 0 5px rgba(0, 0, 0, 0.3);
 }
 
-///// Page show (perso) d'un artsite/user
+///// Page show (perso) d'un artiste/user
+
+
+.text {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
 
 .profile-container {
   position: relative;
