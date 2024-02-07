@@ -8,17 +8,19 @@
 	<div class="alert alert-success flash-message">
 		{{ message }} {{ artist.name }}
 	</div>
-	
+
 {% endfor %}
 
 	<div class="title-page-artiste">
-		<h1>{{ artist.name }}</h1>
+
 	</div>
 
 	<div class="profile-container">
 		<div class="info">
             <section class="text">
-                <h4>{{ artist.nationality }}</h4>
+                <h1>{{ artist.name }}</h1>
+                <h4>Nationalité :</h4>
+                <p>{{ artist.nationality }}</p>
                 <h4>Description :</h4>
                 <p class="description">{{ artist.description }}</p>
             </section>

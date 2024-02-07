@@ -107,7 +107,6 @@ document.addEventListener('DOMContentLoaded', function () {
         // Toggle the display style of the .box-right div
         if (boxRight.style.display !== 'none') {
             boxRight.style.display = 'none';
-            document.body.style.backgroundColor = 'black';
         } else {
             boxRight.style.display = 'block';
         }
@@ -133,8 +132,8 @@ $(document).ready(function () {
         imgPopup.children('img').attr('src', '');
     });
 
-    popupImage.on('click', function (e) {
+    /* popupImage.on('click', function (e) {
         e.stopPropagation();
     });
-
+*/
 });
