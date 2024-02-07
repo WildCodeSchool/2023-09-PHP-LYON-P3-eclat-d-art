@@ -95,8 +95,6 @@ function magnify(imgID, zoom)
 
 magnify("my_image", 2);
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
     // Select the .box-area div
     let boxArea = document.querySelector('.box-area');
