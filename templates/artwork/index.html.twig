@@ -9,7 +9,7 @@
 			{{ message }}
 		</div>
 	{% endfor %}
-	<h2>Œuvres</h2>
+	<h1>Œuvres</h1>
     <div class="searchbar">
         {{ include('artwork/search/_form.html.twig') }}
     </div>
@@ -25,7 +25,7 @@
 						</div>
 					</div>
 				{% else %}
-					<p>Aucunes œuvres ne correspond à votre recherche</p>
+					<div class="notFound ">Aucun résultat trouvé</div>
 				{% endfor %}
 			</div>
 		</div>

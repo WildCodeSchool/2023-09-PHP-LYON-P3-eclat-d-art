@@ -1,6 +1,5 @@
 {% extends 'base.html.twig' %}
 
-
 {% block head %}
 	<head>
 		<meta name="Artwork" content="Œuvre d'art mise en valeur avec tous ses détails et informations">
@@ -13,65 +12,56 @@
 {% endblock %}
 {% block body %}
 
-	<div class="box-area">
-		<div class="box-artwork img-magnifier-container">
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success flash-message">
+			{{ message }}
+			{{ user.name }}
+		</div>
+
+	{% endfor %}
+
+	<div class="box-area artwork-show">
+		<div class="box-artwork">
 			<img class="image" id="my_image" src="{{ vich_uploader_asset(artwork) }}" alt="{{ artwork.title }}" loading="lazy">
 		</div>
 
-		<div class="box-right">
-			<div class="box-describ">
-				<h5>{{ artwork.title }}</h5>
-				<div class="user-image">
-					<div class="art-details">
-					<h5>
-							Artiste :
-							{{ user.name }}
-						</h5>
-						<h5>
-							Technique:
-								{{ artwork.technique }}
-						</h5>
-						<h5>{{ artwork.height }}
-							cm X
-							{{ artwork.width }}
-							cm</h5>
-						<h5>
-							Créée le:
-							{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}
-						</h5>
-						
-					</div>
-					<a href="{{ path('app_user_show', {'id': user.id}) }}" aria-label="Voir le profil de {{ user.name }}">
-						<img class="artwork-user" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
-					</a>
+	<div class="box-right">
+		<div class="box-describ">
+			<h5>"{{ artwork.title }}"</h5>
+			<div class="user-image">
+				<div class="art-details">
+					<p>
+						{{ user.name }}
+					</p>
+					<p>
+						{{ artwork.technique }}
+					</p>
+					<p>{{ artwork.height }}
+						cm X
+						{{ artwork.width }}
+						cm</p>
+					<p>
+						{{ artwork.createdAt ? artwork.createdAt|date('d-m-Y') : '' }}
+					</p>
+
 				</div>
-				<p>{{ artwork.description }}</p>
+				<a href="{{ path('app_user_show', {'id': user.id}) }}" aria-label="Voir le profil de {{ user.name }}">
+					<img class="artwork-user" src="{{ vich_uploader_asset(user) }}" alt="{{ user.picture }}" loading="lazy">
+				</a>
 			</div>
+			<p>{{ artwork.description }}</p>
+		</div>
 
-			<div class="mini-slides">
-				{% if artworks[0] is defined %}
-					<div class="slide slide-1">
-						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
-							<img src="{{ vich_uploader_asset(artworks[0]) }}" alt="{{ artworks[0].title }}" loading="lazy">
+		<div id="slider-container" class="slideur">
+			{% for userArtwork in artworks %}
+				{% if userArtwork != artwork %}
+					<div class="slid">
+						<a href="{{ path('app_artwork_show', {'id': userArtwork.id}) }} ">
+							<img src="{{ vich_uploader_asset(userArtwork) }}" alt="{{ userArtwork.title }}" loading="lazy">
 						</a>
 					</div>
 				{% endif %}
-				{% if artworks[1] is defined %}
-					<div class="slide slide-2">
-						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
-							<img src="{{ vich_uploader_asset(artworks[1]) }}" alt="{{ artworks[1].title }}" loading="lazy">
-						</a>
-					</div>
-				{% endif %}
-				{% if artworks[2] is defined %}
-					<div class="slide slide-3">
-						<a href="{{ path('app_user_show', { 'id': user.id }) }}">
-							<img src="{{ vich_uploader_asset(artworks[2]) }}" alt="{{ artworks[2].title }}" loading="lazy">
-						</a>
-					</div>
-				{% endif %}
-			</div>
-
+			{% endfor %}
 		</div>
 		{% if is_granted("ROLE_ADMIN") or (app.user and app.user == artwork.user) %}
 			<div class="show-footer">
@@ -80,5 +70,11 @@
 			</div>
 		{% endif %}
 	</div>
+</div>
+<button id="view-image-button" class="button-view-image">Voir l'image</button>
 
-</div>{% endblock %}
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('build/app.js') }}"></script>
+    {% endblock %}
+{% endblock %}

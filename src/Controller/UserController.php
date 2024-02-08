@@ -13,14 +13,17 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-#[Route('/artiste')]
+#[Route('/artist')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_user_index', methods: ['GET'])]
     public function index(UserRepository $userRepository): Response
     {
+
+        $users = $userRepository->findAllByUserDesc();
+
         return $this->render('user/index.html.twig', [
-            'users' => $userRepository->findAll(),
+            'users' => $users,
         ]);
     }
 
@@ -33,7 +36,7 @@ class UserController extends AbstractController
         $artworks = $artworkRepository->findBy(['user' => $user]);
 
         return $this->render('user/show.html.twig', [
-            'user' => $user,
+            'artist' => $user,
             'artworks' => $artworks,
         ]);
     }
@@ -51,11 +54,11 @@ class UserController extends AbstractController
 
             $this->addFlash('success', 'Votre profil a bien été modifié');
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_show', ['id' => $user->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('user/edit.html.twig', [
-            'user' => $user,
+            'artist' => $user,
             'form' => $form,
         ]);
     }
@@ -77,5 +80,15 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/search/index', name: 'search_users')]
+    public function search(Request $request, UserRepository $userRepository): Response
+    {
+        $query = $request->query->get('query');
+        $users = $userRepository->searchByQuery($query);
+
+        return $this->render('user/index.html.twig', [
+            'users' => $users,
+        ]);
     }
 }

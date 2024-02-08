@@ -9,7 +9,9 @@
 		</div>
 	{% endfor %}
 	<h1>Artistes</h1>
-
+    <div class="searchbar">
+        {{ include('user/search/_form.html.twig') }}
+    </div>
 	<div id="card-area-categories">
 		<div class="wrapper">
 			<div class="box-area">
@@ -24,11 +26,9 @@
 						</div>
 					{% endif %}
 				{% else %}
-					<p>no records found</p>
+					<div class="notFoundUser ">Il n'y a pas encore d'artiste à découvrir</div>
 				{% endfor %}
 			</div>
 		</div>
 	</div>
-
-
 {% endblock %}

@@ -2,7 +2,7 @@
 
 {% block body %}
 
-	<h2>Oeuvres :
+	<h2>Découvrez notre catégorie 
 		{{ category.name }}</h2>
 
 	<div id="card-area-categories">
@@ -17,7 +17,7 @@
 						</div>
 					</div>
 				{% else %}
-					<p>no records found</p>
+					<div class="notFoundCategory">Il n'y a pas encore d'oeuvre à consulter</div>
 				{% endfor %}
 			</div>
 		</div>

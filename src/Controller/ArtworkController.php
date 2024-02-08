@@ -56,8 +56,7 @@ class ArtworkController extends AbstractController
     public function show(Artwork $artwork, ArtworkRepository $artworkRepository): Response
     {
         $user = $artwork->getUser();
-        $userId = $artwork->getUser()->getId();
-        $artworksUser = $artworkRepository->findImagesByUser($userId);
+        $artworksUser = $artworkRepository->findBy(['user' => $user]);
         return $this->render('artwork/show.html.twig', [
             'artworks' => $artworksUser,
             'artwork' => $artwork,
@@ -80,7 +79,7 @@ class ArtworkController extends AbstractController
 
             $this->addFlash('success', 'Votre Oeuvre a bien été modifiée');
 
-            return $this->redirectToRoute('app_artwork_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_artwork_show', ['id' => $artwork->getId()], Response::HTTP_SEE_OTHER);
         }
 
         return $this->render('artwork/edit.html.twig', [
@@ -120,13 +119,13 @@ class ArtworkController extends AbstractController
             'category' => $category,
         ]);
     }
-    #[Route('/search/results', name: 'search_results')]
+    #[Route('/search/index', name: 'search_artworks')]
     public function search(Request $request, ArtworkRepository $artworkRepository): Response
     {
         $query = $request->query->get('query');
         $artworks = $artworkRepository->searchByQuery($query);
 
-        return $this->render('artwork/search/results.html.twig', [
+        return $this->render('artwork/index.html.twig', [
             'artworks' => $artworks,
         ]);
     }
