@@ -70,4 +70,11 @@
 			</div>
 		{% endif %}
 	</div>
-</div>{% endblock %}
+</div>
+<button id="view-image-button" class="button-view-image">Voir l'image</button>
+
+{% block javascripts %}
+        {{ parent() }}
+        <script src="{{ asset('build/app.js') }}"></script>
+    {% endblock %}
+{% endblock %}
