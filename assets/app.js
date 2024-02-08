@@ -93,4 +93,38 @@ function magnify(imgID, zoom)
     };
 }
 
-magnify("my_image", 2);
+
+document.addEventListener("DOMContentLoaded", () => {
+  magnify("my_image", 2); // Initialisation de la loupe
+
+  // Ajout d'un écouteur d'événement sur le bouton pour ouvrir le modal
+  const viewImageButton = document.getElementById("view-image-button");
+  viewImageButton.addEventListener("click", function () {
+    const img = document.getElementById("my_image");
+    const modal = document.createElement("div");
+    modal.setAttribute("class", "modal");
+    const modalContent = document.createElement("img");
+    modalContent.setAttribute("class", "modal-content");
+    modalContent.src = img.src; // Utilisez l'attribut src de votre image
+    const closeSpan = document.createElement("span");
+    closeSpan.setAttribute("class", "close");
+    closeSpan.innerHTML = "&times;";
+    modal.appendChild(closeSpan);
+    modal.appendChild(modalContent);
+    document.body.appendChild(modal);
+
+    modal.style.display = "block";
+
+    closeSpan.onclick = () => {
+      modal.style.display = "none";
+      document.body.removeChild(modal);
+    };
+
+    window.onclick = (event) => {
+      if (event.target == modal) {
+        modal.style.display = "none";
+        document.body.removeChild(modal);
+      }
+    };
+  });
+});
