@@ -17,8 +17,7 @@ import $ from 'jquery';
 
 require('bootstrap');
 
-function magnify(imgID, zoom)
-{
+function magnify(imgID, zoom) {
     let img, glass, w, h, bw;
     img = document.getElementById(imgID);
     glass = document.createElement("DIV");
@@ -27,20 +26,18 @@ function magnify(imgID, zoom)
     glass.style.backgroundImage = "url('" + img.src + "')";
     glass.style.backgroundRepeat = "no-repeat";
     glass.style.backgroundSize =
-    img.width * zoom + "px " + img.height * zoom + "px";
+        img.width * zoom + "px " + img.height * zoom + "px";
     bw = 3;
     w = glass.offsetWidth / 2;
     h = glass.offsetHeight / 2;
 
     // Cache la loupe
-    function hideMagnifier()
-    {
+    function hideMagnifier() {
         glass.style.display = "none";
     }
 
     // Affiche la loupe
-    function showMagnifier()
-    {
+    function showMagnifier() {
         glass.style.display = "block";
     }
 
@@ -55,8 +52,7 @@ function magnify(imgID, zoom)
     glass.addEventListener("touchmove", moveMagnifier);
     img.addEventListener("touchmove", moveMagnifier);
 
-    function moveMagnifier(e)
-    {
+    function moveMagnifier(e) {
         let pos, x, y;
         pos = getCursorPos(e);
         x = pos.x;
@@ -76,7 +72,7 @@ function magnify(imgID, zoom)
         glass.style.left = x - w + "px";
         glass.style.top = y - h + "px";
         glass.style.backgroundPosition =
-        "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
+            "-" + (x * zoom - w + bw) + "px -" + (y * zoom - h + bw) + "px";
     }
 
     const getCursorPos = (e) => {

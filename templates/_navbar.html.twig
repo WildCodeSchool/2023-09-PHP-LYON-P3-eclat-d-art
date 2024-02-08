@@ -36,10 +36,12 @@
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
 						{% if app.user %}
-                            <section class="Username">
-                                <a href="{{ path('app_user_show', {'id': app.user.id}) }}">{{ app.user.name }} / </a>
-							<a href="{{ path('app_logout') }}">Se déconnecter</a>
-                            </section>
+							<section class="Username">
+								<a href="{{ path('app_user_show', {'id': app.user.id}) }}">{{ app.user.name }}
+									/
+								</a>
+								<a href="{{ path('app_logout') }}">Se déconnecter</a>
+							</section>
 						{% else %}
 							<ul class="register">
 								<li class="nav-item">
