@@ -40,7 +40,7 @@ class Artwork
 
     #[Vich\UploadableField(mapping: 'poster_file', fileNameProperty: 'imageCover')]
     #[Assert\File(
-        maxSize: '5M',
+        maxSize: '15M',
         mimeTypes: ['image/jpeg', 'image/png', 'image/webp'],
     )]
     private ?File $posterFile = null;
